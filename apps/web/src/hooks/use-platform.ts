@@ -13,7 +13,7 @@ export interface PlatformInfo {
   fileName: string;
 }
 
-const DOWNLOAD_BASE = "/downloads";
+const DOWNLOAD_BASE = "https://github.com/Munna-Sarker-010/ServerDeck/releases/download/v1.0.0";
 
 const PLATFORM_MAP: Record<Platform, PlatformInfo> = {
   "mac-arm": {

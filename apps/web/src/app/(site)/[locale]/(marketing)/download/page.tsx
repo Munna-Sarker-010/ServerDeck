@@ -32,14 +32,14 @@ export default function DownloadPage() {
               {copy("Your machine, your servers, your stack. The dashboard and desktop app - all open‑source, all yours to run.")}
             </p>
             <div className="dl-hero-actions">
-              <a href="/downloads/ServerDeck.zip" className="th-btn dl-primary">
+              <a href="https://github.com/Munna-Sarker-010/ServerDeck/releases/download/v1.0.0/ServerDeck.zip" className="th-btn dl-primary">
                 <PlatformIcon name="windows" className="dl-button-icon" />
                 {copy("Download for Windows")}
               </a>
             </div>
             <p className="dl-release">
               <span>{copy("Free forever · Apache 2.0")}</span>
-              <bdi>v1.0.1</bdi>
+              <bdi>v1.0.0</bdi>
             </p>
           </div>
           <div className="hero-edge-fade-top absolute top-0 inset-x-0 h-20" aria-hidden="true" />
