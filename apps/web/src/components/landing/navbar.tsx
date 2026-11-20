@@ -188,7 +188,7 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-50 w-full">
-      <div className="site-container site-nav-bar">
+      <div className="site-container site-nav-bar flex items-center justify-between py-4">
         {/* ── Logo ────────────────────────────────────────────── */}
         <Link href="/" className="relative z-10 flex items-center gap-2.5">
           <img
@@ -206,48 +206,6 @@ export function Navbar() {
             ServerDeck
           </span>
         </Link>
-
-        {/* ── Center pill nav (same shape; links grouped into two dropdowns) ── */}
-        <nav
-          aria-label={copy("Main navigation")}
-          className="hidden items-center gap-0.5 rounded-full px-1.5 py-1.5 backdrop-blur-xl xl:flex"
-          style={{
-            background: dark ? "rgba(255,255,255,.08)" : "rgba(255,255,255,.72)",
-            border: dark ? "1px solid rgba(255,255,255,.10)" : "1px solid var(--th-on-05)",
-            boxShadow: dark ? "none" : "0 0 0 1px rgba(0,0,0,.03), 0 2px 8px rgba(0,0,0,.04)",
-            transition: "background .3s, border .3s, box-shadow .3s",
-          }}
-        >
-          {NAV.map((entry) =>
-            isGroup(entry) ? (
-              <NavDropdown
-                key={entry.label}
-                group={entry}
-                dark={dark}
-                open={openGroup === entry.label}
-                onOpen={() => setOpenGroup(entry.label)}
-                onClose={() => setOpenGroup((g) => (g === entry.label ? null : g))}
-              />
-            ) : (
-              <Link
-                key={entry.label}
-                href={entry.href}
-                aria-current={
-                  pathname === entry.href || pathname?.startsWith(entry.href + "/")
-                    ? "page"
-                    : undefined
-                }
-                className="nav-pill-item rounded-full px-3 py-2 text-[14px] font-medium transition-all aria-[current=page]:bg-[var(--th-sf-04)]"
-                style={{ color: linkColor }}
-              >
-                {copy(entry.label)}
-              </Link>
-            ),
-          )}
-        </nav>
-
-        {/* ── Right placeholder to keep center nav aligned in 3-column grid ── */}
-        <div className="hidden xl:flex items-center justify-end" />
       </div>
     </header>
   );
