@@ -262,6 +262,34 @@ let pendingUpdate: UpdateInfo | null = null;
  *  keeps concurrent triggers from each starting their own download. */
 let updateInFlight: Promise<boolean> | null = null;
 
+function isHomeUrl(url?: string): boolean {
+  if (!url) return true;
+  try {
+    const parsed = new URL(url);
+    return parsed.pathname === "/" || parsed.pathname === "";
+  } catch {
+    return false;
+  }
+}
+
+/** Electron 40 moved navigation history onto `webContents.navigationHistory`. */
+function navHistory() {
+  return mainWindow?.webContents.navigationHistory;
+}
+
+function navState(): { canGoBack: boolean; canGoForward: boolean } {
+  const h = navHistory();
+  const onHome = isHomeUrl(mainWindow?.webContents.getURL());
+  return {
+    canGoBack: onHome ? false : (h?.canGoBack() ?? false),
+    canGoForward: onHome ? false : (h?.canGoForward() ?? false),
+  };
+}
+
+function emitNav() {
+  mainWindow?.webContents.send("window:nav-state-change", navState());
+}
+
 function createWindow() {
   const bounds = store.get("windowBounds");
   // Never open larger than the display (a previously-stored oversized bound, or
@@ -332,13 +360,6 @@ function createWindow() {
   // through links and the Next router, not our IPC, so push the real state after
   // every navigation instead of letting the renderer guess. `did-navigate-in-page`
   // is the one that fires for Next's client-side pushState routing.
-  const emitNav = () => {
-    const h = mainWindow?.webContents.navigationHistory;
-    mainWindow?.webContents.send("window:nav-state-change", {
-      canGoBack: h?.canGoBack() ?? false,
-      canGoForward: h?.canGoForward() ?? false,
-    });
-  };
   mainWindow.webContents.on("did-navigate", emitNav);
   mainWindow.webContents.on("render-process-gone", (_event, details) => {
     if (details.reason !== "clean-exit") reportError("Desktop renderer stopped unexpectedly", {
@@ -346,6 +367,7 @@ function createWindow() {
     });
   });
   mainWindow.webContents.on("did-navigate-in-page", emitNav);
+  mainWindow.webContents.on("did-finish-load", emitNav);
 
   // Show the window once content is painted (avoids white flash)
   mainWindow.once("ready-to-show", () => {
@@ -479,7 +501,14 @@ function loadDashboard() {
   if (!mainWindow) return;
   // Always use the LIVE dashboard origin — the port is dynamic per launch, so
   // any persisted dashboardUrl is stale. onboardingComplete is the real state.
-  mainWindow.loadURL(getLocalDashboardUrl()).catch((err) => {
+  mainWindow.loadURL(getLocalDashboardUrl()).then(() => {
+    try {
+      mainWindow?.webContents.navigationHistory.clear();
+    } catch {
+      mainWindow?.webContents.clearHistory();
+    }
+    emitNav();
+  }).catch((err) => {
     // Fall back to onboarding on a dashboard-load failure only when onboarding
     // is enabled; otherwise it's just a transient dashboard error to surface.
     if (ONBOARDING_ENABLED) {
@@ -730,25 +759,17 @@ handleIpc("window:is-maximized", () => mainWindow?.isMaximized() ?? false);
 // to disable an arrow. Next's client-side routing pushes real history entries, so
 // this covers SPA navigation as well as full page loads.
 
-/** Electron 40 moved navigation history onto `webContents.navigationHistory`. */
-function navHistory() {
-  return mainWindow?.webContents.navigationHistory;
-}
-
-function navState(): { canGoBack: boolean; canGoForward: boolean } {
-  const h = navHistory();
-  return { canGoBack: h?.canGoBack() ?? false, canGoForward: h?.canGoForward() ?? false };
-}
-
 handleIpc("window:nav-back", () => {
   const h = navHistory();
-  if (h?.canGoBack()) h.goBack();
+  const onHome = isHomeUrl(mainWindow?.webContents.getURL());
+  if (!onHome && h?.canGoBack()) h.goBack();
   return navState();
 });
 
 handleIpc("window:nav-forward", () => {
   const h = navHistory();
-  if (h?.canGoForward()) h.goForward();
+  const onHome = isHomeUrl(mainWindow?.webContents.getURL());
+  if (!onHome && h?.canGoForward()) h.goForward();
   return navState();
 });
 

@@ -4,6 +4,7 @@ import { reportCaughtError as observeCaughtError } from "@repo/core/diagnostics"
 import { Icon as UiIcon } from "@repo/ui/icons";
 
 import { useCallback, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useI18n } from "@/components/i18n-provider";
 
 type NavState = { canGoBack: boolean; canGoForward: boolean };
@@ -66,6 +67,8 @@ const bridge = (): DesktopBridge | undefined =>
  */
 export function DesktopChrome() {
   const { t } = useI18n();
+  const pathname = usePathname();
+  const isHome = !pathname || pathname === "/";
   const [ready, setReady] = useState(false);
   const [isMac, setIsMac] = useState(false);
   const [maximized, setMaximized] = useState(false);
@@ -120,7 +123,7 @@ export function DesktopChrome() {
           type="button"
           className="app-titlebar-btn"
           onClick={() => void bridge()?.window?.back()}
-          disabled={!nav.canGoBack}
+          disabled={isHome || !nav.canGoBack}
           aria-label={w.back}
           title={w.back}
         >
@@ -130,7 +133,7 @@ export function DesktopChrome() {
           type="button"
           className="app-titlebar-btn"
           onClick={() => void bridge()?.window?.forward()}
-          disabled={!nav.canGoForward}
+          disabled={isHome || !nav.canGoForward}
           aria-label={w.forward}
           title={w.forward}
         >
