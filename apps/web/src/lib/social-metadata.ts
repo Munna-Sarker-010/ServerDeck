@@ -23,7 +23,7 @@ export async function inheritSocialImages(
       ...card,
       alt:
         card.alt ??
-        (typeof metadata.openGraph?.title === "string" ? metadata.openGraph.title : "OpenShip"),
+        (typeof metadata.openGraph?.title === "string" ? metadata.openGraph.title : "ServerDeck"),
     },
   ];
   return {

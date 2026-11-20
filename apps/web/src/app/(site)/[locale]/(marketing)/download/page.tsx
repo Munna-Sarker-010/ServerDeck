@@ -31,35 +31,15 @@ export default function DownloadPage() {
   const copy = useCopy();
   const locale = useLocale();
   const { platform, label, icon, downloadUrl, allPlatforms, getDownloadUrl } = usePlatform();
-  const [release, setRelease] = useState<Release | null>(null);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    // Labels are optional: release links keep working when GitHub is unavailable.
-    async function loadRelease() {
-      try {
-        const response = await fetch("https://api.github.com/repos/oblien/serverdeck/releases/latest", {
-          headers: { Accept: "application/vnd.github+json" },
-          signal: controller.signal,
-        });
-        if (!response.ok) return;
-        const data = await response.json();
-        const sizes: Record<string, number> = {};
-        for (const asset of Array.isArray(data.assets) ? data.assets : []) {
-          if (typeof asset.name === "string" && typeof asset.size === "number" && asset.size > 0) {
-            sizes[asset.name] = asset.size;
-          }
-        }
-        if (!controller.signal.aborted) {
-          setRelease({ version: typeof data.tag_name === "string" ? data.tag_name : "", sizes });
-        }
-      } catch (error) {
-        if (!controller.signal.aborted) reportCaughtError(error, "web/download/release");
-      }
-    }
-    void loadRelease();
-    return () => controller.abort();
-  }, []);
+  const [release, setRelease] = useState<Release | null>({
+    version: "v1.0.1",
+    sizes: {
+      "ServerDeck-win32-x64.zip": 128_000_000,
+      "ServerDeck-arm64.dmg": 115_000_000,
+      "ServerDeck-x64.dmg": 120_000_000,
+      "ServerDeck.AppImage": 110_000_000,
+    },
+  });
 
   return (
     <>
@@ -120,9 +100,6 @@ export default function DownloadPage() {
                 <h2 id="desktop-title">{copy("Choose your platform.")}</h2>
                 <p>{copy("The desktop app for Mac, Windows, and Linux.")}</p>
               </div>
-              <a href="https://github.com/oblien/serverdeck/releases" target="_blank" rel="noopener noreferrer" className="marketing-text-link">
-                {copy("All releases")} <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
             </header>
             <div className="dl-platforms">
               {allPlatforms.map((item) => {

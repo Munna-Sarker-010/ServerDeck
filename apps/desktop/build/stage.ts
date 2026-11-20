@@ -147,36 +147,38 @@ async function main(): Promise<void> {
   //     dockerode is pure JS. This is why every platform's artifact ships a
   //     complete, working module set with nothing arch-mismatched.
   await step("staging ssh2 + dockerode → resources/node_modules", () => {
-    const adapters = JSON.parse(
-      readFileSync(join(REPO_ROOT, "packages/adapters/package.json"), "utf8"),
-    ) as { dependencies: Record<string, string> };
-    // Keep dependency ranges in a manifest: Windows npm.cmd must not receive
-    // shell metacharacters such as the caret in "^1.17.0" as arguments.
-    writeFileSync(
-      join(RESOURCES, "package.json"),
-      JSON.stringify({
-        name: "openship-desktop-externals",
-        private: true,
-        dependencies: {
-          ssh2: adapters.dependencies.ssh2,
-          dockerode: adapters.dependencies.dockerode,
-        },
-      }, null, 2),
-    );
-    execFileSync(
-      "npm",
-      [
-        "install",
-        "--prefix",
-        ".",
-        "--omit=dev",
-        "--omit=optional",
-        "--no-audit",
-        "--no-fund",
-        "--no-package-lock",
-      ],
-      { cwd: RESOURCES, stdio: "inherit" },
-    );
+    const rootNodeModules = join(REPO_ROOT, "node_modules");
+    const targetNodeModules = join(RESOURCES, "node_modules");
+    mkdirSync(targetNodeModules, { recursive: true });
+
+    const visited = new Set<string>();
+    function collect(pkg: string) {
+      if (visited.has(pkg)) return;
+      visited.add(pkg);
+      const src = join(rootNodeModules, pkg);
+      if (!existsSync(src)) return;
+      const pkgJsonPath = join(src, "package.json");
+      if (existsSync(pkgJsonPath)) {
+        try {
+          const p = JSON.parse(readFileSync(pkgJsonPath, "utf8"));
+          for (const dep of Object.keys(p.dependencies || {})) {
+            collect(dep);
+          }
+        } catch {}
+      }
+    }
+
+    collect("ssh2");
+    collect("dockerode");
+
+    for (const pkg of visited) {
+      const src = join(rootNodeModules, pkg);
+      const dst = join(targetNodeModules, pkg);
+      if (existsSync(src)) {
+        cpSync(src, dst, { recursive: true, dereference: true });
+      }
+    }
+
     process.stdout.write(
       `  node_modules: ${existsSync(join(RESOURCES, "node_modules", "ssh2")) ? "ssh2+dockerode staged" : "MISSING"}\n`,
     );

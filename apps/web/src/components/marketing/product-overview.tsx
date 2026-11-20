@@ -35,7 +35,7 @@ export function ControlPlaneModes() {
   return (
     <MarketingSection
       id="control-plane"
-      title="Three ways to run OpenShip"
+      title="Three ways to run ServerDeck"
       description="Choose where the platform lives. Desktop is optional."
     >
       <div className="product-grid">

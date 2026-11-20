@@ -26,9 +26,7 @@ const helpItems: MenuItemConstructorOptions[] = [
   { label: "Report an Issue", click: () => void shell.openExternal(BRAND_LINKS.issues) },
   { label: "Send Feedback", click: () => void shell.openExternal(BRAND_LINKS.contact) },
   { type: "separator" },
-  { label: "Community (Discord)", click: () => void shell.openExternal(BRAND_LINKS.community) },
-  { label: "OpenShip on GitHub", click: () => void shell.openExternal(BRAND_LINKS.github) },
-  { label: "OpenShip on X", click: () => void shell.openExternal(BRAND_LINKS.x) },
+  { label: "ServerDeck Documentation", click: () => void shell.openExternal("http://localhost:3009/docs") },
 ];
 
 export function buildAppMenu(getWindow: () => BrowserWindow | null): void {

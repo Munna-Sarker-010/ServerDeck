@@ -232,7 +232,7 @@ function SelfHostedConnectionCard({
   const appRow = appStatus?.connected ? (
     <SourceRow key="app" icon="cloud" label={t.settings.github.methodApp}
       sublabel={appSublabel} connected
-      tone={state.primary === "serverdeck-app" ? "primary" : "secondary"} />
+      tone={state.primary === "openship-app" ? "primary" : "secondary"} />
   ) : null;
   const personal = state.sources.personalToken;
   const tokenRow = personal?.connected ? (
@@ -247,7 +247,7 @@ function SelfHostedConnectionCard({
 
       <div className="space-y-2.5">
         {tokenRow}
-        {state.primary === "serverdeck-app" ? [appRow, cliRow] : [cliConnected || !tokenRow ? cliRow : null, appRow]}
+        {state.primary === "openship-app" ? [appRow, cliRow] : [cliConnected || !tokenRow ? cliRow : null, appRow]}
       </div>
 
       {/* Connection management includes the active App and stored-token repair. */}

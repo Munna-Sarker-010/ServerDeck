@@ -101,7 +101,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!page) notFound();
 
   const data = page.data as DocData;
-  const title = `${data.title} – OpenShip Docs`;
+  const title = `${data.title} – ServerDeck Docs`;
   const description = data.description;
 
   // Per-page social card. Served by /docs-og (a route handler, since an image
@@ -120,7 +120,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       url: page.url,
-      siteName: "OpenShip",
+      siteName: "ServerDeck",
       type: "article",
       images: [ogImage],
     },

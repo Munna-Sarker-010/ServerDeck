@@ -12,10 +12,10 @@ export function getSlaSections(copy: Copy) {
       body: [
         cloudSlaPlanSummary(copy),
         copy(
-          "This SLA applies to each paid OpenShip Cloud Space, on monthly and annual subscriptions. It covers OpenShip-managed infrastructure, including the providers we use to operate it. Other paid Cloud tiers receive the Hobby and Starter commitment unless a written agreement specifies a different one. Self-hosted and connected servers, free trials, and features designated as preview or beta are outside this SLA.",
+          "This SLA applies to each paid ServerDeck Cloud Space, on monthly and annual subscriptions. It covers ServerDeck-managed infrastructure, including the providers we use to operate it. Other paid Cloud tiers receive the Hobby and Starter commitment unless a written agreement specifies a different one. Self-hosted and connected servers, free trials, and features designated as preview or beta are outside this SLA.",
         ),
         copy(
-          "Downtime is a period when a failure of OpenShip-managed compute, storage, networking, routing, or control-plane services prevents your Cloud Space from running or serving otherwise working workloads, or prevents deployment and lifecycle operations such as starting or restarting workloads. A cosmetic dashboard issue alone is not downtime when those operations and workloads remain available.",
+          "Downtime is a period when a failure of ServerDeck-managed compute, storage, networking, routing, or control-plane services prevents your Cloud Space from running or serving otherwise working workloads, or prevents deployment and lifecycle operations such as starting or restarting workloads. A cosmetic dashboard issue alone is not downtime when those operations and workloads remain available.",
         ),
         copy(
           "We measure uptime for each Cloud Space in each UTC calendar month. The percentage is 100 × (eligible minutes − downtime minutes) ÷ eligible minutes. Eligible minutes are the minutes when your paid subscription and this SLA were in effect. We remove excluded periods from both totals and count overlapping incidents once. If your plan changes, we assess the time covered by each guarantee separately. We use the unrounded percentage to determine your credit.",
@@ -64,7 +64,7 @@ export function getSlaSections(copy: Copy) {
           "Each part of the month is eligible for one credit tier. We combine covered incidents before calculating uptime. Total SLA credits are capped at the affected Cloud Space’s applicable monthly fee.",
         ),
         copy(
-          "We apply approved service credits within {value0} days of approval. Credits offset your next eligible OpenShip Cloud subscription invoice, including an annual renewal.",
+          "We apply approved service credits within {value0} days of approval. Credits offset your next eligible ServerDeck Cloud subscription invoice, including an annual renewal.",
           { value0: String(CLOUD_SLA.creditIssueDays) },
         ),
         copy(

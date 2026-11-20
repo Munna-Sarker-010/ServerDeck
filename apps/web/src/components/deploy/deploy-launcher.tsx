@@ -77,7 +77,7 @@ export function DeployLauncher({
         <div className="deploy-header-title">
           <Link href="/" className="deploy-brand">
             <span aria-hidden className="deploy-brand-mark" />
-            OpenShip
+            ServerDeck
           </Link>
           <span className="deploy-header-divider" aria-hidden />
           <span className="deploy-header-label">{copy("Deploy")}</span>
@@ -186,7 +186,7 @@ export function DeployLauncher({
                     <span className="deploy-brand-mark" />
                   </span>
                 </div>
-                <h1>{copy("Deploy with OpenShip")}</h1>
+                <h1>{copy("Deploy with ServerDeck")}</h1>
                 <p>{copy("Deploy any GitHub repository. No catalog listing required.")}</p>
                 {error && (
                   <p role="alert" className="deploy-error">
@@ -266,7 +266,7 @@ export function DeployLauncher({
                           </span>
                           <span>{copy("Managed hosting")}</span>
                         </div>
-                        <h2 id="deploy-cloud-title">{copy("OpenShip Cloud")}</h2>
+                        <h2 id="deploy-cloud-title">{copy("ServerDeck Cloud")}</h2>
                         <p>{copy("Hosting and infrastructure managed for you.")}</p>
                         <ul>
                           <li>
@@ -297,7 +297,7 @@ export function DeployLauncher({
                           <span>{copy("Self-hosted")}</span>
                         </div>
                         <h2 id="deploy-server-title">{copy("Your own server")}</h2>
-                        <p>{copy("Run OpenShip on a server you own.")}</p>
+                        <p>{copy("Run ServerDeck on a server you own.")}</p>
                         <ul>
                           <li>
                             <Icon name="check" size={16} aria-hidden />
@@ -365,7 +365,7 @@ export function DeployLauncher({
                           )}
                         </button>
                       </div>
-                      <p>{copy("Install OpenShip, then review this project in your dashboard.")}</p>
+                      <p>{copy("Install ServerDeck, then review this project in your dashboard.")}</p>
                     </section>
                     <section className="deploy-manage">
                       <span className="deploy-manage-icon">
@@ -373,10 +373,10 @@ export function DeployLauncher({
                       </span>
                       <div>
                         <h2>{copy("Manage this server from Cloud")}</h2>
-                        <p>{copy("Connect over SSH with an OpenShip Manage subscription.")}</p>
+                        <p>{copy("Connect over SSH with an ServerDeck Manage subscription.")}</p>
                       </div>
                       <a href={manageUrl} className="deploy-secondary">
-                        {copy("Use OpenShip Manage")}
+                        {copy("Use ServerDeck Manage")}
                         <Icon name="arrow-up-right" size={18} />
                       </a>
                     </section>
@@ -401,7 +401,7 @@ export function DeployLauncher({
       <footer className="deploy-footer">
         <Link href="/" className="deploy-footer-brand">
           <span className="deploy-brand-mark" aria-hidden />
-          {copy("OpenShip")}
+          {copy("ServerDeck")}
         </Link>
         <span className="deploy-footer-separator" aria-hidden />
         <Link href="/support" className="deploy-text-link">

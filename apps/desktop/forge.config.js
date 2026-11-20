@@ -33,13 +33,12 @@ const osxSigning = APPLE_IDENTITY
 
 module.exports = {
   packagerConfig: {
-    name: "Openship",
-    executableName: "openship",
+    name: "ServerDeck",
+    executableName: "ServerDeck",
     // Stable, owned bundle identifier — used by the code signature, notarization,
-    // Keychain, and LaunchServices. Without it packager defaults to the generic
-    // `com.electron.openship`, which collides with other Electron apps.
-    appBundleId: "com.oblien.openship",
-    protocols: [{ name: "Openship instance", schemes: ["openship"] }],
+    // Keychain, and LaunchServices.
+    appBundleId: "com.serverdeck.desktop",
+    protocols: [{ name: "ServerDeck instance", schemes: ["serverdeck"] }],
     icon: ICON_BASE,
     asar: true,
     // The main/preload are bundled (build/bundle.mjs) into self-contained files,

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 export default function LoginRedirect() {
   useEffect(() => {
-    window.location.href = "https://app.serverdeck.io/login";
+    window.location.href = "http://localhost:3001/login";
   }, []);
   return null;
 }

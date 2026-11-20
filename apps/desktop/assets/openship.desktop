@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Openship
-Comment=Manage deployments with Openship
-Exec=openship %U
-Icon=openship
+Name=ServerDeck
+Comment=Manage deployments with ServerDeck
+Exec=serverdeck %U
+Icon=serverdeck
 Terminal=false
 Categories=Development;Utility;
-MimeType=x-scheme-handler/openship;
+MimeType=x-scheme-handler/serverdeck;

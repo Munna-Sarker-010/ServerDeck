@@ -41,7 +41,7 @@ export function ComparisonCards({ items }: { items: readonly Comparison[] }) {
             <bdi>{comparisonName(item, copy)}</bdi>
           </h3>
           <p>{copy(item.summary)}</p>
-          <span className="compare-card-link">{copy("Compare with OpenShip")}</span>
+          <span className="compare-card-link">{copy("Compare with ServerDeck")}</span>
         </Link>
       ))}
     </div>

@@ -1,18 +1,18 @@
 /** Public product facts shared by the website and its Markdown representations. */
 export const PRODUCT_SUMMARY =
-  "OpenShip is an Apache 2.0 deployment platform for applications, databases and infrastructure. Run an always-on self-hosted web dashboard, use managed OpenShip Cloud, or choose the optional desktop app. Deploy through the dashboard, CLI, API, TypeScript SDK or MCP.";
+  "ServerDeck is an Apache 2.0 deployment platform for applications, databases and infrastructure. Run an always-on self-hosted web dashboard, use managed ServerDeck Cloud, or choose the optional desktop app. Deploy through the dashboard, CLI, API, TypeScript SDK or MCP.";
 
 export const CONTROL_PLANE_MODES = [
   {
     title: "Self-hosted web dashboard",
     description:
-      "Run OpenShip on your infrastructure for an always-on dashboard, team access, webhooks and automation. Deploy on the same server or manage connected servers.",
+      "Run ServerDeck on your infrastructure for an always-on dashboard, team access, webhooks and automation. Deploy on the same server or manage connected servers.",
     href: "/docs/getting-started/installation",
   },
   {
-    title: "Managed OpenShip Cloud",
+    title: "Managed ServerDeck Cloud",
     description:
-      "Let OpenShip operate the platform and managed compute. Your projects share the CPU, memory and storage of their Cloud Space.",
+      "Let ServerDeck operate the platform and managed compute. Your projects share the CPU, memory and storage of their Cloud Space.",
     href: "/pricing",
   },
   {
@@ -45,13 +45,13 @@ export const PRODUCT_ADVANTAGES = {
   edge: {
     title: "A direct path to your application",
     description:
-      "OpenResty serves traffic without routing requests through the OpenShip API or database. Edge analytics aggregate in memory, and static sites can be served as files without a persistent application process.",
+      "OpenResty serves traffic without routing requests through the ServerDeck API or database. Edge analytics aggregate in memory, and static sites can be served as files without a persistent application process.",
     feature: "traffic-analytics",
   },
   mail: {
     title: "A mail server, built in",
     description:
-      "Operate domain mailboxes, webmail and mail DNS from OpenShip, with an external relay for outbound delivery. Keep email administration alongside your applications.",
+      "Operate domain mailboxes, webmail and mail DNS from ServerDeck, with an external relay for outbound delivery. Keep email administration alongside your applications.",
     feature: "mail",
   },
   data: {
@@ -69,7 +69,7 @@ export const PRODUCT_ADVANTAGES = {
   ownership: {
     title: "Apache 2.0. A practical exit path.",
     description:
-      "The OpenShip codebase is Apache 2.0 licensed. Deploy on servers you control, import supported Docker workloads and use transfer workflows to move applications and persistent data.",
+      "The ServerDeck codebase is Apache 2.0 licensed. Deploy on servers you control, import supported Docker workloads and use transfer workflows to move applications and persistent data.",
     feature: "migration-import",
   },
 } as const;
@@ -78,29 +78,29 @@ export type ProductAdvantage = keyof typeof PRODUCT_ADVANTAGES;
 
 export const PRODUCT_QUESTIONS = [
   {
-    question: "Is OpenShip only a desktop app?",
+    question: "Is ServerDeck only a desktop app?",
     answer:
-      "No. OpenShip has an always-on self-hosted web dashboard and managed Cloud as well as an optional desktop app. Desktop is useful when you want a local control plane without a public dashboard. Webhooks and controller-managed schedules need an available controller; the applications already deployed on your servers keep running independently.",
+      "No. ServerDeck has an always-on self-hosted web dashboard and managed Cloud as well as an optional desktop app. Desktop is useful when you want a local control plane without a public dashboard. Webhooks and controller-managed schedules need an available controller; the applications already deployed on your servers keep running independently.",
   },
   {
-    question: "Does OpenShip support Compose and multi-node deployments?",
+    question: "Does ServerDeck support Compose and multi-node deployments?",
     answer:
-      "Yes. OpenShip supports native Docker Compose, deployment to connected Docker Swarm managers and k3s-based Kubernetes clusters. Self-hosted and desktop controllers can manage clusters and application replicas. Kubernetes database and distributed-storage workflows have their own setup; importing an existing Swarm stack is not the same operation as deploying a new project to Swarm.",
+      "Yes. ServerDeck supports native Docker Compose, deployment to connected Docker Swarm managers and k3s-based Kubernetes clusters. Self-hosted and desktop controllers can manage clusters and application replicas. Kubernetes database and distributed-storage workflows have their own setup; importing an existing Swarm stack is not the same operation as deploying a new project to Swarm.",
   },
   {
-    question: "How does OpenShip reduce deployment and serving overhead?",
+    question: "How does ServerDeck reduce deployment and serving overhead?",
     answer:
-      "Build location, reusable caches and static-file hosting let you avoid unnecessary production work. The OpenResty edge handles routing without an OpenShip API or database call per visitor request. Traffic analytics use bounded in-memory aggregation, keeping collection out of your application code.",
+      "Build location, reusable caches and static-file hosting let you avoid unnecessary production work. The OpenResty edge handles routing without an ServerDeck API or database call per visitor request. Traffic analytics use bounded in-memory aggregation, keeping collection out of your application code.",
   },
   {
     question: "What does SSH-based server management mean?",
     answer:
-      "OpenShip can manage connected servers over SSH without installing a full OpenShip control plane on every target. The target still needs the runtime components used by its workloads, such as Docker and an edge proxy. Runners, cluster runtimes, host integrations and AI agents can add components when those features are enabled.",
+      "ServerDeck can manage connected servers over SSH without installing a full ServerDeck control plane on every target. The target still needs the runtime components used by its workloads, such as Docker and an edge proxy. Runners, cluster runtimes, host integrations and AI agents can add components when those features are enabled.",
   },
   {
     question: "Are scheduled backups included?",
     answer:
-      "OpenShip provides scheduled backups, retention and restore workflows for supported stateful services. Choose S3-compatible storage, SFTP, a connected server or supported local storage. Application rollback restores a release; restoring database contents uses a data backup.",
+      "ServerDeck provides scheduled backups, retention and restore workflows for supported stateful services. Choose S3-compatible storage, SFTP, a connected server or supported local storage. Application rollback restores a release; restoring database contents uses a data backup.",
   },
   {
     question: "Can I migrate without rebuilding every service?",

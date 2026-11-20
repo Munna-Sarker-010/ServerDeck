@@ -13,38 +13,38 @@ export interface PlatformInfo {
   fileName: string;
 }
 
-const DOWNLOAD_BASE = "https://github.com/oblien/openship/releases/latest/download";
+const DOWNLOAD_BASE = "/downloads";
 
 const PLATFORM_MAP: Record<Platform, PlatformInfo> = {
   "mac-arm": {
     platform: "mac-arm",
     label: "Download for Mac",
     icon: "apple",
-    fileName: "Openship-arm64.dmg",
+    fileName: "ServerDeck-arm64.dmg",
   },
   "mac-intel": {
     platform: "mac-intel",
     label: "Download for Mac",
     icon: "apple",
-    fileName: "Openship-x64.dmg",
+    fileName: "ServerDeck-x64.dmg",
   },
   windows: {
     platform: "windows",
     label: "Download for Windows",
     icon: "windows",
-    fileName: "Openship-win32-x64.zip",
+    fileName: "ServerDeck-win32-x64.zip",
   },
   linux: {
     platform: "linux",
     label: "Download for Linux",
     icon: "linux",
-    fileName: "Openship.AppImage",
+    fileName: "ServerDeck.AppImage",
   },
   unknown: {
     platform: "unknown",
     label: "Download",
     icon: "download",
-    fileName: "",
+    fileName: "ServerDeck-win32-x64.zip",
   },
 };
 

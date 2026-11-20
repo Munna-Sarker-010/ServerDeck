@@ -27,7 +27,7 @@ export default function DocsRootLayout({ children }: { children: ReactNode }) {
           title: (
             <span className="docs-brand">
               <span className="docs-brand-mark" aria-hidden="true" />
-              <span>OpenShip</span>
+              <span>ServerDeck</span>
               <span className="docs-brand-label">Documentation</span>
             </span>
           ),
@@ -39,18 +39,10 @@ export default function DocsRootLayout({ children }: { children: ReactNode }) {
           { text: "CLI", url: "/docs/cli", active: "nested-url" },
           { text: "Website", url: "/", active: "none" },
           {
-            type: "icon",
-            label: "GitHub",
-            text: "GitHub",
-            url: "https://github.com/oblien/openship",
-            external: true,
-            icon: <Icon name="github" size={18} />,
-          },
-          {
             type: "custom",
             children: (
-              <a className="th-btn docs-dashboard-link" href="https://app.openship.io">
-                Open Cloud <Icon name="arrow-up-right" size={14} aria-hidden="true" />
+              <a className="th-btn docs-dashboard-link" href="http://localhost:3001">
+                Open Dashboard <Icon name="arrow-up-right" size={14} aria-hidden="true" />
               </a>
             ),
           },

@@ -35,7 +35,7 @@ export function productMarkdown(path: string, copy: Copy, locale: AppLocale): st
   const questions = PRODUCT_QUESTIONS.map(
     ({ question, answer }) => `### ${copy(question)}\n\n${copy(answer)}`,
   ).join("\n\n");
-  const introduction = `${copy(PRODUCT_SUMMARY)}\n\n## ${copy("Three ways to run OpenShip")}\n\n${modes}`;
+  const introduction = `${copy(PRODUCT_SUMMARY)}\n\n## ${copy("Three ways to run ServerDeck")}\n\n${modes}`;
   const heading = (title: string) => `# ${title}\n\nURL: ${url(path)}\n\n`;
 
   if (path === "/features") {
@@ -73,7 +73,7 @@ export function productMarkdown(path: string, copy: Copy, locale: AppLocale): st
   }
   if (path === "/compare") {
     return (
-      heading(copy("Compare OpenShip with other deployment platforms")) +
+      heading(copy("Compare ServerDeck with other deployment platforms")) +
       introduction +
       "\n\n" +
       Object.values(PRODUCT_ADVANTAGES)
@@ -85,7 +85,7 @@ export function productMarkdown(path: string, copy: Copy, locale: AppLocale): st
       `\n\n## ${copy("All comparisons")}\n\n` +
       COMPARISONS.map(
         (item) =>
-          `- [${copy("OpenShip vs {name}", { name: comparisonName(item, copy) })}](${url(`/compare/${item.slug}`)}.md): ${copy(item.summary)}`,
+          `- [${copy("ServerDeck vs {name}", { name: comparisonName(item, copy) })}](${url(`/compare/${item.slug}`)}.md): ${copy(item.summary)}`,
       ).join("\n") +
       "\n"
     );
@@ -94,25 +94,25 @@ export function productMarkdown(path: string, copy: Copy, locale: AppLocale): st
   const name = comparisonName(item, copy);
   const cell = (value: string) => copy(value).replaceAll("|", "\\|").replaceAll("\n", " ");
   return (
-    heading(copy("OpenShip vs {name}", { name })) +
+    heading(copy("ServerDeck vs {name}", { name })) +
     [
       copy(item.summary),
-      link("Migrate to OpenShip", item.migration.href),
-      `## ${copy("Why choose OpenShip")}\n\n${copy(item.reason)}`,
+      link("Migrate to ServerDeck", item.migration.href),
+      `## ${copy("Why choose ServerDeck")}\n\n${copy(item.reason)}`,
       ...item.advantages.map((key) => {
         const advantage = PRODUCT_ADVANTAGES[key];
         return `### ${copy(advantage.title)}\n\n${copy(advantage.description)}\n\n${link("Explore this capability", `/features/${advantage.feature}`)}`;
       }),
-      `## ${copy("The practical differences")}\n\n| ${copy("What matters")} | OpenShip | ${name} |\n| --- | --- | --- |\n` +
+      `## ${copy("The practical differences")}\n\n| ${copy("What matters")} | ServerDeck | ${name} |\n| --- | --- | --- |\n` +
         comparisonRows(item)
           .map((row) => `| ${cell(row.label)} | ${cell(row.ours)} | ${cell(row.theirs)} |`)
           .join("\n"),
-      `## ${copy("Three ways to run OpenShip")}\n\n${modes}`,
+      `## ${copy("Three ways to run ServerDeck")}\n\n${modes}`,
       `## ${copy("Where {name} fits", { name })}\n\n${copy(item.strength)}`,
       `## ${copy("Plan your move")}\n\n${copy(item.migration.method)}\n\n${copy(item.migration.preparation)}\n\n${link("Open migration guide", item.migration.href)}`,
       `## ${copy("Check the details")}\n\n${copy("Reviewed on {date}", { date: COMPARISONS_REVIEWED_AT })}\n\n` +
         item.sources.map((source) => `- [${copy(source.title)}](${source.href})`).join("\n"),
-      link("OpenShip documentation", "/docs"),
+      link("ServerDeck documentation", "/docs"),
     ].join("\n\n") +
     "\n"
   );

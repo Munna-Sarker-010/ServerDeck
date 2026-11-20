@@ -3,23 +3,23 @@ import type { ShareCard } from "./og-image";
 // Badge URLs can carry repository or catalog parameters. Both share this static cover.
 export const deployCard = {
   title: "Deploy with",
-  secondLine: "OpenShip.",
-  subtitle: "Launch this project on OpenShip Cloud\nor a server you manage.",
+  secondLine: "ServerDeck.",
+  subtitle: "Launch this project on ServerDeck Cloud\nor a server you manage.",
   art: { object: "deploy" },
 } satisfies ShareCard;
 
 export const referralCard = {
   eyebrow: "Referral program",
   title: "Good tools are worth sharing.",
-  subtitle: "Introduce someone to OpenShip. A small thank-you for making the connection.",
+  subtitle: "Introduce someone to ServerDeck. A small thank-you for making the connection.",
   art: { object: "referrals" },
   layout: "reverse",
 } satisfies ShareCard;
 
 export const sectionCards = {
-  login: { title: "Sign in to OpenShip.", art: { feature: "two-factor-auth" }, layout: "reverse" },
+  login: { title: "Sign in to ServerDeck.", art: { feature: "two-factor-auth" }, layout: "reverse" },
   about: {
-    title: "About OpenShip.",
+    title: "About ServerDeck.",
     subtitle: "An open source platform for deploying and running your apps.",
     art: { object: "about" },
   },
@@ -31,7 +31,7 @@ export const sectionCards = {
     layout: "reverse",
   },
   features: {
-    title: "Inside OpenShip.",
+    title: "Inside ServerDeck.",
     eyebrow: "Features",
     subtitle: "Explore the tools for deploying, running and managing your stack.",
     art: { feature: "project-environments" },
@@ -39,7 +39,7 @@ export const sectionCards = {
   },
   compare: {
     title: "Compare platforms.",
-    subtitle: "See how OpenShip compares with other ways to run your apps.",
+    subtitle: "See how ServerDeck compares with other ways to run your apps.",
     art: { object: "compare" },
   },
   mail: {
@@ -83,20 +83,20 @@ export const sectionCards = {
   },
   trust: {
     title: "Trust and security.",
-    subtitle: "How OpenShip handles data ownership and access.",
+    subtitle: "How ServerDeck handles data ownership and access.",
     art: { object: "trust" },
     layout: "reverse",
   },
   sla: {
     title: "Cloud uptime.",
     eyebrow: "Service level agreement",
-    subtitle: "The uptime commitment for OpenShip Cloud plans.",
+    subtitle: "The uptime commitment for ServerDeck Cloud plans.",
     art: { object: "uptime" },
   },
   privacy: { title: "Privacy policy.", art: { object: "privacy" }, layout: "reverse" },
   terms: { title: "Terms of service.", art: { object: "terms" } },
   blog: {
-    title: "The OpenShip blog.",
+    title: "The ServerDeck blog.",
     subtitle: "Stories and guides from the team.",
     art: { object: "journal" },
     layout: "reverse",
@@ -119,7 +119,7 @@ export function sectionCard(key: string): ShareCard | undefined {
 export function shareImageFor(path: string) {
   const key = path.replace(/^\//, "");
   if (key === "deploy") {
-    return { url: "/og/deploy.png", width: 1200, height: 630, alt: "Deploy with OpenShip" };
+    return { url: "/og/deploy.png", width: 1200, height: 630, alt: "Deploy with ServerDeck" };
   }
   const card = sectionCard(key);
   if (!card && !/^(apps|features|blog|changelog)\/[\w-]+(?:\/[\w-]+)*$/.test(key)) return;

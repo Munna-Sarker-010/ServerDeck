@@ -73,9 +73,9 @@ function OnboardingInner() {
 
       {/* Top bar */}
       <div className="ob-top-bar">
-        <div className="ob-logo">
-          <div className="ob-logo-circle" aria-hidden="true" />
-          <span className="ob-logo-text">OpenShip</span>
+        <div className="ob-logo flex items-center gap-2">
+          <img src="/serverdeck-logo.jpg" alt="ServerDeck" className="w-6 h-6 rounded-md object-cover" />
+          <span className="ob-logo-text font-bold">ServerDeck</span>
         </div>
         <div className="ob-top-bar-links">
           <button
@@ -120,12 +120,6 @@ function OnboardingInner() {
               </>
             )}
           </div>
-          <a className="ob-top-bar-link" href="https://openship.io" target="_blank" rel="noopener noreferrer" title={t.onboarding.topBar.website}>
-            <UiIcon name="globe" size={18} />
-          </a>
-          <a className="ob-top-bar-link" href="https://github.com/oblien/openship" target="_blank" rel="noopener noreferrer" title={t.onboarding.topBar.github}>
-            <UiIcon name="github" size={18} />
-          </a>
         </div>
       </div>
 

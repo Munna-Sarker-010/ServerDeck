@@ -24,7 +24,7 @@ export function DeployReadme({
   const copy = useCopy();
   const groupId = useId();
   const [style, setStyle] = useState<(typeof buttonStyles)[number]>(buttonStyles[1]);
-  const markdown = `[![Deploy with OpenShip](https://openship.io${style.image})](https://openship.io${deployLinkHref(source, undefined, referralCode)})`;
+  const markdown = `[![Deploy with ServerDeck](https://openship.io${style.image})](https://openship.io${deployLinkHref(source, undefined, referralCode)})`;
 
   return (
     <details className="deploy-share">
@@ -40,7 +40,7 @@ export function DeployReadme({
             src={style.image}
             width={212}
             height={40}
-            alt={copy("Deploy with OpenShip")}
+            alt={copy("Deploy with ServerDeck")}
           />
           <fieldset className="deploy-button-styles">
             <legend className="sr-only">{copy("Button style")}</legend>

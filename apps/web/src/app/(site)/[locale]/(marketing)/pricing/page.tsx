@@ -180,7 +180,7 @@ async function CloudPlans({
         <h3>{copy("Current plans are temporarily unavailable.")}</h3>
         <p>{copy("View the latest prices in ServerDeck Cloud.")}</p>
         <a href={CLOUD_CTA_HREF} className="pp-solid-cta">
-          {copy("Open Cloud ")}
+          {copy("Open Dashboard")}
           <ArrowRight className="size-4" aria-hidden="true" />
         </a>
       </div>

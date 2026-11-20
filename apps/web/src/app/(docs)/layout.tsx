@@ -24,7 +24,7 @@ const FONT_SANS = "'Gellix', 'SF Arabic', system-ui, -apple-system, sans-serif";
 export const metadata: Metadata = {
   // Docs pages set only relative OG/canonical URLs; this resolves them.
   metadataBase: new URL(SITE_URL),
-  title: { default: "OpenShip Docs", template: "%s – OpenShip" },
+  title: { default: "ServerDeck Docs", template: "%s – ServerDeck" },
   robots: { index: true, follow: true },
 };
 

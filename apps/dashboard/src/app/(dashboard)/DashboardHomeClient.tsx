@@ -177,7 +177,7 @@ export default function DashboardHomeClient({
                 <p className="text-xs text-muted-foreground mt-0.5">{t.dashboard.home.settingsCardDesc}</p>
               </Link>
               <a
-                href="https://openship.io/docs"
+                href="http://localhost:3009/docs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-card border border-border/50 rounded-xl p-4 hover:bg-muted/40 hover:border-border transition-all group"

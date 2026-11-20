@@ -27,8 +27,8 @@ const envUrl = (key: string): string | undefined => {
   return v && v.trim() ? v.trim() : undefined;
 };
 export const CLOUD_DASHBOARD_URL =
-  envUrl("OPENSHIP_CLOUD_DASHBOARD_URL") ?? "https://app.openship.io";
-export const CLOUD_API_URL = envUrl("OPENSHIP_CLOUD_API_URL") ?? "https://api.openship.io";
+  envUrl("OPENSHIP_CLOUD_DASHBOARD_URL") ?? LOCAL_DASHBOARD_URL;
+export const CLOUD_API_URL = envUrl("OPENSHIP_CLOUD_API_URL") ?? LOCAL_API_URL;
 
 /**
  * THE runtime-target table. Keyed by id — the id IS the key, no

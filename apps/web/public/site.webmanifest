@@ -1,6 +1,6 @@
 {
-  "name": "Openship - Open Source Deployment Platform",
-  "short_name": "Openship",
+  "name": "ServerDeck - Open Source Deployment Platform",
+  "short_name": "ServerDeck",
   "description": "Self-hostable, AI-powered deployment platform. Deploy anything, own everything.",
   "id": "/",
   "start_url": "/",
