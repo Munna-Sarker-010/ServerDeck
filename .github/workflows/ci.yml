@@ -1,0 +1,436 @@
+name: CI
+
+on:
+  pull_request: {}
+  push:
+    branches: [main]
+    # NO `tags:` here, deliberately. Nothing in THIS file gates a release — the checks
+    # that BLOCK a publish (this same suite plus the real-daemon E2E matrix) live in
+    # release-gate.yml, which Release and Docker images each list in `needs:` because
+    # workflows are not ordered against one another.
+    #
+    # It used to run on tags too, "for the record". The record was three copies: the gate
+    # runs this suite once per calling workflow, so a tag push executed typecheck + tests
+    # THREE times and produced one extra full run whose result gated nothing and whose
+    # failure nobody could act on differently. A tag is not branch-protected, so no
+    # required check disappears with it.
+  workflow_dispatch: {}
+
+# One in-flight run per ref. PR pushes cancel their predecessor — nobody reads
+# the result of a superseded commit — while main and tags run to completion so
+# their history stays complete.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# Deliberately NO `paths:` filter. These jobs are required status checks, and a
+# path-filtered required check never reports on a PR it excluded — the PR is then
+# unmergeable forever with no visible reason.
+
+jobs:
+  website-image:
+    name: Website image
+    uses: ./.github/workflows/website-image.yml
+
+  actions-runner:
+    name: Actions execution
+    permissions:
+      contents: read
+      actions: read
+    uses: ./.github/workflows/actions-e2e.yml
+
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: .bun-version
+
+      - name: Cache bun install
+        uses: actions/cache@v6
+        with:
+          path: ~/.bun/install/cache
+          # Avoid scanning installed dependencies again during cache finalization.
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Typecheck apps/api
+        run: bun run --cwd apps/api lint
+
+      - name: Typecheck SDK
+        run: bun run --cwd packages/sdk lint
+
+      - name: Typecheck shared packages
+        run: |
+          bun run --cwd packages/contracts lint
+          bun run --cwd packages/db lint
+          bun run --cwd packages/adapters lint
+          bun run --cwd packages/platform lint
+
+      - name: Audit structured error boundaries
+        run: |
+          bun test scripts/audit-error-boundaries.test.ts
+          bun run errors:check
+
+      - name: Typecheck apps/dashboard
+        working-directory: apps/dashboard
+        run: |
+          set -o pipefail
+          # fumadocs has pre-existing type errors that are filtered out;
+          # any other error causes the step to fail via the exit code below.
+          npx tsc --noEmit 2>&1 | tee tsc.log | grep -v fumadocs || true
+          if grep -v fumadocs tsc.log | grep -E '^(.*): error TS' > /dev/null; then
+            echo "Typecheck failed (non-fumadocs errors above)"
+            exit 1
+          fi
+
+  test_suites:
+    name: Tests (${{ matrix.suite }})
+    runs-on: ${{ matrix.runner || 'ubuntu-latest' }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - suite: API 1/2
+            command: bun run --cwd apps/api test --shard=1/2
+          - suite: API 2/2
+            command: bun run --cwd apps/api test --shard=2/2
+          - suite: Deployment automation
+            command: >-
+              RUN_DOCKER_E2E=1 bun run --cwd apps/api test:e2e
+              test/e2e/deployment-automation.e2e.test.ts
+              test/e2e/monorepo-runtime-images.e2e.test.ts
+              test/e2e/build-environment-secrets.e2e.test.ts
+              test/e2e/php-asset-workspace.e2e.test.ts
+              test/e2e/image-drift.e2e.test.ts
+              test/e2e/dockerfile-cache.e2e.test.ts
+          - suite: Database
+            command: bun run --cwd packages/db test
+          - suite: Mail database actions
+            command: >-
+              RUN_DOCKER_E2E=1 bun run --cwd apps/api test:e2e
+              test/e2e/mail-fail2ban-db.e2e.test.ts
+              test/e2e/mail-dovecot-security.e2e.test.ts
+              test/e2e/mail-state-upgrade.e2e.test.ts
+              test/e2e/mail-backup-roundtrip.e2e.test.ts
+          # Separate API processes and databases exercise both move directions,
+          # recovery, authentication and Desktop relays on every PR. No live
+          # server, provider account or outbound email is used.
+          - suite: Instance control plane
+            command: >-
+              bun run --cwd apps/api test:e2e
+              test/e2e/instance-handoff.e2e.test.ts
+              test/e2e/instance-protocol.e2e.test.ts
+              test/e2e/instance-relay.e2e.test.ts
+              test/e2e/instance-invitation.e2e.test.ts
+              test/e2e/error-reporting.e2e.test.ts
+          - suite: Cloud Docker workspaces
+            command: >-
+              RUN_DOCKER_E2E=1 bun run --cwd apps/api test:e2e
+              test/e2e/cloud-build-capacity.e2e.test.ts
+              test/e2e/cloud-shared-workspace.e2e.test.ts
+              test/e2e/cloud-error-storage.e2e.test.ts
+              test/e2e/migration-direct-transfer.e2e.test.ts
+              test/e2e/migration-takeover.e2e.test.ts
+              test/e2e/backup-volume-roundtrip.e2e.test.ts
+              test/e2e/volume-restore-integrity.e2e.test.ts
+              test/e2e/backup-project-app.e2e.test.ts
+              test/e2e/docker-exec-watchdog.e2e.test.ts
+          - suite: Platform imports
+            # MongoDB 8 rejects the Azure 7.0 kernel on newer Ubuntu runners.
+            # Keep its storage coverage on a compatible kernel until SERVER-131779 ships in 8.x.
+            # https://github.com/actions/runner-images/issues/15005
+            runner: ubuntu-22.04
+            command: >-
+              RUN_DOCKER_E2E=1 bun run --cwd apps/api test:e2e
+              test/e2e/platform-import-data.e2e.test.ts
+              test/e2e/platform-import-project.e2e.test.ts
+          # Separate independent daemons keep real-Docker coverage within the job
+          # budget. Tests remain serial inside each daemon to preserve isolation.
+          - suite: Compose cutover and rollback
+            command: >-
+              RUN_DOCKER_E2E=1 bun run --cwd apps/api test:e2e
+              test/e2e/deployment-artifact-retry.e2e.test.ts
+              test/e2e/buildkit-session-health.e2e.test.ts
+              test/e2e/native-compose-build.e2e.test.ts
+              test/e2e/compose-port-preflight-atomic.e2e.test.ts
+              test/e2e/rollback-compose-cycle.e2e.test.ts
+              test/e2e/service-swap.e2e.test.ts
+              test/e2e/compose-overlap-cutover.e2e.test.ts
+              test/e2e/compose-engine-overlap.e2e.test.ts
+              test/e2e/compose-unchanged-services.e2e.test.ts
+          - suite: Compose runtime and storage
+            command: >-
+              RUN_DOCKER_E2E=1 bun run --cwd apps/api test:e2e
+              test/e2e/runtime-roles.e2e.test.ts
+              test/e2e/primary-app-infrastructure.e2e.test.ts
+              test/e2e/image-volume-persistence.e2e.test.ts
+              test/e2e/image-gc-concurrent-build.e2e.test.ts
+              test/e2e/image-refresh.e2e.test.ts
+              test/e2e/local-image-refresh.e2e.test.ts
+          - suite: Security advisories
+            command: >-
+              RUN_DOCKER_E2E=1 bun run --cwd apps/api test:e2e
+              test/e2e/security-advisories.e2e.test.ts
+              test/e2e/runtime-source.e2e.test.ts
+          # Run routing, certificate selection and the rule guard with real HTTP on
+          # every PR. A missing daemon must fail, not silently skip this gate.
+          - suite: Edge routing
+            command: >-
+              RUN_DOCKER_E2E=1 bun run --cwd apps/api test:e2e
+              test/e2e/routing-rules.e2e.test.ts
+              test/e2e/static-fallback.e2e.test.ts
+              test/e2e/route-protection.e2e.test.ts
+              test/e2e/edge-not-found-page.e2e.test.ts
+              test/e2e/edge-upstream-down-page.e2e.test.ts
+          - suite: Kubernetes manifests
+            command: >-
+              RUN_KUBERNETES_E2E=1 bun run --cwd packages/adapters test
+              test/project-manifests.e2e.test.ts
+          - suite: Swarm inspection and deployment
+            command: >-
+              RUN_DOCKER_E2E=1 bun run --cwd apps/api test:e2e
+              test/e2e/swarm-inspection.e2e.test.ts
+          # Both suites rebuild the same native bundle. Keep them sequential on
+          # their own runner; the other packages do not share that filesystem.
+          - suite: SDK and CLI
+            command: bunx turbo run test --filter=@repo/sdk --filter=@repo/cli --concurrency=1 --log-order=stream
+          # Exclusions keep new workspace test scripts included automatically.
+          # Keep filters on the workspace runner. Script tests run once below,
+          # independently of the root command's argument-forwarding behavior.
+          - suite: Other packages
+            command: |
+              bunx turbo run test --filter=!@repo/api --filter=!@repo/db --filter=!@repo/sdk --filter=!@repo/cli --filter=!@repo/email --concurrency=1 --log-order=stream
+              bun run test:scripts
+              bun run --cwd packages/adapters test:bun
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      # Native engine fixtures run Node workers; keep their runtime explicit
+      # instead of inheriting whichever Node version the runner image adds.
+      - name: Setup native test runtime
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: .bun-version
+
+      - name: Cache bun install
+        uses: actions/cache@v6
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Prepare execution assets used by installed-package tests
+        if: matrix.suite == 'SDK and CLI' || matrix.suite == 'Other packages'
+        uses: ./.github/actions/actions-runner
+
+      - name: Install composer dependencies for the real browser compatibility test
+        if: matrix.suite == 'Other packages'
+        working-directory: apps/email/client
+        run: bun install --frozen-lockfile --ignore-scripts
+
+      - name: Verify scoped agents against the released Mindwire daemon
+        if: matrix.suite == 'Other packages'
+        env:
+          OPENSHIP_ASSISTANT_E2E: "1"
+        run: >-
+          bun run --cwd packages/platform test
+          test/assistant-agents.e2e.test.ts test/assistant-remote.test.ts
+
+      # Run every workspace test, with the large API suite split across runners.
+      # Direct Vitest runs and Turbo's stream mode expose progress immediately.
+      # The complete API test/e2e/** suite also runs in release-gate.yml.
+      - name: Run tests
+        run: ${{ matrix.command }}
+
+      - name: Verify PGlite process ownership across containers and crashes
+        if: matrix.suite == 'Database'
+        run: RUN_DOCKER_E2E=1 bun run --cwd packages/db test src/pglite-lock.docker.test.ts
+
+      - name: Verify Cloud build coordination on PostgreSQL
+        if: matrix.suite == 'Database'
+        env:
+          OPENSHIP_TEST_CLOUD_POSTGRES: "1"
+        run: |
+          OPENSHIP_TEST_PG_BIN="$(pg_config --bindir)" bun run --cwd packages/db test src/repos/cloud-build-postgres.integration.test.ts
+
+  # Preserve the existing required "Test" check. A failed, skipped, or canceled
+  # matrix must fail this check; no individual shard can make the PR green.
+  test:
+    name: Test
+    needs: [test_suites, actions-runner, website-image]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Require every test suite to pass
+        env:
+          TEST_SUITES_RESULT: ${{ needs.test_suites.result }}
+          ACTIONS_RESULT: ${{ needs.actions-runner.result }}
+          WEBSITE_RESULT: ${{ needs.website-image.result }}
+        run: |
+          if [ "$TEST_SUITES_RESULT" != "success" ] || [ "$ACTIONS_RESULT" != "success" ] || [ "$WEBSITE_RESULT" != "success" ]; then
+            echo "::error::Test suites: $TEST_SUITES_RESULT; Actions execution: $ACTIONS_RESULT; Website image: $WEBSITE_RESULT"
+            exit 1
+          fi
+
+  docs:
+    name: Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: .bun-version
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - uses: ./.github/actions/actions-runner
+
+      - name: Build public SDK and CLI
+        run: bun run build:sdk
+
+      - name: Check documentation and public examples
+        run: bun run docs:check
+
+      - name: Build documentation website
+        env:
+          # The changelog reads GitHub tags and dates during prerendering.
+          # Use the existing read token instead of the runner's shared public quota.
+          GITHUB_TOKEN: ${{ github.token }}
+        run: bun run --cwd apps/web build
+
+      - name: Verify social preview images on public pages
+        run: bun run --cwd apps/web test:metadata
+
+  # The webmail server's own suite, which nothing else runs.
+  #
+  # GH-220: apps/email/server/test/{sanitize,from-header,list-snippet}.test.ts had no
+  # runner at all. They are `bun:test` files, and the root `test` script is
+  # `turbo run test --filter=!@repo/email` → vitest, so turbo never reached them; the
+  # server is not a root workspace member either (workspaces is apps/* + packages/*,
+  # which matches apps/email but not its subdirectories), so its deps are not installed
+  # by the root install. Net effect: 35 assertions were green on someone's laptop and
+  # unreachable from every pipeline — including sanitize.test.ts, which pins the fix for
+  # the CSS url()/@import read-receipt leak (GHSA-3hcp-c4c7-6m8p) and asserts the read
+  # pane stays inert. That is exactly the kind of test that must not rot.
+  #
+  # Its own job rather than a turbo target: these need `bun test` (not vitest) and a
+  # separate install rooted in apps/email/server. Independent and parallel, so it cannot
+  # slow the jobs above.
+  webmail-server-test:
+    name: Test webmail server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: .bun-version
+
+      - name: Cache bun install
+        uses: actions/cache@v6
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-webmail-${{ hashFiles('apps/email/server/bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-webmail-
+            ${{ runner.os }}-bun-
+
+      # Not --frozen-lockfile: the committed lockfile is regenerated by
+      # scripts/build-release.ts for the dist, so it can legitimately lag the manifest
+      # here. Resolving fresh is fine for a test-only install.
+      - name: Install webmail server dependencies
+        working-directory: apps/email/server
+        run: bun install
+
+      - name: Run webmail server tests
+        working-directory: apps/email/server
+        run: bun test
+
+  webmail-client-test:
+    name: Test webmail client
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: .bun-version
+
+      - name: Install webmail server dependencies for shared client imports
+        working-directory: apps/email/server
+        run: bun install --frozen-lockfile
+
+      - name: Install webmail client dependencies
+        working-directory: apps/email/client
+        run: bun install --frozen-lockfile
+
+      - name: Run webmail client tests
+        working-directory: apps/email/client
+        run: bun test
+
+      # Unit tests do not exercise the Docker dependency layout or the release
+      # bundle's dev-origin scan. Build the same artifact that ships to users.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build production webmail image
+        run: docker buildx build --load --file apps/email/Dockerfile.webmail --tag openship-webmail:ci .
+
+      - name: Verify production webmail startup
+        run: |
+          set -euo pipefail
+          container="webmail-readiness-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          trap 'docker logs "$container"; docker rm -fv "$container" >/dev/null' EXIT
+          docker run -d --name "$container" --network none \
+            -e SESSION_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
+            -e BRANDING_ADMIN_TOKEN="$(openssl rand -hex 32)" \
+            openship-webmail:ci
+          for attempt in $(seq 1 30); do
+            if docker exec "$container" bun -e \
+              'fetch("http://127.0.0.1:4080/health").then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))'; then
+              docker exec "$container" bun -e '
+                const response = await fetch("http://127.0.0.1:4080/");
+                const html = await response.text();
+                if (!response.ok || !html.includes("/assets/")) process.exit(1);
+                console.log("Production webmail serves its health endpoint and client assets.");
+              '
+              exit 0
+            fi
+            sleep 1
+          done
+          exit 1
