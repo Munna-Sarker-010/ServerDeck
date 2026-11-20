@@ -3,6 +3,7 @@
 import themeTokens from "../../../dashboard/src/styles/theme-tokens.css";
 import regularFont from "../../assets/fonts/Gellix-Regular.woff2";
 import mediumFont from "../../assets/fonts/Gellix-Medium.woff2";
+import serverdeckLogo from "../../assets/serverdeck-logo.jpg";
 
 const loadingStages = {
   launch: { label: "Launch", message: "Launching ServerDeck" },
@@ -55,21 +56,21 @@ export function buildLoadingScreen(options: {
     main{display:grid;place-items:center;min-height:0;padding:32px 48px}
     .startup{display:grid;grid-template-columns:minmax(0,300px) minmax(0,400px);align-items:center;
       gap:64px;width:min(100%,764px);animation:enter .55s ease-out both}
-    .brand{display:flex;align-items:center;gap:13px;margin-bottom:18px}
-    .brand-mark{width:28px;height:28px;border:3px solid currentColor;border-radius:50%;flex-shrink:0}
+    .brand{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+    .brand-logo{width:36px;height:36px;border-radius:9px;object-fit:cover;flex-shrink:0;box-shadow:0 3px 12px rgba(0,0,0,.18)}
     h1{font-size:36px;line-height:1.15;font-weight:500;letter-spacing:-1.1px;margin:0}
     .intro{margin:0;color:var(--th-text-secondary);font-size:17px;line-height:1.55;max-width:260px}
     .loading{margin-top:38px}
     .status{display:flex;align-items:center;gap:10px;min-height:22px;color:var(--th-text-body);font-size:14px;line-height:1.5}
-    .spinner{width:15px;height:15px;flex-shrink:0;border:1.5px solid var(--th-spinner-track);
-      border-top-color:var(--th-spinner-fill);border-right-color:var(--th-spinner-fill);border-radius:50%;animation:spin 1s linear infinite}
+    .spinner{width:16px;height:16px;flex-shrink:0;border:2px solid var(--th-spinner-track);
+      border-top-color:#14b8a6;border-right-color:#14b8a6;border-radius:50%;animation:spin 1s linear infinite}
     .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;list-style:none;padding:0;margin:20px 0 0}
     .step{font-size:13px;line-height:1.5;color:var(--th-text-hint);transition:color .2s}
     .step.current{color:var(--th-text-title)}
     .step.complete{color:var(--th-text-muted)}
     .step-track{height:3px;border-radius:3px;overflow:hidden;position:relative;background:var(--th-on-08);margin-bottom:9px}
     .step-track::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--th-text-title);transform:translateX(-105%)}
-    .current .step-track::after{animation:progress 1.8s ease-in-out infinite}
+    .current .step-track::after{background:#14b8a6;animation:progress 1.8s ease-in-out infinite}
     .complete .step-track::after{background:var(--th-on-30);transform:none}
     .art{width:100%;max-width:400px;justify-self:center}
     .art svg{display:block;width:100%;height:auto;overflow:visible}
@@ -81,10 +82,10 @@ export function buildLoadingScreen(options: {
     .art .soft{fill:var(--th-on-06)}
     .art .muted{fill:var(--th-on-12)}
     .art .strong{fill:var(--th-on-25)}
-    .art .brand-ring{stroke:var(--th-text-title);stroke-width:5;fill:none}
+    .art .brand-ring{stroke:var(--th-text-title);stroke-width:1.5;fill:none}
     .art .connector{stroke:var(--th-on-10);stroke-width:1.25;fill:none;stroke-linecap:round}
-    .art .accent{fill:var(--st-info-bg)}
-    .art .accent-line{stroke:var(--st-info-fg);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .art .accent{fill:rgba(20,184,166,.18)}
+    .art .accent-line{stroke:#14b8a6;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
     .art .activity{transform-box:fill-box;transform-origin:left;animation:activity 2.8s ease-in-out infinite}
     footer{display:flex;justify-content:center;align-items:center;gap:8px;color:var(--th-text-hint);font-size:13px;line-height:1.5;padding:0 24px 12px}
     .footer-separator{width:3px;height:3px;border-radius:50%;background:var(--th-on-20)}
@@ -108,7 +109,7 @@ export function buildLoadingScreen(options: {
   <main>
     <section class="startup" aria-labelledby="title">
       <div class="copy">
-        <div class="brand"><span class="brand-mark" aria-hidden="true"></span><h1 id="title">ServerDeck</h1></div>
+        <div class="brand"><img class="brand-logo" src="${serverdeckLogo}" alt="ServerDeck"><h1 id="title">ServerDeck</h1></div>
         <p class="intro">Deploy anything.<br>Own everything.</p>
         <div class="loading">
           <div class="status" role="status" aria-live="polite" aria-atomic="true"><span class="spinner" aria-hidden="true"></span><span id="stage">${loadingStages.launch.message}</span></div>
@@ -117,7 +118,10 @@ export function buildLoadingScreen(options: {
       </div>
       <div class="art" aria-hidden="true">
         <svg viewBox="0 0 400 330" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs><clipPath id="workspace"><rect x="54" y="79" width="284" height="194" rx="18"/></clipPath></defs>
+          <defs>
+            <clipPath id="workspace"><rect x="54" y="79" width="284" height="194" rx="18"/></clipPath>
+            <clipPath id="brand-badge-clip"><rect x="136" y="154" width="42" height="42" rx="10"/></clipPath>
+          </defs>
           <rect class="back" x="99" y="39" width="260" height="194" rx="18"/>
           <path class="connector" d="M119 58h32m8 0h9"/>
           <rect class="middle" x="77" y="59" width="272" height="194" rx="18"/>
@@ -134,7 +138,10 @@ export function buildLoadingScreen(options: {
             <rect class="soft" x="70" y="185" width="12" height="12" rx="4"/>
             <rect class="soft" x="70" y="237" width="12" height="12" rx="6"/>
             <rect class="inset" x="114" y="133" width="206" height="84" rx="12"/>
-            <circle class="brand-ring" cx="157" cy="175" r="19"/>
+            <g class="brand-ring">
+              <image href="${serverdeckLogo}" x="136" y="154" width="42" height="42" preserveAspectRatio="xMidYMid slice" clip-path="url(#brand-badge-clip)"/>
+              <rect x="136" y="154" width="42" height="42" rx="10" fill="none" stroke="#14b8a6" stroke-width="1.5" stroke-opacity="0.7"/>
+            </g>
             <rect class="strong" x="193" y="162" width="75" height="6" rx="3"/>
             <rect class="muted" x="193" y="178" width="106" height="4" rx="2"/>
             <rect class="soft" x="193" y="189" width="81" height="4" rx="2"/>
