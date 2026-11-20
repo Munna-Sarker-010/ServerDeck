@@ -107,6 +107,9 @@ export function createAuditEventRepo(db: Database, settings?: AuditRecordingSwit
      * billing-anniversary) — this is the one path all of them share.
      */
     async create(data: Omit<NewAuditEvent, "id" | "createdAt">): Promise<AuditEvent | null> {
+      if (process.env.DEPLOY_MODE === "desktop" || process.env.OPENSHIP_DEPLOY_MODE === "desktop") {
+        return null;
+      }
       if (settings && !(await settings.isEnabled(data.organizationId))) return null;
       const id = generateId("aud");
       const row: NewAuditEvent = { id, ...data };

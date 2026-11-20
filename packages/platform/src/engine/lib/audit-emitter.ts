@@ -45,6 +45,9 @@ export interface AuditEventInput {
 export const audit = {
   /** Awaited write. See module header. */
   async record(ctx: AuditContext, event: AuditEventInput): Promise<void> {
+    if (process.env.DEPLOY_MODE === "desktop" || process.env.OPENSHIP_DEPLOY_MODE === "desktop") {
+      return;
+    }
     try {
       const recorded = await repos.auditEvent.create({
         organizationId: ctx.organizationId,
