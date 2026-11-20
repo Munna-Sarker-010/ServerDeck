@@ -103,3 +103,10 @@ body:has(.mail-home) {
   --th-bd-strong:      #4a4a4f;
   --th-divider:        #2a2a2d;
 }
+
+/* Hide Next.js dev indicator badge in the corner */
+nextjs-portal,
+[data-nextjs-dev-tools-indicator],
+[data-nextjs-toast] {
+  display: none !important;
+}

@@ -10,6 +10,7 @@ const withIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  devIndicators: false,
   output: "standalone",
   // Multiple document layouts plus a locale segment need an independent 404 document.
   experimental: { globalNotFound: true },
