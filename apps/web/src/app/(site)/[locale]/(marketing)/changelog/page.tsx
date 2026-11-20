@@ -9,28 +9,28 @@ import { Footer } from "@/components/landing/footer";
 import { ChangelogEntries } from "./_components/changelog-entries";
 import "./changelog.css";
 
-const CHANGELOG_DESC = "New features, fixes, and improvements to OpenShip.";
+const CHANGELOG_DESC = "New features, fixes, and improvements to ServerDeck.";
 
 // Driven by the repo CHANGELOG.md + GitHub releases; refresh on a short cache.
 export const revalidate = 600;
 
 const metadata: Metadata = {
-  // Plain string — the root layout's "%s - OpenShip" template adds the suffix
-  // (the old value double-suffixed to "Changelog – OpenShip - OpenShip").
+  // Plain string — the root layout's "%s - ServerDeck" template adds the suffix
+  // (the old value double-suffixed to "Changelog – ServerDeck - ServerDeck").
   title: "Changelog",
   description: CHANGELOG_DESC,
   alternates: { canonical: "/changelog" },
   openGraph: {
-    title: "Changelog - OpenShip",
+    title: "Changelog - ServerDeck",
     description: CHANGELOG_DESC,
     url: "/changelog",
     type: "website",
-    siteName: "OpenShip",
+    siteName: "ServerDeck",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Changelog - OpenShip",
+    title: "Changelog - ServerDeck",
     description: CHANGELOG_DESC,
   },
 };
@@ -59,7 +59,7 @@ export default async function ChangelogPage() {
             {copy("What's new")}
           </h1>
           <p className="th-text-body mt-5 text-lg leading-relaxed">
-            {copy("Features, fixes, and improvements shipping in OpenShip.")}
+            {copy("Features, fixes, and improvements shipping in ServerDeck.")}
           </p>
         </header>
 
@@ -72,7 +72,7 @@ export default async function ChangelogPage() {
           >
             {copy("Release notes are momentarily unavailable — check back shortly, or see")}{" "}
             <a
-              href="https://github.com/oblien/openship/releases"
+              href="https://github.com/oblien/serverdeck/releases"
               className="underline"
               target="_blank"
               rel="noreferrer"

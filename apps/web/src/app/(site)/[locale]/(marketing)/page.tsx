@@ -20,12 +20,12 @@ export async function generateMetadata() {
   return localizedMetadata({ alternates: { canonical: "/" } });
 }
 
-const SITE_URL = "https://openship.io";
+const SITE_URL = "https://serverdeck.io";
 
 const softwareLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "OpenShip",
+  name: "ServerDeck",
   applicationCategory: "DeveloperApplication",
   applicationSubCategory: "Deployment Platform",
   operatingSystem: "macOS, Windows, Linux, Web",
@@ -34,7 +34,7 @@ const softwareLd = {
   softwareVersion: "latest",
   publisher: {
     "@type": "Organization",
-    name: "OpenShip",
+    name: "ServerDeck",
     url: SITE_URL,
   },
   description:

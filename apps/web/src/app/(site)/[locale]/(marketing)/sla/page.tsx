@@ -9,9 +9,9 @@ import { localizedMetadata } from "@/i18n/metadata";
 import { CLOUD_SLA } from "@/lib/cloud-service";
 import { inheritSocialImages } from "@/lib/social-metadata";
 
-const title = "OpenShip Cloud service level agreement";
+const title = "ServerDeck Cloud service level agreement";
 const description =
-  "Monthly uptime commitments for paid OpenShip Cloud Spaces, with service credits and a clear claims process.";
+  "Monthly uptime commitments for paid ServerDeck Cloud Spaces, with service credits and a clear claims process.";
 
 export async function generateMetadata(
   _props: unknown,
@@ -74,7 +74,7 @@ export default async function SlaPage() {
           </dl>
           <p className="mt-5 max-w-3xl text-sm leading-relaxed text-[var(--th-text-body)]">
             {copy(
-              "Applies to paid OpenShip Cloud Spaces. Your own servers, free trials and preview features are outside this SLA. The full coverage and exclusions below apply.",
+              "Applies to paid ServerDeck Cloud Spaces. Your own servers, free trials and preview features are outside this SLA. The full coverage and exclusions below apply.",
             )}
           </p>
         </div>

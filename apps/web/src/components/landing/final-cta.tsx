@@ -20,9 +20,7 @@ export function FinalCta() {
               {copy("Get started")}
             </a>
             <a
-              href="https://github.com/oblien/openship"
-              target="_blank"
-              rel="noreferrer"
+              href="#"
               className="fcta-btn fcta-btn--ghost"
             >
               {copy("View on GitHub")}

@@ -59,7 +59,7 @@ export const FEATURES: Feature[] = [
     summary:
       "Choose where supported deployments build, reuse project caches and ship the result to its runtime. Your production server does not have to be your build machine.",
     body: [
-      "For supported server deployments, build on the OpenShip controller or the destination. The controller can be an always-on server or your optional desktop app. Local source upload, Git clone location and build location are separate choices.",
+      "For supported server deployments, build on the ServerDeck controller or the destination. The controller can be an always-on server or your optional desktop app. Local source upload, Git clone location and build location are separate choices.",
       "Warm project caches reuse dependency and framework work. Storage-aware cleanup reclaims idle caches while protecting active deployments and retained rollback artifacts. Available build paths depend on the workload and destination.",
     ],
     highlights: [
@@ -84,9 +84,9 @@ export const FEATURES: Feature[] = [
     illustration: "autoscaling-load-balancing",
     title: "Docker Swarm deployments",
     category: "Run",
-    tagline: "Use your existing Swarm manager as an OpenShip deployment destination.",
+    tagline: "Use your existing Swarm manager as an ServerDeck deployment destination.",
     summary:
-      "Deploy new applications and Compose services through a connected Docker Swarm manager. Keep environment settings, build history, logs, replica changes and rollbacks in the same OpenShip workflow.",
+      "Deploy new applications and Compose services through a connected Docker Swarm manager. Keep environment settings, build history, logs, replica changes and rollbacks in the same ServerDeck workflow.",
     body: [
       "Connect an existing manager, review its identity and select the registered Swarm as a project destination. Stateless services can use replicas across eligible Linux nodes. Named-volume services stay pinned to the manager to preserve their node-local data.",
       "Connecting a manager preserves its existing stacks. This path does not support existing-stack adoption, node administration or distributed Swarm storage. Replacement can interrupt a service; review the deployment guide before moving production traffic.",
@@ -119,7 +119,7 @@ export const FEATURES: Feature[] = [
     summary:
       "Serve built static files directly at the edge, run web applications, or deploy background workers that do not need a public HTTP port.",
     body: [
-      "On supported self-hosted paths, OpenShip extracts a static build into a retained release and serves it as files. A Docker build does not require keeping an application container running after publication. Cloud offers its supported static-hosting destinations.",
+      "On supported self-hosted paths, ServerDeck extracts a static build into a retained release and serves it as files. A Docker build does not require keeping an application container running after publication. Cloud offers its supported static-hosting destinations.",
       "Workers follow the deployment pipeline without requiring a web route. Choose containers or a supported host process, then use logs, health and resource settings for the selected runtime.",
     ],
     highlights: [
@@ -148,7 +148,7 @@ export const FEATURES: Feature[] = [
     summary:
       "Inspect per-domain traffic, visitor countries, status codes, request logs and optional top paths. The OpenResty edge measures traffic and the control plane collects aggregates.",
     body: [
-      "The edge updates bounded in-memory counters during its logging phase. Visitor requests do not call the OpenShip API or database for analytics. The controller periodically collects aggregated data for dashboards and history.",
+      "The edge updates bounded in-memory counters during its logging phase. Visitor requests do not call the ServerDeck API or database for analytics. The controller periodically collects aggregated data for dashboards and history.",
       "Top-path collection is optional and bounds distinct paths. Recent requests use a fixed-size buffer. These limits keep analytics storage and collection work bounded as traffic grows.",
     ],
     highlights: [
@@ -204,7 +204,7 @@ export const FEATURES: Feature[] = [
     category: "Connect",
     tagline: "Bring app operations into Slack, Discord, Telegram and Microsoft Teams.",
     summary:
-      "Connect supported chat providers to OpenShip commands and optional assistant conversations. Team members link their own identity and approved access.",
+      "Connect supported chat providers to ServerDeck commands and optional assistant conversations. Team members link their own identity and approved access.",
     body: [
       "Choose allowed conversations and an available transport. Outbound connections can work without a public webhook endpoint; webhook delivery uses the provider-specific verification flow.",
       "Operational commands use the linked member’s permissions. Deployment and restart confirmations are tied to the conversation and current deployment so a retried chat event does not become a second operation.",
@@ -234,7 +234,7 @@ export const FEATURES: Feature[] = [
     tagline:
       "Preview DNS changes and publish services through the connection that fits your network.",
     summary:
-      "Connect Cloudflare or DigitalOcean DNS, review the records a domain needs and apply them from OpenShip. Cloudflare Tunnel provides a separate ingress option for supported server setups.",
+      "Connect Cloudflare or DigitalOcean DNS, review the records a domain needs and apply them from ServerDeck. Cloudflare Tunnel provides a separate ingress option for supported server setups.",
     body: [
       "DNS credentials are stored through the existing credential flow. Domain setup can inspect the zone, show a record plan and apply an approved change; saving a route does not silently rewrite the provider’s zone.",
       "Use tunnel ingress when the server should receive traffic through Cloudflare instead of a direct public connection. Domain ownership, tunnel setup and certificate challenges remain visible in their own setup flows.",
@@ -292,7 +292,7 @@ export const FEATURES: Feature[] = [
     category: "Secure",
     tagline: "Connect security notices to the applications and images actually deployed.",
     summary:
-      "Review matching runtime and image advisories, affected services and available remediation. OpenShip ties findings to deployment inventory so the next action has concrete context.",
+      "Review matching runtime and image advisories, affected services and available remediation. ServerDeck ties findings to deployment inventory so the next action has concrete context.",
     body: [
       "Security views distinguish affected, fixed and unknown runtime state. Supported fixes can refresh an image or prepare a repository change, with verification against the deployed result.",
       "Host security maintenance has a separate reviewed workflow for supported Ubuntu systems. Inspect the exact package plan, apply an approved patch and review reboot requirements and run output.",
@@ -412,7 +412,7 @@ export const FEATURES: Feature[] = [
     category: "Manage",
     tagline: "See applications, services, routes and data connections in one operational view.",
     summary:
-      "Work with a visual map of a project environment. Inspect running services, configure resources and connections, and open the same deployment, scaling and migration workflows used elsewhere in OpenShip.",
+      "Work with a visual map of a project environment. Inspect running services, configure resources and connections, and open the same deployment, scaling and migration workflows used elsewhere in ServerDeck.",
     body: [
       "The topology combines saved project configuration with observed runtime state. Add a service, inspect its logs, edit environment variables or review CPU and memory changes from the selected node.",
       "Application replicas, clustered databases and shared volumes use their existing setup and deployment flows. Review changes before applying them; arranging the canvas itself does not mutate a running workload.",
@@ -443,7 +443,7 @@ export const FEATURES: Feature[] = [
     summary:
       "Import a project from your machine through the desktop workflow, folder upload, or CLI. Review detection and stream its build output to the chosen destination.",
     body: [
-      "Select a local project or upload a folder, then review the detected stack, commands, and destination. OpenShip sends source files while excluding rebuildable dependencies, Git metadata, and common build outputs.",
+      "Select a local project or upload a folder, then review the detected stack, commands, and destination. ServerDeck sends source files while excluding rebuildable dependencies, Git metadata, and common build outputs.",
       "Redeploy subsequent local changes into the same project. Source upload and build location are separate choices: importing a local folder does not mean every build executes on your laptop.",
     ],
     highlights: [
@@ -490,7 +490,7 @@ export const FEATURES: Feature[] = [
     category: "Manage",
     tagline: "Automate platform operations with documented HTTP routes and typed clients.",
     summary:
-      "Integrate OpenShip into your own tooling through the API and SDK. Read resources, deploy projects, inspect operation status, and manage authorized workflows from code.",
+      "Integrate ServerDeck into your own tooling through the API and SDK. Read resources, deploy projects, inspect operation status, and manage authorized workflows from code.",
     body: [
       "Connect a client to the intended instance with an authorized credential and workspace context. The generated reference maps SDK methods to HTTP routes and explains required capabilities and destination availability.",
       "Use operation IDs and documented progress or log interfaces for long-running work. API and SDK calls use the platform's permission checks; a typed request is not a substitute for access to the resources involved.",
@@ -519,13 +519,13 @@ export const FEATURES: Feature[] = [
     guide: "/docs/getting-started/first-deployment",
     title: "Deploy anywhere",
     category: "Deploy",
-    tagline: "OpenShip Cloud, your own VPS, or a homelab — one workflow.",
+    tagline: "ServerDeck Cloud, your own VPS, or a homelab — one workflow.",
     screenshot: null,
     summary:
       "Choose where your application lives: managed Cloud, a connected server, or your homelab. Keep source, builds, deployments, domains, and logs together.",
     body: [
       "Connect an SSH-accessible server or choose managed Cloud compute, then select it when creating a project. Inspect its capabilities and configure the build and runtime your application needs.",
-      "Self-host the controller, manage remote servers through the desktop app, or use OpenShip Cloud. Infrastructure operations and runtimes depend on the destination; setup shows the supported choices.",
+      "Self-host the controller, manage remote servers through the desktop app, or use ServerDeck Cloud. Infrastructure operations and runtimes depend on the destination; setup shows the supported choices.",
     ],
     highlights: [
       {
@@ -620,7 +620,7 @@ export const FEATURES: Feature[] = [
     tagline: "Restore a retained application image from deployment history.",
     screenshot: null,
     summary:
-      "Return to an available retained release when an application change goes wrong. OpenShip creates a rollback deployment using its recorded image and configuration.",
+      "Return to an available retained release when an application change goes wrong. ServerDeck creates a rollback deployment using its recorded image and configuration.",
     body: [
       "Inspect a previous release and review its restore plan before rolling back. Retained images avoid rebuilding old source against new dependencies. Artifact availability follows your configured retention.",
       "Replacement images are prepared before activation. Service cutover remains sequential, and rollback does not reverse database writes or restore persistent volumes; use a backup for data recovery.",
@@ -650,7 +650,7 @@ export const FEATURES: Feature[] = [
       "Inspect build logs, service output, HTTP requests, traffic analytics, resource usage, and health notices from the project view.",
     body: [
       "Switch between build output, a service runtime stream, and request logs. Search, copy, or download visible output. Request analytics summarize paths, response times, status codes, and bandwidth.",
-      "Monitoring checks deployed services and records incidents. If a server cannot be observed, OpenShip reports unavailable monitoring rather than declaring applications stopped. A successful check after connectivity returns updates that state.",
+      "Monitoring checks deployed services and records incidents. If a server cannot be observed, ServerDeck reports unavailable monitoring rather than declaring applications stopped. A successful check after connectivity returns updates that state.",
     ],
     highlights: [
       {
@@ -725,7 +725,7 @@ export const FEATURES: Feature[] = [
     tagline: "Connect domains, verify DNS, and manage HTTPS certificates.",
     screenshot: null,
     summary:
-      "Put your application on a domain you control. OpenShip guides DNS verification and certificate setup and keeps status visible next to the deployment.",
+      "Put your application on a domain you control. ServerDeck guides DNS verification and certificate setup and keeps status visible next to the deployment.",
     body: [
       "Add a domain to its project or service, point DNS to the displayed target, and verify it. Set the primary address and inspect routing and HTTPS status in the same view.",
       "Self-hosted destinations use their certificate workflow, including automatic renewal; managed Cloud uses its edge certificate path. Wildcard and DNS-provider requirements vary by destination and configuration.",
@@ -822,7 +822,7 @@ export const FEATURES: Feature[] = [
     slug: "mail",
     illustration: "mail",
     availability:
-      "Mail-server provisioning is available through desktop and self-hosted OpenShip. The hosted Cloud mail console is not available yet.",
+      "Mail-server provisioning is available through desktop and self-hosted ServerDeck. The hosted Cloud mail console is not available yet.",
     guide: "/docs/guides/email-webmail",
     title: "Mail server & webmail",
     category: "Data",
@@ -831,7 +831,7 @@ export const FEATURES: Feature[] = [
     summary:
       "Run mail on your domain with mailbox administration and built-in webmail, or connect webmail to an existing provider. Configure supported outbound relays.",
     body: [
-      "Mail setup guides server selection, domain records, and the stack. Manage mailboxes and aliases in OpenShip and use webmail alongside desktop or mobile clients.",
+      "Mail setup guides server selection, domain records, and the stack. Manage mailboxes and aliases in ServerDeck and use webmail alongside desktop or mobile clients.",
       "Keep existing mailboxes when you only need webmail, or relay outbound mail through SMTP or a supported provider. Delivery depends on suitable DNS, host reputation, and provider settings.",
     ],
     highlights: [
@@ -879,7 +879,7 @@ export const FEATURES: Feature[] = [
     tagline: "Drive deploys from Claude, Cursor, or any MCP client.",
     screenshot: null,
     summary:
-      "OpenShip ships an MCP server, so AI agents can deploy, read logs, manage domains, and more — through standard, authenticated tools, scoped to exactly what you allow.",
+      "ServerDeck ships an MCP server, so AI agents can deploy, read logs, manage domains, and more — through standard, authenticated tools, scoped to exactly what you allow.",
     body: [
       'Connect Claude, Cursor, or any MCP client and let it operate your infrastructure with the same permissions model as a human — including narrow scopes like "only projects it creates."',
       "Every agent action runs through the same authorization and audit path as the dashboard and CLI, so AI access is powerful without being a back door.",
@@ -902,7 +902,7 @@ export const FEATURES: Feature[] = [
     summary:
       "Create a live application from a selected branch, with its own configuration, address, deployment history, and logs.",
     body: [
-      "Use the project's environment switcher to add a branch. OpenShip copies its build settings into a new environment; deploy that environment to create its own live address for review.",
+      "Use the project's environment switcher to add a branch. ServerDeck copies its build settings into a new environment; deploy that environment to create its own live address for review.",
       "Each environment has independent variables and deployment history. Choose its services deliberately, share the address with reviewers, and remove the environment when it is no longer needed.",
     ],
     highlights: [
@@ -928,7 +928,7 @@ export const FEATURES: Feature[] = [
     summary:
       "Build, test, and automate with workflows linked to projects or saved independently. Edit job dependencies, steps, matrices, and YAML in one editor.",
     body: [
-      "Files in .openship/workflows/ and standalone definitions are scheduled by OpenShip and executed with act. Manual, repository-event, and scheduled triggers use OpenShip permissions, capacity, and run history without GitHub's Actions scheduler.",
+      "Files in .openship/workflows/ and standalone definitions are scheduled by ServerDeck and executed with act. Manual, repository-event, and scheduled triggers use ServerDeck permissions, capacity, and run history without GitHub's Actions scheduler.",
       "Files in .github/workflows/ stay coordinated by GitHub. Official runners execute matching jobs on your selected destinations, while GitHub manages workflow credentials, protected environments, and results. Independent mode has documented compatibility boundaries.",
     ],
     highlights: [
@@ -938,7 +938,7 @@ export const FEATURES: Feature[] = [
       },
       {
         title: "Independent CI",
-        desc: "Let OpenShip schedule workflows outside .github/workflows/.",
+        desc: "Let ServerDeck schedule workflows outside .github/workflows/.",
       },
       {
         title: "GitHub coordination",
@@ -955,7 +955,7 @@ export const FEATURES: Feature[] = [
     category: "Run",
     tagline: "Existing servers, dedicated machines, or disposable Cloud VMs.",
     summary:
-      "Choose where CI executes and how much capacity it can use. OpenShip checks destination capabilities and manages worker startup, cancellation, and cleanup.",
+      "Choose where CI executes and how much capacity it can use. ServerDeck checks destination capabilities and manages worker startup, cancellation, and cleanup.",
     body: [
       "Select an existing server, create a dedicated managed server, or use temporary Cloud runners. Configure OS and architecture labels, execution images, per-job CPU and memory, and parallel limits.",
       "Linux supports container or native execution; connected Macs support native jobs. Temporary jobs receive disposable Linux VMs funded from the Actions balance. Persistent destinations execute code trusted by their administrator.",
@@ -1020,7 +1020,7 @@ export const FEATURES: Feature[] = [
     category: "Connect",
     tagline: "Trigger supported automation from authenticated external events.",
     summary:
-      "Connect a script or another system to deployment and job workflows through incoming webhooks, with execution visible in OpenShip.",
+      "Connect a script or another system to deployment and job workflows through incoming webhooks, with execution visible in ServerDeck.",
     body: [
       "Configure a hook for the supported action, such as redeploying a project or invoking a job. Use its required token or signature mechanism rather than exposing an unauthenticated command endpoint.",
       "Repository webhooks also feed automatic deployments and Actions events. The triggered operation follows the normal authorization and execution pipeline, with its own status and logs.",
@@ -1138,10 +1138,10 @@ export const FEATURES: Feature[] = [
     category: "Data",
     tagline: "Deploy MinIO or connect an existing bucket for backups.",
     summary:
-      "Use object storage for application files and recovery copies. OpenShip includes a MinIO template and S3-compatible backup destinations.",
+      "Use object storage for application files and recovery copies. ServerDeck includes a MinIO template and S3-compatible backup destinations.",
     body: [
       "Review the MinIO template's services and persistent storage before deploying it. Configure the application's endpoint and credentials through its environment settings.",
-      "Connect an existing S3-compatible bucket for backups, including S3, R2, B2, or MinIO. Bucket replication and lifecycle capabilities belong to the selected storage service; OpenShip manages its configured backup destination and retention.",
+      "Connect an existing S3-compatible bucket for backups, including S3, R2, B2, or MinIO. Bucket replication and lifecycle capabilities belong to the selected storage service; ServerDeck manages its configured backup destination and retention.",
     ],
     highlights: [
       { title: "MinIO template", desc: "Deploy an S3-compatible service from the catalog." },
@@ -1202,9 +1202,9 @@ export const FEATURES: Feature[] = [
     illustration: "instance-transfer",
     title: "Instance export & transfer",
     category: "Manage",
-    tagline: "Move the OpenShip control plane with reviewed credential handling.",
+    tagline: "Move the ServerDeck control plane with reviewed credential handling.",
     summary:
-      "Export and import supported instance data when changing where OpenShip runs. Keep credentials and infrastructure bindings explicit.",
+      "Export and import supported instance data when changing where ServerDeck runs. Keep credentials and infrastructure bindings explicit.",
     body: [
       "Prepare an export and select the records and credentials to include. Import validates the archive and handles supported encrypted credentials for the destination.",
       "External accounts or Cloud workspace bindings may need reconnection. Preserving account protections such as 2FA requires transferring their credentials; project-only exports do not move account identity.",
@@ -1365,7 +1365,7 @@ export const FEATURES: Feature[] = [
     category: "Secure",
     tagline: "Review instance and supported infrastructure versions before updating.",
     summary:
-      "See available OpenShip releases and supported managed component updates. Follow the documented workflow with a recovery plan.",
+      "See available ServerDeck releases and supported managed component updates. Follow the documented workflow with a recovery plan.",
     body: [
       "Review available instance releases and their notes. Supported self-hosted infrastructure scans also compare configured and running versions of managed modules and containers.",
       "Prepare an instance backup before updating. Automatic behavior follows your configured preferences, while manual updates retain the review and recovery steps in the guide.",

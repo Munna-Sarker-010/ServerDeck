@@ -33,7 +33,7 @@ const NAV: NavEntry[] = [
       { label: "Compare", href: "/compare", hint: "Find the right home for your stack" },
       { label: "Blog", href: "/blog", hint: "Guides and product news" },
       { label: "Changelog", href: "/changelog", hint: "What shipped, release by release" },
-      { label: "Support", href: "/support", hint: "Talk to the OpenShip team" },
+      { label: "Support", href: "/support", hint: "Talk to the ServerDeck team" },
     ],
   },
 ];
@@ -156,8 +156,8 @@ export function Navbar() {
         }).format(stars);
   const githubDescription =
     stars === null
-      ? copy("Star OpenShip on GitHub")
-      : copy("OpenShip on GitHub — {count} stars", { count: stars.toLocaleString(locale) });
+      ? copy("Star ServerDeck on GitHub")
+      : copy("ServerDeck on GitHub — {count} stars", { count: stars.toLocaleString(locale) });
 
   useEffect(() => {
     const controller = new AbortController();
@@ -198,15 +198,10 @@ export function Navbar() {
       <div className="site-container site-nav-bar">
         {/* ── Logo ────────────────────────────────────────────── */}
         <Link href="/" className="relative z-10 flex items-center gap-2.5">
-          <div
-            className="h-[30px] w-[30px] shrink-0 rounded-full"
-            style={{
-              borderWidth: "2.5px",
-              borderStyle: "solid",
-              borderColor: dark ? "rgba(255,255,255,.9)" : "var(--th-text-heading)",
-              transition: "border-color .3s",
-            }}
-            aria-hidden="true"
+          <img
+            src="/serverdeck-logo.jpg"
+            alt="ServerDeck"
+            className="h-[30px] w-[30px] shrink-0 rounded-lg object-cover"
           />
           <span
             className="text-[16px] font-semibold tracking-[-0.01em]"
@@ -215,7 +210,7 @@ export function Navbar() {
               transition: "color .3s",
             }}
           >
-            OpenShip
+            ServerDeck
           </span>
         </Link>
 
@@ -256,20 +251,6 @@ export function Navbar() {
               </Link>
             ),
           )}
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={copy(githubDescription)}
-            title={copy(githubDescription)}
-            className="nav-pill-item flex items-center gap-1.5 rounded-full px-3 py-2 text-[14px] font-medium transition-all"
-            style={{ color: linkColor }}
-          >
-            <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d={GITHUB_PATH} />
-            </svg>
-            {githubLabel}
-          </a>
           <LanguageSwitcher dark={dark} />
         </nav>
 

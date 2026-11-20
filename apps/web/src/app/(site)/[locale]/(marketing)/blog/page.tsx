@@ -8,7 +8,7 @@ import { blogSource, type BlogFrontmatter } from "@/lib/source";
 import type { Metadata, ResolvingMetadata } from "next";
 import { inheritSocialImages } from "@/lib/social-metadata";
 
-const SITE_URL = "https://openship.io";
+const SITE_URL = "https://serverdeck.io";
 
 type RPage = { url: string; data: BlogFrontmatter };
 type SearchParams = Promise<{ category?: string | string[] }>;
@@ -59,13 +59,13 @@ export async function generateMetadata(
 
   const pageTitle =
     category && category !== "all"
-      ? `${category.charAt(0).toUpperCase() + category.slice(1)} – OpenShip Blog`
-      : "Blog – OpenShip";
+      ? `${category.charAt(0).toUpperCase() + category.slice(1)} – ServerDeck Blog`
+      : "Blog – ServerDeck";
 
   const pageDescription =
     category && category !== "all"
-      ? `Browse ${category} articles, guides, and updates from the OpenShip team`
-      : "Engineering deep-dives, product updates, and guides from the OpenShip team.";
+      ? `Browse ${category} articles, guides, and updates from the ServerDeck team`
+      : "Engineering deep-dives, product updates, and guides from the ServerDeck team.";
 
   const metadata: Metadata = {
     title: pageTitle,
@@ -74,7 +74,7 @@ export async function generateMetadata(
       title: pageTitle,
       description: pageDescription,
       url: `${SITE_URL}/blog${category && category !== "all" ? `?category=${encodeURIComponent(category)}` : ""}`,
-      siteName: "OpenShip",
+      siteName: "ServerDeck",
       type: "website",
     },
     twitter: {
@@ -115,12 +115,12 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
   const blogStructuredData = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: copy("OpenShip Blog"),
-    description: copy("Engineering deep-dives, product updates, and guides from the OpenShip team"),
+    name: copy("ServerDeck Blog"),
+    description: copy("Engineering deep-dives, product updates, and guides from the ServerDeck team"),
     url: `${SITE_URL}/blog`,
     publisher: {
       "@type": "Organization",
-      name: "OpenShip",
+      name: "ServerDeck",
     },
     blogPost: pages.slice(0, 10).map((page) => ({
       "@type": "BlogPosting",
@@ -128,7 +128,7 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
       description: page.data.description,
       url: `${SITE_URL}${page.url}`,
       datePublished: page.data.date,
-      author: { "@type": "Person", name: page.data.author || "OpenShip Team" },
+      author: { "@type": "Person", name: page.data.author || "ServerDeck Team" },
     })),
   };
 
@@ -141,11 +141,11 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
 
       <main className="res-main">
         <section className="res-hero">
-          <span className="res-eyebrow">{copy("The OpenShip blog")}</span>
+          <span className="res-eyebrow">{copy("The ServerDeck blog")}</span>
           <h1 className="res-title">{copy("Notes from the build.")}</h1>
           <p className="res-sub">
             {copy(
-              "Engineering deep-dives, product updates, and guides from the OpenShip team - straight from the source.",
+              "Engineering deep-dives, product updates, and guides from the ServerDeck team - straight from the source.",
             )}
           </p>
           <Link href="/blog/rss.xml" className="res-feed">
@@ -185,7 +185,7 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
               <div className="res-avatar" aria-hidden="true">
                 {(featured.data.author || "O")[0].toUpperCase()}
               </div>
-              <span className="res-meta-name">{featured.data.author || "OpenShip Team"}</span>
+              <span className="res-meta-name">{featured.data.author || "ServerDeck Team"}</span>
               {featured.data.date && (
                 <>
                   <span className="res-meta-dot" aria-hidden="true" />
@@ -218,7 +218,7 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
                   <div className="res-avatar" aria-hidden="true">
                     {(post.data.author || "O")[0].toUpperCase()}
                   </div>
-                  <span>{post.data.author || "OpenShip Team"}</span>
+                  <span>{post.data.author || "ServerDeck Team"}</span>
                 </div>
               </Link>
             ))}

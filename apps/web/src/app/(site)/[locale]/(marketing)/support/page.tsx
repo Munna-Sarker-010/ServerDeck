@@ -10,7 +10,7 @@ import { MarketingIntro } from "@/components/marketing/marketing-intro";
 
 const pageMetadata = {
   title: "Customer Support",
-  description: "Sign in to OpenShip to get help with your deployments, account, or billing.",
+  description: "Sign in to ServerDeck to get help with your deployments, account, or billing.",
   alternates: { canonical: "/support" },
 } satisfies Metadata;
 
@@ -31,7 +31,7 @@ export default function SupportPage() {
             </>
           }
           description={copy(
-            "Get help with your deployments, account, or billing from your OpenShip dashboard. Sign in to open a request, follow its progress, and continue the conversation.",
+            "Get help with your deployments, account, or billing from your ServerDeck dashboard. Sign in to open a request, follow its progress, and continue the conversation.",
           )}
         />
         <div className="site-container marketing-content">
@@ -71,7 +71,7 @@ export async function generateMetadata(_: unknown, parent: ResolvingMetadata) {
     await inheritSocialImages(
       {
         ...pageMetadata,
-        openGraph: { title, description, type: "website", siteName: "OpenShip" },
+        openGraph: { title, description, type: "website", siteName: "ServerDeck" },
         twitter: { card: "summary_large_image", title, description },
       },
       parent,

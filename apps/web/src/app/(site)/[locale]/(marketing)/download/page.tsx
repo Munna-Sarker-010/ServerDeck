@@ -38,7 +38,7 @@ export default function DownloadPage() {
     // Labels are optional: release links keep working when GitHub is unavailable.
     async function loadRelease() {
       try {
-        const response = await fetch("https://api.github.com/repos/oblien/openship/releases/latest", {
+        const response = await fetch("https://api.github.com/repos/oblien/serverdeck/releases/latest", {
           headers: { Accept: "application/vnd.github+json" },
           signal: controller.signal,
         });
@@ -76,7 +76,7 @@ export default function DownloadPage() {
           <div className="site-container dl-hero-content">
             <FeatureIllustration name="dashboard-cli-desktop" className="marketing-illustration dl-hero-art" />
             <h1 id="download-title" className="dl-title">
-              {copy("Install OpenShip.")}
+              {copy("Install ServerDeck.")}
               <span className="hero-headline-second">{copy("Deploy in seconds.")}</span>
             </h1>
             <p className="dl-hero-description">
@@ -105,7 +105,7 @@ export default function DownloadPage() {
             <div className="dl-shot">
               <Image
                 src={localizedScreenshot("/screen.png", locale)}
-                alt={copy("The OpenShip desktop app - deployments, logs, and services in one native window")}
+                alt={copy("The ServerDeck desktop app - deployments, logs, and services in one native window")}
                 {...DEPLOY_SCREEN_SIZE}
                 sizes="(max-width: 768px) 92vw, 86vw"
                 priority
@@ -120,7 +120,7 @@ export default function DownloadPage() {
                 <h2 id="desktop-title">{copy("Choose your platform.")}</h2>
                 <p>{copy("The desktop app for Mac, Windows, and Linux.")}</p>
               </div>
-              <a href="https://github.com/oblien/openship/releases" target="_blank" rel="noopener noreferrer" className="marketing-text-link">
+              <a href="https://github.com/oblien/serverdeck/releases" target="_blank" rel="noopener noreferrer" className="marketing-text-link">
                 {copy("All releases")} <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             </header>
@@ -179,7 +179,7 @@ export default function DownloadPage() {
               />
               <div className="dl-cli-next">
                 <span>{copy("Then open your dashboard.")}</span>
-                <code>openship up</code>
+                <code>serverdeck up</code>
               </div>
             </div>
           </section>
@@ -196,7 +196,7 @@ export default function DownloadPage() {
                 href="/docs/getting-started/installation"
                 illustration="server-management"
                 title="Run on your own server"
-                description="Set up OpenShip on a server with Docker or the CLI."
+                description="Set up ServerDeck on a server with Docker or the CLI."
               />
             </div>
           </MarketingSection>

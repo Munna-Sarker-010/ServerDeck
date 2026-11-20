@@ -12,7 +12,7 @@ import { inheritSocialImages } from "@/lib/social-metadata";
 import ResourceShareSidebar from "@/components/resources/share-sidebar";
 import ResourceWriterSidebar from "@/components/resources/writer-sidebar";
 
-const SITE_URL = "https://openship.io";
+const SITE_URL = "https://serverdeck.io";
 
 type Params = Promise<{ slug: string[] }>;
 type RPage = { url: string; data: BlogFrontmatter };
@@ -57,8 +57,8 @@ export async function generateMetadata(
   if (!rawPage) return {};
   const page = rawPage as unknown as RPage;
 
-  const title = `${page.data.title} – OpenShip Blog`;
-  const description = page.data.description ?? "An article from the OpenShip team.";
+  const title = `${page.data.title} – ServerDeck Blog`;
+  const description = page.data.description ?? "An article from the ServerDeck team.";
 
   const metadata: Metadata = {
     title,
@@ -67,10 +67,10 @@ export async function generateMetadata(
       title,
       description,
       url: `${SITE_URL}${localizedHref(page.url, locale)}`,
-      siteName: "OpenShip",
+      siteName: "ServerDeck",
       type: "article",
       publishedTime: page.data.date,
-      authors: [page.data.author || "OpenShip Team"],
+      authors: [page.data.author || "ServerDeck Team"],
     },
     twitter: {
       card: "summary_large_image",
@@ -117,11 +117,11 @@ export default async function BlogPostPage({ params }: { params: Params }) {
     datePublished: page.data.date,
     author: {
       "@type": "Person",
-      name: page.data.author || "OpenShip Team",
+      name: page.data.author || "ServerDeck Team",
     },
     publisher: {
       "@type": "Organization",
-      name: "OpenShip",
+      name: "ServerDeck",
     },
     mainEntityOfPage: {
       "@type": "WebPage",
@@ -192,7 +192,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                   {(page.data.author || "O")[0].toUpperCase()}
                 </div>
                 <div className="rp-meta-text">
-                  <span className="rp-author-name">{page.data.author || "OpenShip Team"}</span>
+                  <span className="rp-author-name">{page.data.author || "ServerDeck Team"}</span>
                   <span className="rp-meta-row">
                     {page.data.date && (
                       <time dateTime={page.data.date}>{formatDate(page.data.date, locale)}</time>
@@ -236,7 +236,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                     <div className="rp-related-foot-avatar" aria-hidden="true">
                       {(post.data.author || "O")[0].toUpperCase()}
                     </div>
-                    <span>{post.data.author || "OpenShip Team"}</span>
+                    <span>{post.data.author || "ServerDeck Team"}</span>
                     {post.data.date && (
                       <>
                         <span className="rp-related-dot" aria-hidden="true" />

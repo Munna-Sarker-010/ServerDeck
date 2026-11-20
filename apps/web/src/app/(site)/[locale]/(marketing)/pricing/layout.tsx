@@ -14,27 +14,27 @@ import {
 } from "@/lib/pricing";
 import { faq } from "./_data";
 
-const PAGE_URL = "https://openship.io/pricing";
+const PAGE_URL = "https://serverdeck.io/pricing";
 export const revalidate = 60;
 const DESCRIPTION =
-  "Compare OpenShip Cloud plans for CPU, RAM and storage. Every paid Cloud plan includes support, an uptime SLA and service credits.";
+  "Compare ServerDeck Cloud plans for CPU, RAM and storage. Every paid Cloud plan includes support, an uptime SLA and service credits.";
 const pageMetadata: Metadata = {
   title: "Pricing",
   description: DESCRIPTION,
   alternates: { canonical: "/pricing" },
   openGraph: {
-    title: "Pricing - OpenShip",
+    title: "Pricing - ServerDeck",
     description: DESCRIPTION,
     url: "/pricing",
     type: "website",
   },
-  twitter: { card: "summary_large_image", title: "Pricing - OpenShip", description: DESCRIPTION },
+  twitter: { card: "summary_large_image", title: "Pricing - ServerDeck", description: DESCRIPTION },
 };
 
 function buildLd(pricing: CloudPricing, copy: Copy) {
   const offers = pricing.tiers.map((plan) => ({
     "@type": "Offer",
-    name: `OpenShip Cloud ${plan.name}`,
+    name: `ServerDeck Cloud ${plan.name}`,
     description: cloudPlanSummary(plan, copy),
     price: priceLd(plan.price.monthly),
     priceCurrency: CURRENCY_LD,
@@ -61,9 +61,9 @@ function buildLd(pricing: CloudPricing, copy: Copy) {
     {
       "@context": "https://schema.org",
       "@type": "Product",
-      name: "OpenShip Cloud",
+      name: "ServerDeck Cloud",
       description: DESCRIPTION,
-      brand: { "@type": "Brand", name: "OpenShip" },
+      brand: { "@type": "Brand", name: "ServerDeck" },
       category: "Software / Developer Tools",
       ...(offers.length
         ? {
@@ -83,7 +83,7 @@ function buildLd(pricing: CloudPricing, copy: Copy) {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://openship.io" },
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://serverdeck.io" },
         { "@type": "ListItem", position: 2, name: "Pricing", item: PAGE_URL },
       ],
     },

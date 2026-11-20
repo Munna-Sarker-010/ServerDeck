@@ -21,23 +21,23 @@ import "./migrate.css";
 
 export const revalidate = 60;
 
-const TITLE = "Move your app to OpenShip";
+const TITLE = "Move your app to ServerDeck";
 const DESCRIPTION =
-  "Migrate from Railway, Vercel, Coolify, Dokploy or a Docker server to OpenShip. Review services and data, deploy to Cloud or your own infrastructure, then switch your domains.";
+  "Migrate from Railway, Vercel, Coolify, Dokploy or a Docker server to ServerDeck. Review services and data, deploy to Cloud or your own infrastructure, then switch your domains.";
 
 const pageMetadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/migrate" },
   openGraph: {
-    title: `${TITLE} - OpenShip`,
+    title: `${TITLE} - ServerDeck`,
     description: DESCRIPTION,
     url: "/migrate",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${TITLE} - OpenShip`,
+    title: `${TITLE} - ServerDeck`,
     description: DESCRIPTION,
   },
 };
@@ -51,7 +51,7 @@ export default async function MigratePage() {
       <Navbar />
       <main className="marketing-page">
         <MarketingIntro
-          eyebrow="Move to OpenShip"
+          eyebrow="Move to ServerDeck"
           title={
             <>
               {copy("Bring your app.")}
@@ -60,7 +60,7 @@ export default async function MigratePage() {
             </>
           }
           description={copy(
-            "Import from Railway, Vercel or an existing Docker server. Bring your repository or Compose stack. Move to OpenShip Cloud or manage your own infrastructure.",
+            "Import from Railway, Vercel or an existing Docker server. Bring your repository or Compose stack. Move to ServerDeck Cloud or manage your own infrastructure.",
           )}
         >
           <Link href="/support" className="marketing-text-link mg-intro-link">
@@ -132,7 +132,7 @@ export default async function MigratePage() {
             <div className="mg-destinations">
               <div className="mg-destination">
                 <FeatureIllustration name="deploy-anywhere" className="marketing-illustration" />
-                <h3>OpenShip Cloud</h3>
+                <h3>ServerDeck Cloud</h3>
                 <p>
                   {copy(
                     "A managed resource pool for your projects. Apps, builds, and data share your plan’s capacity.",
@@ -153,7 +153,7 @@ export default async function MigratePage() {
                 <h3>{copy("Your infrastructure")}</h3>
                 <p>
                   {copy(
-                    "Connect your servers and manage deployments, data, and domains from OpenShip.",
+                    "Connect your servers and manage deployments, data, and domains from ServerDeck.",
                   )}
                 </p>
                 <span className="mg-price">{copy("Free to self-host")}</span>
@@ -161,7 +161,7 @@ export default async function MigratePage() {
                   href="/docs/getting-started/installation"
                   className="marketing-text-link mg-destination-action"
                 >
-                  {copy("Set up OpenShip ")}
+                  {copy("Set up ServerDeck ")}
                   <ArrowRight size={16} aria-hidden="true" />
                 </Link>
               </div>
@@ -195,12 +195,12 @@ export default async function MigratePage() {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://openship.io" },
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://serverdeck.io" },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Migrate",
-                item: "https://openship.io/migrate",
+                item: "https://serverdeck.io/migrate",
               },
             ],
           }),

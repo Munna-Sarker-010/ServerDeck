@@ -35,14 +35,14 @@ export async function generateMetadata(
     description: app.description,
     alternates: { canonical: `/apps/${app.id}` },
     openGraph: {
-      title: `${app.name} — OpenShip`,
+      title: `${app.name} — ServerDeck`,
       description: app.description,
       url: `/apps/${app.id}`,
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${app.name} — OpenShip`,
+      title: `${app.name} — ServerDeck`,
       description: app.description,
     },
   };
@@ -67,7 +67,7 @@ export default async function AppPage({ params }: { params: Promise<{ id: string
     "@type": "SoftwareApplication",
     name: app.name,
     description: app.description,
-    url: `https://openship.io/apps/${app.id}`,
+    url: `https://serverdeck.io/apps/${app.id}`,
     applicationCategory: APP_CATEGORY_LABELS[app.category],
     operatingSystem: "Linux",
   };
@@ -131,10 +131,10 @@ export default async function AppPage({ params }: { params: Promise<{ id: string
               <p>
                 {app.available
                   ? copy(
-                      "The catalog template provides the service configuration so you can focus on using the app. Review its settings, choose an appropriate destination, and deploy through OpenShip.",
+                      "The catalog template provides the service configuration so you can focus on using the app. Review its settings, choose an appropriate destination, and deploy through ServerDeck.",
                     )
                   : copy(
-                      "This app is listed for discovery. Its OpenShip template is not ready to install yet.",
+                      "This app is listed for discovery. Its ServerDeck template is not ready to install yet.",
                     )}
               </p>
               {app.repository && (
@@ -210,7 +210,7 @@ export default async function AppPage({ params }: { params: Promise<{ id: string
                   ? copy(
                       "Use your Cloud plan’s capacity or deploy on your own infrastructure. Review the app’s settings before starting.",
                     )
-                  : copy("Set up and manage this app through OpenShip on your own server.")
+                  : copy("Set up and manage this app through ServerDeck on your own server.")
                 : copy(
                     "This template is being prepared. Explore the app now; installation will become available when the catalog marks it ready.",
                   )}
@@ -225,7 +225,7 @@ export default async function AppPage({ params }: { params: Promise<{ id: string
             {app.available && (
               <div className="mt-6 space-y-2">
                 <Link href={installUrl} className="marketplace-primary">
-                  {copy("Deploy with OpenShip")}
+                  {copy("Deploy with ServerDeck")}
                   <ArrowRight size={16} />
                 </Link>
               </div>
@@ -246,7 +246,7 @@ export default async function AppPage({ params }: { params: Promise<{ id: string
                 )}
                 {app.minEngine && (
                   <div>
-                    <dt>{copy("OpenShip version")}</dt>
+                    <dt>{copy("ServerDeck version")}</dt>
                     <dd>
                       {copy(app.minEngine)} {copy(" or newer")}
                     </dd>

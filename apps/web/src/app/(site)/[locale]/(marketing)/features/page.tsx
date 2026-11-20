@@ -21,21 +21,21 @@ import "./features.css";
 
 const PAGE_TITLE = "Features";
 const PAGE_DESCRIPTION =
-  "Explore OpenShip's deployment, CI, runners, apps, backups, migration, networking, monitoring, and team access features, with detailed guides and availability.";
+  "Explore ServerDeck's deployment, CI, runners, apps, backups, migration, networking, monitoring, and team access features, with detailed guides and availability.";
 
 const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   alternates: { canonical: "/features" },
   openGraph: {
-    title: `${PAGE_TITLE} — OpenShip`,
+    title: `${PAGE_TITLE} — ServerDeck`,
     description: PAGE_DESCRIPTION,
     url: "/features",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${PAGE_TITLE} — OpenShip`,
+    title: `${PAGE_TITLE} — ServerDeck`,
     description: PAGE_DESCRIPTION,
   },
 };
@@ -59,7 +59,7 @@ export default async function FeaturesPage() {
           data={{
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            name: "OpenShip",
+            name: "ServerDeck",
             url: SITE_URL,
             description: copy(PRODUCT_SUMMARY),
             applicationCategory: "DeveloperApplication",

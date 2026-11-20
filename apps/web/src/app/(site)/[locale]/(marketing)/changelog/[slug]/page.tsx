@@ -30,7 +30,7 @@ export async function generateMetadata(
   if (!entry) return { title: "Changelog" };
 
   const title = entry.displayVersion;
-  const description = entry.summary || "Features, fixes, and improvements shipping in OpenShip.";
+  const description = entry.summary || "Features, fixes, and improvements shipping in ServerDeck.";
   const url = `/changelog/${slug}`;
 
   const metadata: Metadata = {
@@ -38,17 +38,17 @@ export async function generateMetadata(
     description,
     alternates: { canonical: url },
     openGraph: {
-      title: `${title} - OpenShip`,
+      title: `${title} - ServerDeck`,
       description,
       url,
       type: "article",
-      siteName: "OpenShip",
+      siteName: "ServerDeck",
       locale: "en_US",
       publishedTime: entry.date,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} - OpenShip`,
+      title: `${title} - ServerDeck`,
       description,
     },
   };
@@ -81,7 +81,7 @@ export default async function ChangelogEntryPage({ params }: { params: Params })
             {copy(target.displayVersion)}
           </h1>
           <p className="th-text-body mt-5 text-lg leading-relaxed">
-            {target.summary || "Features, fixes, and improvements shipping in OpenShip."}
+            {target.summary || "Features, fixes, and improvements shipping in ServerDeck."}
           </p>
         </header>
 

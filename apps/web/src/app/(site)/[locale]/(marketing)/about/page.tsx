@@ -13,21 +13,21 @@ import { IllustratedLink } from "@/components/marketing/illustrated-link";
 
 const PAGE_TITLE = "About";
 const PAGE_DESCRIPTION =
-  "OpenShip is an open-source deployment platform built and maintained by the team at Oblien. Apache 2.0, source on GitHub, yours to run anywhere.";
+  "ServerDeck is an open-source deployment platform built and maintained by the team at Oblien. Apache 2.0, source on GitHub, yours to run anywhere.";
 
 const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   alternates: { canonical: "/about" },
   openGraph: {
-    title: `${PAGE_TITLE} - OpenShip`,
+    title: `${PAGE_TITLE} - ServerDeck`,
     description: PAGE_DESCRIPTION,
     url: "/about",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${PAGE_TITLE} - OpenShip`,
+    title: `${PAGE_TITLE} - ServerDeck`,
     description: PAGE_DESCRIPTION,
   },
 };
@@ -47,7 +47,7 @@ export default function AboutPage() {
       <Navbar />
       <main className="marketing-page">
         <MarketingIntro
-          eyebrow="About OpenShip"
+          eyebrow="About ServerDeck"
           title={
             <>
               {copy("Built in the open.")}
@@ -70,7 +70,7 @@ export default function AboutPage() {
                 illustration="deploy-anywhere"
                 title={copy("Choose where it runs")}
                 description={copy(
-                  "Use OpenShip Cloud or connect your own infrastructure. Manage apps, data, domains, and backups together.",
+                  "Use ServerDeck Cloud or connect your own infrastructure. Manage apps, data, domains, and backups together.",
                 )}
                 href="/features/deploy-anywhere"
               />
@@ -92,15 +92,15 @@ export default function AboutPage() {
             <div className="marketing-prose">
               <p>
                 {copy(
-                  "OpenShip is open source under the Apache License 2.0. The dashboard, CLI, and platform code are public on GitHub, so you can inspect how it works and contribute improvements.",
+                  "ServerDeck is open source under the Apache License 2.0. The dashboard, CLI, and platform code are public on GitHub, so you can inspect how it works and contribute improvements.",
                 )}
               </p>
               <p>
                 {copy(
-                  "Deployments use standard containers. Self-host the platform on your own infrastructure, or choose OpenShip Cloud when you want managed hosting.",
+                  "Deployments use standard containers. Self-host the platform on your own infrastructure, or choose ServerDeck Cloud when you want managed hosting.",
                 )}
               </p>
-              <a href="https://github.com/oblien/openship" className="marketing-text-link">
+              <a href="https://github.com/oblien/serverdeck" className="marketing-text-link">
                 {copy("Explore the source ")}
                 <ArrowRight size={16} aria-hidden="true" />
               </a>
@@ -113,10 +113,10 @@ export default function AboutPage() {
           >
             <div className="marketing-prose">
               <p>
-                {copy("OpenShip is built by ")}
+                {copy("ServerDeck is built by ")}
                 <a href="https://oblien.com">{copy("Oblien LLC")}</a>
                 {copy(
-                  ", a team working on cloud and developer infrastructure. We also operate OpenShip Cloud.",
+                  ", a team working on cloud and developer infrastructure. We also operate ServerDeck Cloud.",
                 )}
               </p>
               <p>
@@ -138,11 +138,11 @@ export default function AboutPage() {
             <div className="marketing-grid">
               <IllustratedLink
                 illustration="configuration-as-code"
-                title={copy("Contribute to OpenShip")}
+                title={copy("Contribute to ServerDeck")}
                 description={copy(
                   "Report a bug, suggest a feature, improve a guide, or send a pull request.",
                 )}
-                href="https://github.com/oblien/openship"
+                href="https://github.com/oblien/serverdeck"
               />
               <IllustratedLink
                 illustration="app-catalog"

@@ -1,9 +1,9 @@
 {
   "name": "@repo/desktop",
-  "productName": "Openship",
+  "productName": "ServerDeck",
   "version": "1.0.1",
   "private": true,
-  "description": "Openship Desktop - Electron wrapper for the deployment dashboard",
+  "description": "ServerDeck Desktop - Electron wrapper for the deployment dashboard",
   "author": "Oblien",
   "license": "Apache-2.0",
   "main": "dist/main/index.js",

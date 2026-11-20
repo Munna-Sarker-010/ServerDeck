@@ -9,21 +9,21 @@ import { getSlaSections } from "@/components/marketing/sla-terms";
 
 const PAGE_TITLE = "Terms of Service";
 const PAGE_DESCRIPTION =
-  "Terms governing OpenShip Cloud and OpenShip Business. The self-hosted platform itself is governed by the Apache 2.0 license. Plain language, no surprises.";
+  "Terms governing ServerDeck Cloud and ServerDeck Business. The self-hosted platform itself is governed by the Apache 2.0 license. Plain language, no surprises.";
 
 const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   alternates: { canonical: "/terms" },
   openGraph: {
-    title: `${PAGE_TITLE} - OpenShip`,
+    title: `${PAGE_TITLE} - ServerDeck`,
     description: PAGE_DESCRIPTION,
     url: "/terms",
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${PAGE_TITLE} - OpenShip`,
+    title: `${PAGE_TITLE} - ServerDeck`,
     description: PAGE_DESCRIPTION,
   },
 };
@@ -42,10 +42,10 @@ function getSections(copy: Copy) {
       title: copy("Agreement"),
       body: [
         copy(
-          "These terms govern your use of OpenShip Cloud (the hosted service) and OpenShip Business (managed Cloud and connected servers). The self-hosted platform itself is governed by the Apache 2.0 license that ships with the source.",
+          "These terms govern your use of ServerDeck Cloud (the hosted service) and ServerDeck Business (managed Cloud and connected servers). The self-hosted platform itself is governed by the Apache 2.0 license that ships with the source.",
         ),
         copy(
-          "By creating an account you agree to these terms. If you're using OpenShip on behalf of an organisation, you confirm you have authority to bind that organisation.",
+          "By creating an account you agree to these terms. If you're using ServerDeck on behalf of an organisation, you confirm you have authority to bind that organisation.",
         ),
       ],
     },
@@ -57,7 +57,7 @@ function getSections(copy: Copy) {
           "We provide infrastructure to build, ship, and run your applications - managed databases, mail, storage, routing, and the platform tooling around it.",
         ),
         copy(
-          "OpenShip Cloud resource pool plans cover purchased CPU, RAM and storage for the paid period. Separately priced services and retained storage after that period follow the terms shown in Billing. Existing metered subscriptions keep their saved terms. Self-hosted use is free under the Apache 2.0 license.",
+          "ServerDeck Cloud resource pool plans cover purchased CPU, RAM and storage for the paid period. Separately priced services and retained storage after that period follow the terms shown in Billing. Existing metered subscriptions keep their saved terms. Self-hosted use is free under the Apache 2.0 license.",
         ),
         copy(
           "We may improve the service, fix bugs, or evolve features at any time. Material breaking changes get at least 30 days' notice.",
@@ -108,7 +108,7 @@ function getSections(copy: Copy) {
       title: copy("Billing"),
       body: [
         copy(
-          "OpenShip Cloud prices are published on our pricing page. Subscriptions are billed in advance on the monthly or annual interval you select. You can cancel renewal at any time and retain access through the paid period. Self-hosted use is free.",
+          "ServerDeck Cloud prices are published on our pricing page. Subscriptions are billed in advance on the monthly or annual interval you select. You can cancel renewal at any time and retain access through the paid period. Self-hosted use is free.",
         ),
         copy(
           "We accept major cards via Stripe. Price changes to a plan you are on are announced at least 30 days in advance and apply from your next billing period. A failed payment triggers retries and email notice before any suspension.",
@@ -121,7 +121,7 @@ function getSections(copy: Copy) {
       title: copy("Data portability"),
       body: [
         copy(
-          "Every deployment on OpenShip is a plain container image and standard manifests. You can leave any day and re-run on your own infrastructure without rewriting code.",
+          "Every deployment on ServerDeck is a plain container image and standard manifests. You can leave any day and re-run on your own infrastructure without rewriting code.",
         ),
         copy(
           "On request we provide a full export of your databases, secrets, and configuration in standard formats. We do not charge for exports.",
@@ -206,7 +206,7 @@ export default function TermsPage() {
               <time dateTime="2026-11-10">{copy("November 10, 2026")}</time>
               <span className="legal-meta-sep">·</span>
               <a
-                href="https://github.com/oblien/openship/commits/main/apps/web/src/app/(site)/[locale]/(marketing)/terms/page.tsx"
+                href="https://github.com/oblien/serverdeck/commits/main/apps/web/src/app/(site)/[locale]/(marketing)/terms/page.tsx"
                 className="legal-meta-link"
                 target="_blank"
                 rel="noreferrer"
@@ -252,7 +252,7 @@ export default function TermsPage() {
                 <footer className="legal-foot">
                   <p>
                     {copy("Questions? Email ")}
-                    <a href="mailto:legal@openship.io">{copy("legal@openship.io")}</a>.
+                    <a href="mailto:legal@serverdeck.io">{copy("legal@serverdeck.io")}</a>.
                   </p>
                 </footer>
               </article>

@@ -27,7 +27,7 @@ import { AppCatalog } from "@/components/apps/AppCatalog";
 type Tab = "folder" | "repositories" | "url" | "server" | "apps";
 
 /** One-time gh-CLI repo-read consent flag (per browser — desktop is single-user). */
-const GH_CLI_CONSENT_KEY = "openship.gh-cli-consent";
+const GH_CLI_CONSENT_KEY = "serverdeck.gh-cli-consent";
 
 interface TabItem {
   key: Tab;

@@ -27,17 +27,13 @@ export function OpenSource() {
             <div className="os-cta-row">
               <a
                 className="os-btn os-btn--primary"
-                href="https://github.com/oblien/openship"
-                target="_blank"
-                rel="noreferrer"
+                href="#"
               >
                 {copy("Star on GitHub")}
               </a>
               <a
                 className="os-btn os-btn--ghost"
-                href="https://github.com/oblien/openship"
-                target="_blank"
-                rel="noreferrer"
+                href="#"
               >
                 {copy("Read the source")}
               </a>

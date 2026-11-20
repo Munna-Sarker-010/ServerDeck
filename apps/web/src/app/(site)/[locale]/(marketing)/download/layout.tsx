@@ -5,16 +5,16 @@ import type { ReactNode } from "react";
 
 const TITLE = "Download";
 const DESCRIPTION =
-  "Install OpenShip on macOS, Windows, Linux, or grab the CLI. Native desktop app and command-line - same backend, same deploys, your choice of surface.";
+  "Install ServerDeck on macOS, Windows, Linux, or grab the CLI. Native desktop app and command-line - same backend, same deploys, your choice of surface.";
 
 const pageMetadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/download" },
   keywords: [
-    "openship download",
-    "openship CLI",
-    "openship desktop",
+    "serverdeck download",
+    "serverdeck CLI",
+    "serverdeck desktop",
     "deploy CLI",
     "macOS deploy tool",
     "Windows deploy tool",
@@ -22,16 +22,16 @@ const pageMetadata: Metadata = {
     "self host CLI",
   ],
   openGraph: {
-    title: `${TITLE} - OpenShip`,
+    title: `${TITLE} - ServerDeck`,
     description: DESCRIPTION,
     url: "/download",
     type: "website",
-    siteName: "OpenShip",
+    siteName: "ServerDeck",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${TITLE} - OpenShip`,
+    title: `${TITLE} - ServerDeck`,
     description: DESCRIPTION,
   },
 };
@@ -39,12 +39,12 @@ const pageMetadata: Metadata = {
 const softwareLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "OpenShip",
+  name: "ServerDeck",
   applicationCategory: "DeveloperApplication",
   applicationSubCategory: "Deployment Platform",
   operatingSystem: "macOS, Windows, Linux",
-  url: "https://openship.io/download",
-  downloadUrl: "https://openship.io/download",
+  url: "https://serverdeck.io/download",
+  downloadUrl: "https://serverdeck.io/download",
   softwareVersion: "latest",
   offers: {
     "@type": "Offer",
@@ -53,8 +53,8 @@ const softwareLd = {
   },
   publisher: {
     "@type": "Organization",
-    name: "OpenShip",
-    url: "https://openship.io",
+    name: "ServerDeck",
+    url: "https://serverdeck.io",
   },
   description: DESCRIPTION,
   license: "https://www.apache.org/licenses/LICENSE-2.0",
@@ -64,8 +64,8 @@ const breadcrumbLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://openship.io" },
-    { "@type": "ListItem", position: 2, name: "Download", item: "https://openship.io/download" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://serverdeck.io" },
+    { "@type": "ListItem", position: 2, name: "Download", item: "https://serverdeck.io/download" },
   ],
 };
 

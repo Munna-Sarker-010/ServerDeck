@@ -6,10 +6,10 @@ import { getTranslations } from "next-intl/server";
 import { routing, localizedHref } from "@/i18n/routing";
 import "../../globals.css";
 
-const SITE_URL = "https://openship.io";
-const SITE_NAME = "OpenShip";
-const TITLE_DEFAULT = "OpenShip - Open Source, Self-Hostable Deployment Platform";
-const TITLE_TEMPLATE = "%s - OpenShip";
+const SITE_URL = "https://serverdeck.io";
+const SITE_NAME = "ServerDeck";
+const TITLE_DEFAULT = "ServerDeck - Open Source, Self-Hostable Deployment Platform";
+const TITLE_TEMPLATE = "%s - ServerDeck";
 const DESCRIPTION =
   "Deploy anything, own everything. Self-hostable, AI-powered deployment platform with free SSL, unlimited domains, instant rollbacks, and CLI/MCP support. Open source and free to self-host, forever.";
 
@@ -76,11 +76,11 @@ const baseMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "OpenShip - Deploy Anything. Own Everything.",
+    title: "ServerDeck - Deploy Anything. Own Everything.",
     description:
       "Open source, self-hostable deployment platform with AI-powered builds and instant rollbacks.",
-    creator: "@openship",
-    site: "@openship",
+    creator: "@serverdeck",
+    site: "@serverdeck",
   },
   robots: {
     index: true,
@@ -96,7 +96,7 @@ const baseMetadata: Metadata = {
   alternates: {
     canonical: "/",
     types: {
-      "application/rss+xml": [{ url: "/blog/rss.xml", title: "OpenShip Blog" }],
+      "application/rss+xml": [{ url: "/blog/rss.xml", title: "ServerDeck Blog" }],
     },
   },
   // verification: {
@@ -131,7 +131,7 @@ const organizationLd = {
   description: DESCRIPTION,
   foundingDate: "2024",
   sameAs: [
-    "https://github.com/oblien/openship",
+    "https://github.com/oblien/serverdeck",
     "https://x.com/openshipio",
     "https://discord.gg/Q9eWNCeXjg",
   ],
@@ -139,7 +139,7 @@ const organizationLd = {
     {
       "@type": "ContactPoint",
       contactType: "customer support",
-      email: "hello@openship.io",
+      email: "hello@serverdeck.io",
       availableLanguage: ["English"],
     },
   ],

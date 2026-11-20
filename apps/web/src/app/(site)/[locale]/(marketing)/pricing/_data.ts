@@ -13,7 +13,7 @@ export function faq(pricing: CloudPricing, copy: Copy): FaqItem[] {
 
   return [
     {
-      q: copy("How much does OpenShip Cloud cost?"),
+      q: copy("How much does ServerDeck Cloud cost?"),
       a: [
         ladder
           ? copy("Plans are {value0}, {value1}.", {
@@ -45,7 +45,7 @@ export function faq(pricing: CloudPricing, copy: Copy): FaqItem[] {
       a: [
         cloudSlaPlanSummary(copy),
         copy(
-          "Every paid Cloud Space includes support and service credits under the Cloud SLA, with monthly or annual billing. The SLA covers OpenShip-managed infrastructure.",
+          "Every paid Cloud Space includes support and service credits under the Cloud SLA, with monthly or annual billing. The SLA covers ServerDeck-managed infrastructure.",
         ),
       ].join(" "),
     },
@@ -81,7 +81,7 @@ export function faq(pricing: CloudPricing, copy: Copy): FaqItem[] {
             },
           )
         : copy(
-            "Choose Server management to see the current plans for managing your own infrastructure through OpenShip Cloud.",
+            "Choose Server management to see the current plans for managing your own infrastructure through ServerDeck Cloud.",
           ),
     },
     {
@@ -93,19 +93,19 @@ export function faq(pricing: CloudPricing, copy: Copy): FaqItem[] {
     {
       q: copy("What happens if I cancel Manage?"),
       a: copy(
-        "Management remains available through your paid period. Your apps, databases and files keep running on your servers. Once the allowance ends, OpenShip Cloud stops managing those servers; it does not delete or stop them. You can manage them directly or subscribe again.",
+        "Management remains available through your paid period. Your apps, databases and files keep running on your servers. Once the allowance ends, ServerDeck Cloud stops managing those servers; it does not delete or stop them. You can manage them directly or subscribe again.",
       ),
     },
     {
       q: copy("Is self-hosting really free?"),
       a: copy(
-        "Yes. Run the full OpenShip platform on your own servers, free under Apache 2.0, with no OpenShip subscription or per-seat fees. You pay your infrastructure provider directly.",
+        "Yes. Run the full ServerDeck platform on your own servers, free under Apache 2.0, with no ServerDeck subscription or per-seat fees. You pay your infrastructure provider directly.",
       ),
     },
     {
       q: copy("Can I move between Cloud and my own servers?"),
       a: copy(
-        "Yes. OpenShip uses standard containers and supports migration between Cloud and your own infrastructure. Your apps are portable, so you can choose where they run as your needs change.",
+        "Yes. ServerDeck uses standard containers and supports migration between Cloud and your own infrastructure. Your apps are portable, so you can choose where they run as your needs change.",
       ),
     },
   ];

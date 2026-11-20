@@ -8,21 +8,21 @@ import { ContactPage as ContactPageLayout } from "@/components/marketing/contact
 
 const PAGE_TITLE = "Contact Us";
 const PAGE_DESCRIPTION =
-  "Get in touch with the OpenShip team. Send us a message and we'll get back to you as soon as possible.";
+  "Get in touch with the ServerDeck team. Send us a message and we'll get back to you as soon as possible.";
 
 const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: `${PAGE_TITLE} - OpenShip`,
+    title: `${PAGE_TITLE} - ServerDeck`,
     description: PAGE_DESCRIPTION,
     url: "/contact",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${PAGE_TITLE} - OpenShip`,
+    title: `${PAGE_TITLE} - ServerDeck`,
     description: PAGE_DESCRIPTION,
   },
 };
@@ -48,7 +48,7 @@ export default function ContactPage() {
         </>
       }
       description={copy(
-        "Questions about OpenShip, your next project, or working together? Send a message to the team. We’ll reply by email.",
+        "Questions about ServerDeck, your next project, or working together? Send a message to the team. We’ll reply by email.",
       )}
       links={[
         {
@@ -67,7 +67,7 @@ export default function ContactPage() {
           illustration: "configuration-as-code",
           title: "Report a bug or share an idea",
           description: "Follow development and contribute on GitHub.",
-          href: "https://github.com/oblien/openship/issues",
+          href: "https://github.com/oblien/serverdeck/issues",
         },
       ]}
     >
@@ -75,8 +75,8 @@ export default function ContactPage() {
         <p>{copy("For sensitive reports, contact the right team directly.")}</p>
         <div>
           <a href="mailto:security@oblien.com">{copy("Security")}</a>
-          <a href="mailto:privacy@openship.io">{copy("Privacy")}</a>
-          <a href="mailto:legal@openship.io">{copy("Legal")}</a>
+          <a href="mailto:privacy@serverdeck.io">{copy("Privacy")}</a>
+          <a href="mailto:legal@serverdeck.io">{copy("Legal")}</a>
           <Link href="/trust">{copy("Trust & security")}</Link>
         </div>
       </div>

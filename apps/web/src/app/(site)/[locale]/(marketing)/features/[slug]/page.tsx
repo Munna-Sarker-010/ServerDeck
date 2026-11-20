@@ -32,21 +32,21 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { slug } = await params;
   const f = getFeature(slug);
-  if (!f) return localizedMetadata(await { title: "Feature — OpenShip" });
+  if (!f) return localizedMetadata(await { title: "Feature — ServerDeck" });
   const title = `${f.title} — Features`;
   const metadata: Metadata = {
     title,
     description: f.summary,
     alternates: { canonical: `/features/${f.slug}` },
     openGraph: {
-      title: `${f.title} — OpenShip`,
+      title: `${f.title} — ServerDeck`,
       description: f.summary,
       url: `/features/${f.slug}`,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${f.title} — OpenShip`,
+      title: `${f.title} — ServerDeck`,
       description: f.summary,
     },
   };
@@ -121,7 +121,7 @@ export default async function FeatureDetailPage({ params }: { params: Params }) 
             {feature.screenshot && (
               <FeatureShot
                 src={feature.screenshot}
-                alt={copy("{value0} in OpenShip", { value0: String(feature.title) })}
+                alt={copy("{value0} in ServerDeck", { value0: String(feature.title) })}
                 priority
               />
             )}

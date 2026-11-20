@@ -13,9 +13,9 @@ import {
 } from "@/components/marketing/illustrated-link";
 
 const pageMetadata = {
-  title: "Trust & Security – OpenShip",
+  title: "Trust & Security – ServerDeck",
   description:
-    "How OpenShip handles your data, permissions, and the boundary between self-hosted instances and OpenShip Cloud.",
+    "How ServerDeck handles your data, permissions, and the boundary between self-hosted instances and ServerDeck Cloud.",
   alternates: { canonical: "/trust" },
 } satisfies Metadata;
 
@@ -51,16 +51,16 @@ const PILLARS: IllustratedLinkProps[] = [
   {
     title: "Your hosting choice",
     description:
-      "Run OpenShip on your own infrastructure or use Cloud. Choose the operating model that meets your requirements.",
+      "Run ServerDeck on your own infrastructure or use Cloud. Choose the operating model that meets your requirements.",
     illustration: "server-management",
     href: "/docs/architecture/overview",
   },
   {
     title: "Open for review",
     description:
-      "Inspect the platform’s code, permissions, and Cloud gateway. OpenShip is open source under Apache 2.0.",
+      "Inspect the platform’s code, permissions, and Cloud gateway. ServerDeck is open source under Apache 2.0.",
     illustration: "configuration-as-code",
-    href: "https://github.com/oblien/openship",
+    href: "https://github.com/oblien/serverdeck",
   },
 ];
 
@@ -110,7 +110,7 @@ export default function TrustPage() {
                 )}
               </p>
               <p>
-                {copy("Evaluating OpenShip for your organization? ")}
+                {copy("Evaluating ServerDeck for your organization? ")}
                 <Link href="/contact">{copy("Contact us")}</Link>{" "}
                 {copy(
                   " with your security or compliance requirements. Review the linked documentation for implementation details.",
@@ -131,7 +131,7 @@ export async function generateMetadata(_: unknown, parent: ResolvingMetadata) {
     await inheritSocialImages(
       {
         ...pageMetadata,
-        openGraph: { title, description, type: "website", siteName: "OpenShip" },
+        openGraph: { title, description, type: "website", siteName: "ServerDeck" },
         twitter: { card: "summary_large_image", title, description },
       },
       parent,

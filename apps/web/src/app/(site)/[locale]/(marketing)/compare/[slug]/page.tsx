@@ -33,11 +33,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = getComparison((await params).slug);
   if (!item) notFound();
   const copy = await getCopy();
-  const title = copy("OpenShip vs {name}: comparison and migration", {
+  const title = copy("ServerDeck vs {name}: comparison and migration", {
     name: comparisonName(item, copy),
   });
   const description = copy(
-    "OpenShip vs {name}. {summary} Compare capabilities and plan your migration.",
+    "ServerDeck vs {name}. {summary} Compare capabilities and plan your migration.",
     { name: comparisonName(item, copy), summary: copy(item.summary) },
   );
   const url = `/compare/${item.slug}`;
@@ -56,7 +56,7 @@ export default async function ComparisonPage({ params }: Props) {
   const copy = await getCopy();
   const locale = (await getLocale()) as AppLocale;
   const name = comparisonName(item, copy);
-  const heading = copy("OpenShip vs {name}", { name });
+  const heading = copy("ServerDeck vs {name}", { name });
   const related = COMPARISONS.filter(
     (other) => other.slug !== item.slug && other.group === item.group,
   ).slice(0, 3);
@@ -91,7 +91,7 @@ export default async function ComparisonPage({ params }: Props) {
               {copy("All comparisons")}
             </Link>
           }
-          title={copy.rich("OpenShip vs <provider>{name}</provider>", {
+          title={copy.rich("ServerDeck vs <provider>{name}</provider>", {
             name,
             provider: (chunks) => <bdi>{chunks}</bdi>,
           })}
@@ -99,7 +99,7 @@ export default async function ComparisonPage({ params }: Props) {
         >
           <div className="compare-actions">
             <Link href={item.migration.href} className="th-btn compare-button">
-              {copy("Migrate to OpenShip")}
+              {copy("Migrate to ServerDeck")}
               <ArrowRight size={16} aria-hidden="true" />
             </Link>
             <Link href="/pricing" className="marketing-text-link">
@@ -109,8 +109,8 @@ export default async function ComparisonPage({ params }: Props) {
         </MarketingIntro>
         <div className="site-container marketing-content">
           <MarketingSection
-            id="openship-fit"
-            title={copy("Why choose OpenShip")}
+            id="serverdeck-fit"
+            title={copy("Why choose ServerDeck")}
             description={copy(item.reason)}
           >
             <ProductAdvantages items={item.advantages} />
@@ -127,7 +127,7 @@ export default async function ComparisonPage({ params }: Props) {
                   <tr>
                     <th scope="col">{copy("What matters")}</th>
                     <th scope="col">
-                      <bdi>OpenShip</bdi>
+                      <bdi>ServerDeck</bdi>
                     </th>
                     <th scope="col">
                       <bdi>{name}</bdi>
@@ -140,7 +140,7 @@ export default async function ComparisonPage({ params }: Props) {
                       <th scope="row">{copy(row.label)}</th>
                       <td>
                         <span className="compare-mobile-label" aria-hidden="true">
-                          <bdi>OpenShip</bdi>
+                          <bdi>ServerDeck</bdi>
                         </span>
                         {copy(row.ours)}
                       </td>
@@ -159,7 +159,7 @@ export default async function ComparisonPage({ params }: Props) {
               {copy(
                 "Compare total cost using your actual workload, including compute, storage, transfer and operations. Plan limits and provider pricing can change.",
               )}{" "}
-              <Link href="/pricing">{copy("OpenShip pricing")}</Link>
+              <Link href="/pricing">{copy("ServerDeck pricing")}</Link>
             </p>
           </MarketingSection>
           <ControlPlaneModes />
@@ -198,7 +198,7 @@ export default async function ComparisonPage({ params }: Props) {
             <div className="compare-sources">
               <p>
                 {copy(
-                  "Published by OpenShip. Provider capabilities are based on the official documentation linked below; recommendations reflect the workflows described here.",
+                  "Published by ServerDeck. Provider capabilities are based on the official documentation linked below; recommendations reflect the workflows described here.",
                 )}
               </p>
               <p>
@@ -220,7 +220,7 @@ export default async function ComparisonPage({ params }: Props) {
                 ))}
                 <li>
                   <Link href="/docs">
-                    {copy("OpenShip documentation")}
+                    {copy("ServerDeck documentation")}
                     <ArrowRight size={14} aria-hidden="true" />
                   </Link>
                 </li>

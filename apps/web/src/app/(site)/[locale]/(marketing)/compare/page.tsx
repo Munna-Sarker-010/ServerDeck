@@ -17,9 +17,9 @@ import { COMPARISONS, COMPARISON_GROUPS, comparisonName } from "@/lib/comparison
 import { SITE_URL } from "@/lib/sitemap-builder";
 import { inheritSocialImages } from "@/lib/social-metadata";
 
-const title = "Compare OpenShip with other deployment platforms";
+const title = "Compare ServerDeck with other deployment platforms";
 const description =
-  "Compare OpenShip with Vercel, Railway, Coolify and more. Explore hosting models, tradeoffs and migration guides for your next deployment platform.";
+  "Compare ServerDeck with Vercel, Railway, Coolify and more. Explore hosting models, tradeoffs and migration guides for your next deployment platform.";
 
 export async function generateMetadata(
   _props: unknown,
@@ -56,7 +56,7 @@ export default async function ComparePage() {
             ).map((item, index) => ({
               "@type": "ListItem",
               position: index + 1,
-              name: copy("OpenShip vs {name}", { name: comparisonName(item, copy) }),
+              name: copy("ServerDeck vs {name}", { name: comparisonName(item, copy) }),
               url: SITE_URL + localizedHref(`/compare/${item.slug}`, locale),
             })),
           }}
@@ -71,7 +71,7 @@ export default async function ComparePage() {
             </>
           }
           description={copy(
-            "Own your infrastructure without assembling an entire platform. OpenShip brings deployments, data, mail and automation together. See where that makes a difference for your stack.",
+            "Own your infrastructure without assembling an entire platform. ServerDeck brings deployments, data, mail and automation together. See where that makes a difference for your stack.",
           )}
         >
           <Link href="/migrate" className="marketing-text-link compare-intro-link">
@@ -86,8 +86,8 @@ export default async function ComparePage() {
         </div>
         <div className="site-container marketing-content">
           <MarketingSection
-            id="openship-advantages"
-            title="Why teams move to OpenShip"
+            id="serverdeck-advantages"
+            title="Why teams move to ServerDeck"
             description="More of your stack, under your control."
           >
             <ProductAdvantages items={["control", "orchestration", "automation"]} />

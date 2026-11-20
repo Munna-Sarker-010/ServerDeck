@@ -40,7 +40,7 @@ export function Dashboard() {
           <div className="dashboard-stack__center">
             <img
               src={localizedScreenshot("/screen.png", locale)}
-              alt={copy("OpenShip dashboard")}
+              alt={copy("ServerDeck dashboard")}
               loading="lazy"
               decoding="async"
               {...DEPLOY_SCREEN_SIZE}

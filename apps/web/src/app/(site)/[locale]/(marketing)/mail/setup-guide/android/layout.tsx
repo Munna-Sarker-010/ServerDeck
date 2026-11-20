@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 
 const TITLE = "Android Mail Setup";
 const DESCRIPTION =
-  "Add your OpenShip mailbox to the Gmail app on Android as a third-party IMAP account. Works on Android 12–15 across OEM skins.";
+  "Add your ServerDeck mailbox to the Gmail app on Android as a third-party IMAP account. Works on Android 12–15 across OEM skins.";
 const PATH = "/mail/setup-guide/android";
 
 const metadata: Metadata = {
@@ -14,14 +14,14 @@ const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical: PATH },
   openGraph: {
-    title: `${TITLE} - OpenShip`,
+    title: `${TITLE} - ServerDeck`,
     description: DESCRIPTION,
     url: PATH,
     type: "article",
-    siteName: "OpenShip",
+    siteName: "ServerDeck",
     locale: "en_US",
   },
-  twitter: { card: "summary_large_image", title: `${TITLE} - OpenShip`, description: DESCRIPTION },
+  twitter: { card: "summary_large_image", title: `${TITLE} - ServerDeck`, description: DESCRIPTION },
 };
 
 export async function generateMetadata(

@@ -8,21 +8,21 @@ import { Navbar, Footer } from "@/components/landing";
 
 const PAGE_TITLE = "Privacy Policy";
 const PAGE_DESCRIPTION =
-  "How OpenShip handles your data. What we collect, why, where it lives, how to remove it. We do not sell personal data and we do not show ads.";
+  "How ServerDeck handles your data. What we collect, why, where it lives, how to remove it. We do not sell personal data and we do not show ads.";
 
 const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   alternates: { canonical: "/privacy" },
   openGraph: {
-    title: `${PAGE_TITLE} - OpenShip`,
+    title: `${PAGE_TITLE} - ServerDeck`,
     description: PAGE_DESCRIPTION,
     url: "/privacy",
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${PAGE_TITLE} - OpenShip`,
+    title: `${PAGE_TITLE} - ServerDeck`,
     description: PAGE_DESCRIPTION,
   },
 };
@@ -41,7 +41,7 @@ function getSections(copy: Copy) {
       title: copy("Overview"),
       body: [
         copy(
-          "OpenShip is a deployment platform. We host code, secrets, and infrastructure on your behalf when you use OpenShip Cloud. When you self-host, everything stays on your own machines and this policy applies only to the parts of our service you interact with (account, billing, support).",
+          "ServerDeck is a deployment platform. We host code, secrets, and infrastructure on your behalf when you use ServerDeck Cloud. When you self-host, everything stays on your own machines and this policy applies only to the parts of our service you interact with (account, billing, support).",
         ),
         copy(
           "This policy describes what we collect, why, where it lives, and how to remove it. We do not sell personal data. We do not show ads.",
@@ -93,7 +93,7 @@ function getSections(copy: Copy) {
       title: copy("Customer-approved support reviews"),
       body: [
         copy(
-          "OpenShip staff do not browse your private source code, database contents, application files, or secret values as part of support. Your content remains yours.",
+          "ServerDeck staff do not browse your private source code, database contents, application files, or secret values as part of support. Your content remains yours.",
         ),
         copy(
           "Our support team reviews relevant technical metadata and sanitized failure diagnostics only when you request troubleshooting help or approve a review. This can include deployment status, resource usage, infrastructure settings, and the cause of a failed deployment. A review is limited to the technical issue you ask us to investigate.",
@@ -143,7 +143,7 @@ function getSections(copy: Copy) {
           "Portability - every deployment is a plain container image and a standard manifest. You can leave Cloud and re-run on your own servers without rewriting anything.",
         ),
         copy(
-          "Contact privacy@openship.io for any of the above. We respond within 5 business days.",
+          "Contact privacy@serverdeck.io for any of the above. We respond within 5 business days.",
         ),
       ],
     },
@@ -180,7 +180,7 @@ export default function PrivacyPage() {
               <time dateTime="2026-11-10">{copy("November 10, 2026")}</time>
               <span className="legal-meta-sep">·</span>
               <a
-                href="https://github.com/oblien/openship/commits/main/apps/web/src/app/(site)/(marketing)/privacy/page.tsx"
+                href="https://github.com/oblien/serverdeck/commits/main/apps/web/src/app/(site)/(marketing)/privacy/page.tsx"
                 className="legal-meta-link"
                 target="_blank"
                 rel="noreferrer"
@@ -228,7 +228,7 @@ export default function PrivacyPage() {
                 <footer className="legal-foot">
                   <p>
                     {copy("Questions or requests? Email")}{" "}
-                    <a href="mailto:privacy@openship.io">{copy("privacy@openship.io")}</a>.
+                    <a href="mailto:privacy@serverdeck.io">{copy("privacy@serverdeck.io")}</a>.
                   </p>
                 </footer>
               </article>

@@ -7,7 +7,7 @@ import HomeContent from "./_components/home/HomeContent";
 
 const TITLE = "Mail — Your email control panel";
 const DESCRIPTION =
-  "Manage domains, mailboxes, aliases, delivery, and backups on your own mail server with OpenShip. Connect existing mailboxes through webmail on Cloud.";
+  "Manage domains, mailboxes, aliases, delivery, and backups on your own mail server with ServerDeck. Connect existing mailboxes through webmail on Cloud.";
 
 const metadata: Metadata = {
   title: "Mail",
@@ -48,15 +48,15 @@ export async function generateMetadata(
 const serviceLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "OpenShip Mail",
+  name: "ServerDeck Mail",
   serviceType: "Email Hosting",
   provider: {
     "@type": "Organization",
-    name: "OpenShip",
-    url: "https://openship.io",
+    name: "ServerDeck",
+    url: "https://serverdeck.io",
   },
   description: DESCRIPTION,
-  url: "https://openship.io/mail",
+  url: "https://serverdeck.io/mail",
   areaServed: "Worldwide",
   audience: {
     "@type": "Audience",
@@ -68,8 +68,8 @@ const breadcrumbLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://openship.io" },
-    { "@type": "ListItem", position: 2, name: "Mail", item: "https://openship.io/mail" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://serverdeck.io" },
+    { "@type": "ListItem", position: 2, name: "Mail", item: "https://serverdeck.io/mail" },
   ],
 };
 

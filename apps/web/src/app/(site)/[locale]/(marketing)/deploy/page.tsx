@@ -6,20 +6,20 @@ import { localizedMetadata } from "@/i18n/metadata";
 import { inheritSocialImages } from "@/lib/social-metadata";
 
 const metadata: Metadata = {
-  title: "Deploy with OpenShip",
+  title: "Deploy with ServerDeck",
   description:
-    "Deploy an app on OpenShip Cloud or your own server. Choose your destination and review the configuration before deploying.",
+    "Deploy an app on ServerDeck Cloud or your own server. Choose your destination and review the configuration before deploying.",
   alternates: { canonical: "/deploy" },
   robots: { index: false, follow: true },
   openGraph: {
-    title: "Deploy with OpenShip",
-    description: "Deploy on OpenShip Cloud or your own server.",
+    title: "Deploy with ServerDeck",
+    description: "Deploy on ServerDeck Cloud or your own server.",
     url: "/deploy",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Deploy with OpenShip",
-    description: "Deploy on OpenShip Cloud or your own server.",
+    title: "Deploy with ServerDeck",
+    description: "Deploy on ServerDeck Cloud or your own server.",
   },
 };
 

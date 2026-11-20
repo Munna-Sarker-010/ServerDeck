@@ -13,7 +13,7 @@ function models(from: string | null, copy: Copy) {
     {
       n: "01",
       tag: copy("Managed"),
-      title: copy("OpenShip Cloud"),
+      title: copy("ServerDeck Cloud"),
       lead: copy(
         "A shared CPU, RAM and storage pool for your projects. Deploy apps, databases, and workers within your plan’s capacity.",
       ),
@@ -135,7 +135,7 @@ export async function DeploymentModels() {
           </div>
           <p className="dm-migrate-body">
             {copy(
-              "Your apps are plain containers and your services are standard images. Move workloads between OpenShip Cloud and your own servers without rebuilding, rewriting, or paying an exit tax. Click, confirm, done.",
+              "Your apps are plain containers and your services are standard images. Move workloads between ServerDeck Cloud and your own servers without rebuilding, rewriting, or paying an exit tax. Click, confirm, done.",
             )}
           </p>
         </div>

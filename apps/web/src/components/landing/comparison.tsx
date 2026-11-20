@@ -38,7 +38,7 @@ const GROUPS: Group[] = [
       {
         feature: "Who runs your workload",
         openship: {
-          text: "OpenShip Cloud runs it, or self-host free on machines you own. One tool, one dashboard, and you can move either direction later.",
+          text: "ServerDeck Cloud runs it, or self-host free on machines you own. One tool, one dashboard, and you can move either direction later.",
           status: "win",
         },
         managed: {
@@ -219,9 +219,9 @@ const GROUPS: Group[] = [
         },
       },
       {
-        feature: "Leaving OpenShip",
+        feature: "Leaving ServerDeck",
         openship: {
-          text: "On your own servers, removing a project deletes our record and nothing else. Containers, data and config keep serving traffic, and OpenShip can pick them back up later.",
+          text: "On your own servers, removing a project deletes our record and nothing else. Containers, data and config keep serving traffic, and ServerDeck can pick them back up later.",
           status: "win",
         },
         managed: {
@@ -300,7 +300,7 @@ export function Comparison() {
           <div>
             <p className="cmp-eyebrow">{copy("Straight comparison")}</p>
             <h2 id="comparison-title" className="cmp-title">
-              {copy("Where OpenShip is")}
+              {copy("Where ServerDeck is")}
               <br />
               <span>{copy("genuinely different.")}</span>
             </h2>
@@ -317,7 +317,7 @@ export function Comparison() {
           <div className="cmp-row cmp-row--head" role="row">
             <div className="cmp-cell cmp-cell--feature" role="columnheader">{copy("Feature")}</div>
             <div className="cmp-cell cmp-cell--win" role="columnheader">
-              <span className="cmp-brand"><span className="cmp-brand-mark" aria-hidden="true" />OpenShip</span>
+              <span className="cmp-brand"><span className="cmp-brand-mark" aria-hidden="true" />ServerDeck</span>
             </div>
             <div className="cmp-cell" role="columnheader">
               {copy("Managed")}
@@ -346,7 +346,7 @@ export function Comparison() {
                 <div key={r.feature} className="cmp-row" role="row">
                   <div className="cmp-cell cmp-cell--feature" role="rowheader">{copy(r.feature)}</div>
                   <ComparisonValue
-                    label="OpenShip"
+                    label="ServerDeck"
                     status={r.openship.status}
                     text={copy(r.openship.text)}
                     highlighted
@@ -369,7 +369,7 @@ export function Comparison() {
 
         <p className="cmp-foot">
           {copy(
-            "Compared against the shipping versions of each tool, July 2026. A dash means that tool genuinely matches OpenShip, or that the row does not apply to it. We would rather score a row even than invent a cross.",
+            "Compared against the shipping versions of each tool, July 2026. A dash means that tool genuinely matches ServerDeck, or that the row does not apply to it. We would rather score a row even than invent a cross.",
           )}
         </p>
       </div>

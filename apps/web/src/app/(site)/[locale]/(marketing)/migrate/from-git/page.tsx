@@ -11,7 +11,7 @@ import { MigrationSteps } from "../_components/migration-steps";
 import { STEPS } from "../_data";
 import "../migrate.css";
 
-const title = "Migrate your repository and data to OpenShip";
+const title = "Migrate your repository and data to ServerDeck";
 const description =
   "Move an application from another hosting platform using its Git repository, container image or Compose file. Plan configuration, data transfer and domain cutover.";
 
@@ -58,7 +58,7 @@ export default async function RepositoryMigrationPage() {
             <div className="marketing-prose">
               <p>
                 {copy(
-                  "Record each service's source, build and start commands, port, environment variables and domains. Recreate these in an OpenShip project, or describe multiple services in Compose. Transfer secrets through the project settings, not your repository.",
+                  "Record each service's source, build and start commands, port, environment variables and domains. Recreate these in an ServerDeck project, or describe multiple services in Compose. Transfer secrets through the project settings, not your repository.",
                 )}
               </p>
               <p>
