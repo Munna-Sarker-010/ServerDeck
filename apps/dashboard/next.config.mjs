@@ -14,6 +14,7 @@ const API_PROXY = process.env.NEXT_PUBLIC_API_PROXY === "true";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  devIndicators: false,
   output: "standalone",
   distDir: process.env.NEXT_DIST_DIR || ".next",
   // Monorepo: trace from the repo root so the standalone bundle includes the

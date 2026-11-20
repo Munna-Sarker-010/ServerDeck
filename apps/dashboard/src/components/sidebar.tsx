@@ -597,19 +597,21 @@ export function Sidebar({ mobileOpen = false, onCloseMobile }: { mobileOpen?: bo
                       )}
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    onClick={handleLogout}
-                    disabled={loggingOut}
-                    className="mt-1 flex w-full items-center gap-2 rounded-xl px-2 py-2 text-[13px] font-medium text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground disabled:opacity-50"
-                  >
-                    {loggingOut ? (
-                      <UiIcon name="spinner" className="size-4 animate-spin" />
-                    ) : (
-                      <UiIcon name="logout" className="size-4" />
-                    )}
-                    {isDesktop ? t.chrome.sidebar.backToSetup : t.dashboard.user.logout}
-                  </button>
+                  {!isDesktop && (
+                    <button
+                      type="button"
+                      onClick={handleLogout}
+                      disabled={loggingOut}
+                      className="mt-1 flex w-full items-center gap-2 rounded-xl px-2 py-2 text-[13px] font-medium text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground disabled:opacity-50"
+                    >
+                      {loggingOut ? (
+                        <UiIcon name="spinner" className="size-4 animate-spin" />
+                      ) : (
+                        <UiIcon name="logout" className="size-4" />
+                      )}
+                      {t.dashboard.user.logout}
+                    </button>
+                  )}
                 </div>
               </div>
             )}
@@ -646,29 +648,31 @@ export function Sidebar({ mobileOpen = false, onCloseMobile }: { mobileOpen?: bo
                       </p>
                     )}
                   </div>
-                  <button
-                    onClick={handleLogout}
-                    disabled={loggingOut}
-                    className="flex size-8 shrink-0 items-center justify-center rounded-xl text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground disabled:opacity-50"
-                    aria-label={isDesktop ? t.chrome.sidebar.backToSetup : t.dashboard.user.logout}
-                    title={isDesktop ? t.chrome.sidebar.backToSetup : t.dashboard.user.logout}
-                  >
-                    {loggingOut ? (
-                      <UiIcon name="spinner" className="size-4 animate-spin" />
-                    ) : (
-                      <UiIcon name="logout" className="size-4" />
-                    )}
-                  </button>
+                  {!isDesktop && (
+                    <button
+                      onClick={handleLogout}
+                      disabled={loggingOut}
+                      className="flex size-8 shrink-0 items-center justify-center rounded-xl text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground disabled:opacity-50"
+                      aria-label={t.dashboard.user.logout}
+                      title={t.dashboard.user.logout}
+                    >
+                      {loggingOut ? (
+                        <UiIcon name="spinner" className="size-4 animate-spin" />
+                      ) : (
+                        <UiIcon name="logout" className="size-4" />
+                      )}
+                    </button>
+                  )}
                 </>
               )}
             </div>
 
-            {collapsed && (
+            {!isDesktop && collapsed && (
               <button
                 onClick={handleLogout}
                 disabled={loggingOut}
                 className="mt-2 flex w-full items-center justify-center rounded-xl py-2.5 text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground disabled:opacity-50"
-                title={isDesktop ? t.chrome.sidebar.backToSetup : t.dashboard.user.logout}
+                title={t.dashboard.user.logout}
               >
                 {loggingOut ? (
                   <UiIcon name="spinner" className="size-4 animate-spin" />
@@ -683,12 +687,12 @@ export function Sidebar({ mobileOpen = false, onCloseMobile }: { mobileOpen?: bo
         {/* Collapsed: surface logout when switcher is shown but popover
             closed, so users without a pointer-friendly path still have a
             shortcut. The switcher itself handles the trigger spot. */}
-        {collapsed && showOrgSwitcher && !orgsOpen && (
+        {!isDesktop && collapsed && showOrgSwitcher && !orgsOpen && (
           <button
             onClick={handleLogout}
             disabled={loggingOut}
             className="mt-2 flex w-full items-center justify-center rounded-xl py-2.5 text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground disabled:opacity-50"
-            title={isDesktop ? t.chrome.sidebar.backToSetup : t.dashboard.user.logout}
+            title={t.dashboard.user.logout}
           >
             {loggingOut ? (
               <UiIcon name="spinner" className="size-4 animate-spin" />
