@@ -4,10 +4,8 @@ import { useCopy } from "@/i18n/use-copy";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@/i18n/Link";
 import { usePathname } from "next/navigation";
-import { CLOUD_DASHBOARD_URL } from "@repo/core";
 import { reportCaughtError } from "@repo/core/diagnostics";
 import { withoutLocale } from "@/i18n/routing";
-import { LanguageSwitcher } from "./language-switcher";
 import { useLocale } from "next-intl";
 
 type NavLink = { label: string; href: string; hint?: string };
@@ -39,7 +37,6 @@ const NAV: NavEntry[] = [
 ];
 
 const isGroup = (entry: NavEntry): entry is NavGroup => "items" in entry;
-const CLOUD_HREF = CLOUD_DASHBOARD_URL;
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -141,7 +138,6 @@ export function Navbar() {
 
   const pathname = withoutLocale(usePathname());
   const [dark, setDark] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [stars, setStars] = useState<number | null>(null);
   const githubLabel =
@@ -248,116 +244,11 @@ export function Navbar() {
               </Link>
             ),
           )}
-          <LanguageSwitcher dark={dark} />
         </nav>
 
-        {/* ── Download link + Cloud destination ── */}
-        <div
-          className={`relative flex items-center justify-end gap-3 ${mobileOpen ? "z-50" : "z-10"}`}
-        >
-          <div className="xl:hidden">
-            <LanguageSwitcher dark={dark && !mobileOpen} />
-          </div>
-          <Link
-            href="/download"
-            className="hidden rounded-full px-5 py-2 text-[14px] font-medium transition-colors sm:inline-block"
-            style={{ color: linkColor }}
-          >
-            {copy("Download")}
-          </Link>
-          <a
-            href={CLOUD_HREF}
-            className="hidden rounded-full px-5 py-2 text-[14px] font-medium transition-all sm:inline-block"
-            style={{
-              background: dark ? "#fff" : "var(--th-btn-bg)",
-              color: dark ? "#000" : "var(--th-btn-text)",
-            }}
-          >
-            {copy("Open Dashboard")}
-          </a>
-
-          {/* ── Hamburger (mobile only) ──────────────────────── */}
-          <button
-            onClick={() => setMobileOpen((v) => !v)}
-            className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full xl:hidden"
-            style={{
-              background: dark && !mobileOpen ? "rgba(255,255,255,.10)" : "var(--th-sf-04)",
-            }}
-            aria-label={mobileOpen ? copy("Close menu") : copy("Open menu")}
-            aria-expanded={mobileOpen}
-          >
-            <svg
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke={dark && !mobileOpen ? "#fff" : "var(--th-text-heading)"}
-              strokeWidth={2}
-            >
-              {mobileOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
+        {/* ── Right placeholder to keep center nav aligned in 3-column grid ── */}
+        <div className="hidden xl:flex items-center justify-end" />
       </div>
-
-      {/* ── Mobile slide-out panel ──────────────────────────── */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-40 xl:hidden" aria-modal="true">
-          <div
-            className="absolute inset-0 bg-black/30 backdrop-blur-sm"
-            onClick={() => setMobileOpen(false)}
-          />
-          <nav className="absolute end-0 top-0 flex h-full w-[280px] flex-col gap-1 overflow-y-auto bg-[var(--th-bg-page)] px-6 pb-8 pt-24 shadow-2xl">
-            {NAV.map((entry) =>
-              isGroup(entry) ? (
-                <div key={entry.label} className="mt-2">
-                  <p className="px-4 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--th-text-muted)]">
-                    {copy(entry.label)}
-                  </p>
-                  {entry.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="block rounded-xl px-4 py-3 text-[15px] font-medium th-text-body transition-colors hover:bg-[var(--th-sf-04)]"
-                    >
-                      {copy(item.label)}
-                    </Link>
-                  ))}
-                </div>
-              ) : (
-                <Link
-                  key={entry.label}
-                  href={entry.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-xl px-4 py-3 text-[15px] font-medium th-text-body transition-colors hover:bg-[var(--th-sf-04)]"
-                >
-                  {copy(entry.label)}
-                </Link>
-              ),
-            )}
-            <div className="my-3 h-px bg-[var(--th-divider)]" />
-
-            <Link
-              href="/download"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-xl px-4 py-3 text-[15px] font-medium th-text-secondary transition-colors hover:bg-[var(--th-sf-04)]"
-            >
-              {copy("Download")}
-            </Link>
-            <a
-              href={CLOUD_HREF}
-              onClick={() => setMobileOpen(false)}
-              className="mt-1 rounded-xl bg-[var(--th-btn-bg)] px-4 py-3 text-center text-[15px] font-medium text-[var(--th-btn-text)]"
-            >
-              {copy("Open Dashboard")}
-            </a>
-          </nav>
-        </div>
-      )}
     </header>
   );
 }
