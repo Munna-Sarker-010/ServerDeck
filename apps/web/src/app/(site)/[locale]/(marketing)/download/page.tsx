@@ -1,21 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useState } from "react";
 import { useLocale } from "next-intl";
-import { ArrowRight, ArrowUpRight, Download } from "lucide-react";
+import { Download } from "lucide-react";
 import { FeatureIllustration } from "@repo/ui/illustrations";
-import { reportCaughtError } from "@repo/core/diagnostics";
 import { useCopy } from "@/i18n/use-copy";
-import { Link } from "@/i18n/Link";
 import { usePlatform, type Platform } from "@/hooks/use-platform";
-import { DEPLOY_SCREEN_SIZE, localizedScreenshot } from "@/lib/marketing-screenshots";
 import { Navbar } from "@/components/landing/navbar";
 import { Footer } from "@/components/landing/footer";
 import { PlatformIcon } from "@/components/platform-icon";
-import { InstallTabs } from "@/components/install-tabs";
-import { IllustratedLink } from "@/components/marketing/illustrated-link";
-import { MarketingSection } from "@/components/marketing/marketing-section";
 import "./download.css";
 
 const DESKTOP_DETAILS: Record<Exclude<Platform, "unknown">, { title: string; variant: string; format: string }> = {
@@ -30,8 +23,8 @@ type Release = { version: string; sizes: Record<string, number> };
 export default function DownloadPage() {
   const copy = useCopy();
   const locale = useLocale();
-  const { platform, label, icon, downloadUrl, allPlatforms, getDownloadUrl } = usePlatform();
-  const [release, setRelease] = useState<Release | null>({
+  const { allPlatforms, getDownloadUrl } = usePlatform();
+  const [release] = useState<Release | null>({
     version: "v1.0.1",
     sizes: {
       "ServerDeck-win32-x64.zip": 128_000_000,
@@ -40,6 +33,8 @@ export default function DownloadPage() {
       "ServerDeck.AppImage": 110_000_000,
     },
   });
+
+  const windowsPlatforms = allPlatforms.filter((item) => item.platform === "windows");
 
   return (
     <>
@@ -60,15 +55,12 @@ export default function DownloadPage() {
               <span className="hero-headline-second">{copy("Deploy in seconds.")}</span>
             </h1>
             <p className="dl-hero-description">
-              {copy("Your machine, your servers, your stack. The CLI, the dashboard, and the desktop app - all open‑source, all yours to run.")}
+              {copy("Your machine, your servers, your stack. The dashboard and desktop app - all open‑source, all yours to run.")}
             </p>
             <div className="dl-hero-actions">
-              <a href={platform === "unknown" ? "#downloads" : downloadUrl} className="th-btn dl-primary">
-                <PlatformIcon name={icon} className="dl-button-icon" />
-                {copy(label)}
-              </a>
-              <a href="#cli" className="marketing-text-link">
-                {copy("Install the CLI")} <ArrowRight size={17} aria-hidden="true" />
+              <a href="/downloads/ServerDeck-win32-x64.zip" className="th-btn dl-primary">
+                <PlatformIcon name="windows" className="dl-button-icon" />
+                {copy("Download for Windows")}
               </a>
             </div>
             <p className="dl-release">
@@ -81,47 +73,40 @@ export default function DownloadPage() {
         </section>
 
         <div className="site-container">
-          <figure className="dl-showcase">
-            <div className="dl-shot">
-              <Image
-                src={localizedScreenshot("/screen.png", locale)}
-                alt={copy("The ServerDeck desktop app - deployments, logs, and services in one native window")}
-                {...DEPLOY_SCREEN_SIZE}
-                sizes="(max-width: 768px) 92vw, 86vw"
-                priority
-              />
-            </div>
-            <figcaption>{copy("The full dashboard, in a native window - deploys, logs, metrics, and services.")}</figcaption>
-          </figure>
-
           <section id="downloads" className="dl-downloads" aria-labelledby="desktop-title">
             <header className="dl-section-head">
               <div>
-                <h2 id="desktop-title">{copy("Choose your platform.")}</h2>
-                <p>{copy("The desktop app for Mac, Windows, and Linux.")}</p>
+                <h2 id="desktop-title">{copy("Download for Windows")}</h2>
+                <p>{copy("The desktop app for Windows.")}</p>
               </div>
             </header>
             <div className="dl-platforms">
-              {allPlatforms.map((item) => {
-                if (item.platform === "unknown") return null;
-                const details = DESKTOP_DETAILS[item.platform];
-                const recommended = platform === item.platform;
+              {windowsPlatforms.map((item) => {
+                const details = DESKTOP_DETAILS.windows;
                 const bytes = release?.sizes[item.fileName];
                 return (
-                  <article key={item.platform} className="dl-platform" data-recommended={recommended}>
+                  <article key={item.platform} className="dl-platform" data-recommended="true">
                     <div className="dl-platform-mark">
                       <PlatformIcon name={item.icon} className="dl-os-icon" />
-                      {recommended && <span className="dl-recommended">{copy("Recommended")}</span>}
+                      <span className="dl-recommended">{copy("Recommended")}</span>
                     </div>
                     <h3>{details.title}</h3>
                     <p className="dl-platform-variant">{copy(details.variant)}</p>
                     <div className="dl-platform-meta">
                       <bdi>{details.format}</bdi>
-                      {bytes && <bdi>{new Intl.NumberFormat(locale, { style: "unit", unit: "megabyte", maximumFractionDigits: 1 }).format(bytes / 1_000_000)}</bdi>}
+                      {bytes && (
+                        <bdi>
+                          {new Intl.NumberFormat(locale, {
+                            style: "unit",
+                            unit: "megabyte",
+                            maximumFractionDigits: 1,
+                          }).format(bytes / 1_000_000)}
+                        </bdi>
+                      )}
                     </div>
                     <a
                       href={getDownloadUrl(item.platform)}
-                      className={`dl-platform-download ${recommended ? "th-btn" : "th-btn-ghost"}`}
+                      className="dl-platform-download th-btn"
                       aria-label={`${copy(item.label)} (${copy(details.variant)})`}
                     >
                       {copy("Download")} <Download size={16} aria-hidden="true" />
@@ -130,53 +115,7 @@ export default function DownloadPage() {
                 );
               })}
             </div>
-            <Link href="/docs/getting-started/installation" className="dl-install-help marketing-text-link">
-              {copy("Installation guide")} <ArrowRight size={16} aria-hidden="true" />
-            </Link>
           </section>
-
-          <section id="cli" className="dl-cli" aria-labelledby="cli-title">
-            <div className="dl-cli-copy">
-              <FeatureIllustration name="api-sdk" className="marketing-illustration" />
-              <h2 id="cli-title">{copy("One command.")} <span>{copy("Any shell, any OS.")}</span></h2>
-              <p>{copy("Install the CLI to deploy, view logs, and manage your projects from the terminal.")}</p>
-              <Link href="/docs/cli" className="marketing-text-link">
-                {copy("Full CLI reference")} <ArrowRight size={16} aria-hidden="true" />
-              </Link>
-            </div>
-            <div className="dl-cli-install">
-              <InstallTabs
-                includePackageManagers
-                labels={{
-                  methods: copy("Install method"),
-                  copy: copy("Copy install command"),
-                  copied: copy("Copied!"),
-                  error: copy("Could not copy. Select the command to copy it."),
-                }}
-              />
-              <div className="dl-cli-next">
-                <span>{copy("Then open your dashboard.")}</span>
-                <code>serverdeck up</code>
-              </div>
-            </div>
-          </section>
-
-          <MarketingSection id="getting-started" title="Your next step" description="Start locally, then choose where your apps run.">
-            <div className="marketing-grid">
-              <IllustratedLink
-                href="/docs/getting-started/first-deployment"
-                illustration="push-to-deploy"
-                title="Deploy your first app"
-                description="Connect a repository and follow your first deployment."
-              />
-              <IllustratedLink
-                href="/docs/getting-started/installation"
-                illustration="server-management"
-                title="Run on your own server"
-                description="Set up ServerDeck on a server with Docker or the CLI."
-              />
-            </div>
-          </MarketingSection>
         </div>
       </main>
       <Footer />
