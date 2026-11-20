@@ -4,8 +4,6 @@ import { reportCaughtError as observeCaughtError } from "@repo/core/diagnostics"
 import { Icon as UiIcon } from "@repo/ui/icons";
 
 import { useCallback, useEffect, useState } from "react";
-import DropdownMenu, { type MenuAction } from "@/components/ui/DropdownMenu";
-import { useHelpMenuActions } from "@/components/HelpMenu";
 import { useI18n } from "@/components/i18n-provider";
 
 type NavState = { canGoBack: boolean; canGoForward: boolean };
@@ -68,7 +66,6 @@ const bridge = (): DesktopBridge | undefined =>
  */
 export function DesktopChrome() {
   const { t } = useI18n();
-  const helpActions = useHelpMenuActions();
   const [ready, setReady] = useState(false);
   const [isMac, setIsMac] = useState(false);
   const [maximized, setMaximized] = useState(false);
@@ -113,26 +110,6 @@ export function DesktopChrome() {
 
   const w = t.chrome.window;
 
-  /* Reload + DevTools, then the standard help links. Rendered on Windows/Linux
-   * only: frameless means no menu bar, so this is the sole clickable route to
-   * what macOS gets from its View and Help menus. */
-  const menuActions: MenuAction[] = [
-    {
-      id: "reload",
-      label: w.reload,
-      icon: <UiIcon name="refresh" className="size-4" />,
-      onClick: () => void bridge()?.window?.reload(),
-    },
-    {
-      id: "devtools",
-      label: w.devTools,
-      icon: <UiIcon name="wrench" className="size-4" />,
-      onClick: () => void bridge()?.window?.toggleDevTools(),
-    },
-    { id: "devtools-divider", divider: true },
-    ...helpActions,
-  ];
-
   return (
     <header className="app-titlebar" onDoubleClick={onDoubleClick}>
       {/* Start — navigation, after the macOS traffic-light inset. No brand: the
@@ -168,19 +145,6 @@ export function DesktopChrome() {
           Reload / DevTools / Help (including the GitHub and X links), and the
           traffic lights are the window controls. */}
       <div className="app-titlebar-end">
-
-        {/* Windows/Linux only. Those run `frame: false`, so no menu bar renders
-            and this is the only way to reach Reload / DevTools / Help. macOS has
-            the real application menu (see main/menu.ts) and needs no duplicate. */}
-        {!isMac && (
-          <DropdownMenu
-            actions={menuActions}
-            align="right"
-            className="app-titlebar-menu"
-            trigger={<UiIcon name="more" className="size-[17px]" />}
-          />
-        )}
-
         {!isMac && (
           <div className="app-titlebar-controls">
             <button

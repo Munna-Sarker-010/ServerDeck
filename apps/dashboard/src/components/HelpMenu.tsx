@@ -27,40 +27,7 @@ const open = (url: string) => window.open(url, "_blank", "noopener,noreferrer");
 
 /** The actions themselves — exported so a page can append its own items. */
 export function useHelpMenuActions(): MenuAction[] {
-  const { t } = useI18n();
-  return [
-    {
-      id: "support",
-      label: t.projects.help.contactSupport,
-      icon: <UiIcon name="help-circle" className="size-4" />,
-      onClick: () => open(SUPPORT_URL),
-    },
-    {
-      id: "report-issue",
-      label: t.projects.help.reportIssue,
-      icon: <UiIcon name="bug" className="size-4" />,
-      onClick: () => open(ISSUE_URL),
-    },
-    {
-      id: "feedback",
-      label: t.projects.help.sendFeedback,
-      icon: <UiIcon name="message" className="size-4" />,
-      onClick: () => open(FEEDBACK_URL),
-    },
-    { id: "divider", divider: true },
-    {
-      id: "documentation",
-      label: t.projects.help.documentation,
-      icon: <UiIcon name="book" className="size-4" />,
-      onClick: () => open(DOCS_URL),
-    },
-    {
-      id: "community",
-      label: t.projects.help.joinCommunity,
-      icon: <UiIcon name="external-link" className="size-4" />,
-      onClick: () => open(COMMUNITY_URL),
-    },
-  ];
+  return [];
 }
 
 export function HelpMenu({
@@ -71,13 +38,12 @@ export function HelpMenu({
   extraActions?: MenuAction[];
   className?: string;
 }) {
-  const help = useHelpMenuActions();
-  const actions = extraActions?.length
-    ? [...extraActions, { id: "extra-divider", divider: true }, ...help]
-    : help;
+  if (!extraActions || extraActions.length === 0) {
+    return null;
+  }
   return (
     <DropdownMenu
-      actions={actions}
+      actions={extraActions}
       align="right"
       className={className}
       trigger={<UiIcon name="more-vertical" className="size-5 text-muted-foreground" />}

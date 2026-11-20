@@ -95,9 +95,6 @@ export function buildAppMenu(getWindow: () => BrowserWindow | null): void {
           : ([{ role: "close" }] as MenuItemConstructorOptions[])),
       ],
     },
-
-    // `role: "help"` marks this as the Help menu so macOS adds its search field.
-    { role: "help", submenu: helpItems },
   ];
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(template));
