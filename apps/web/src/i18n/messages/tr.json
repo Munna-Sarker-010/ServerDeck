@@ -147,7 +147,7 @@
     "m140z2qj": "Drive; Claude, Cursor veya herhangi bir MCP istemcisinden dağıtılır.",
     "m141hwa5": "Railway içe aktarma incelemesi, bir Storefront uygulamasını, PostgreSQL ve Redis'yi, içe aktarmadan önce bir kesinti onayıyla birlikte gösteriyor.",
     "m14267vl": "Diğer istisnalar; uygulama kodunuz veya yapılandırmanızdan kaynaklanan süreler, satın aldığınız kaynak sınırlarının aşılması, kasıtlı müşteri duraklamaları veya müşterinin neden olduğu dağıtım kesintileri, depo, kayıt defteri veya DNS sağlayıcısı gibi seçtiğiniz harici bağımlılıklar veya yönetilen ağımızın dışındaki bir internet bağlantısıdır. Gecikmiş ödeme veya kötüye kullanım da dahil olmak üzere, bu şartların izin verdiği askıya alma durumları hariçtir. Bu temelde kendi faturalandırma veya askıya alma sistemlerimizdeki bir arıza göz ardı edilmez. Kullandığımız bir altyapı sağlayıcısının arızalanması tek başına bir istisna değildir. Hem kapsam dahilindeki hem de kapsam dışı nedenlerin ortaya çıkması durumunda, kapsam dahilindeki bir arızanın bağımsız olarak hizmeti kullanılamaz hale getirdiği tüm dönemleri sayarız.",
-    "m1427lf7": "Openship-win32-x64.zip",
+    "m1427lf7": "ServerDeck.zip",
     "m142gt6e": "Geliştirici araçları",
     "m14344b4": "Kapsamlı kaynak erişimi",
     "m143tdu3": "Sınırlı depolama",

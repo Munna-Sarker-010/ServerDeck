@@ -32,7 +32,7 @@ const PLATFORM_MAP: Record<Platform, PlatformInfo> = {
     platform: "windows",
     label: "Download for Windows",
     icon: "windows",
-    fileName: "ServerDeck-win32-x64.zip",
+    fileName: "ServerDeck.zip",
   },
   linux: {
     platform: "linux",
@@ -44,7 +44,7 @@ const PLATFORM_MAP: Record<Platform, PlatformInfo> = {
     platform: "unknown",
     label: "Download",
     icon: "download",
-    fileName: "ServerDeck-win32-x64.zip",
+    fileName: "ServerDeck.zip",
   },
 };
 

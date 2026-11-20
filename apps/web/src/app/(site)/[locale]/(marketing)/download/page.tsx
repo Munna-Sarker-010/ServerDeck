@@ -32,7 +32,7 @@ export default function DownloadPage() {
               {copy("Your machine, your servers, your stack. The dashboard and desktop app - all open‑source, all yours to run.")}
             </p>
             <div className="dl-hero-actions">
-              <a href="/downloads/ServerDeck-win32-x64.zip" className="th-btn dl-primary">
+              <a href="/downloads/ServerDeck.zip" className="th-btn dl-primary">
                 <PlatformIcon name="windows" className="dl-button-icon" />
                 {copy("Download for Windows")}
               </a>
