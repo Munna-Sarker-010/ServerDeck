@@ -124,7 +124,7 @@ export default function ErrorState({
         )}
 
         <a
-          href="https://openship.io/docs"
+          href="https://serverdeck.io/docs"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-6 inline-flex items-center gap-1.5 rounded-md text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"

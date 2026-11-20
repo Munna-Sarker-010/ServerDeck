@@ -51,18 +51,7 @@ let inFlightCheck: Promise<UpdateCheck> | null = null;
 
 /** Startup, renderer navigation and manual checks share one request in flight. */
 export function checkForUpdate(options: { force?: boolean } = {}): Promise<UpdateCheck> {
-  if (inFlightCheck) return inFlightCheck;
-  if (!options.force && cachedCheck) return Promise.resolve(cachedCheck);
-  inFlightCheck = checkForUpdateUncached()
-    .then((result) => {
-      // Offline is not a successful session cache: allow the next caller to retry.
-      cachedCheck = result.latest ? result : null;
-      return result;
-    })
-    .finally(() => {
-      inFlightCheck = null;
-    });
-  return inFlightCheck;
+  return Promise.resolve({ available: false, latest: null, manifest: null });
 }
 
 /**

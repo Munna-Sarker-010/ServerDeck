@@ -2,8 +2,8 @@
  * Shared constants used across the monorepo.
  */
 
-export const APP_NAME = "Openship";
-export const SUPPORT_EMAIL = "support@openship.io";
+export const APP_NAME = "ServerDeck";
+export const SUPPORT_EMAIL = "support@serverdeck.io";
 
 /** Authenticated organization admins may intentionally create a shareable
  * invitation without asking the server to deliver email. Shared by the
@@ -57,14 +57,14 @@ export function isInvitationClaimPath(path: string): boolean {
 export const DEFAULT_IMAGE_REGISTRY = "ghcr.io/oblien";
 
 export const BRAND_LINKS = {
-  site: "https://openship.io",
-  docs: "https://openship.io/docs",
-  support: "https://openship.io/support",
-  contact: "https://openship.io/contact",
-  github: "https://github.com/oblien/openship",
-  issues: "https://github.com/oblien/openship/issues/new",
-  community: "https://discord.gg/Q9eWNCeXjg",
-  x: "https://x.com/openship",
+  site: "https://serverdeck.io",
+  docs: "https://serverdeck.io/docs",
+  support: "https://serverdeck.io/support",
+  contact: "https://serverdeck.io/contact",
+  github: "https://github.com/serverdeck",
+  issues: "https://github.com/serverdeck/issues",
+  community: "https://discord.gg/serverdeck",
+  x: "https://x.com/serverdeck",
 } as const;
 
 export const DEPLOYMENT_STATUSES = [

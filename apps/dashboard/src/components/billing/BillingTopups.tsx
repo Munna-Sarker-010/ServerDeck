@@ -40,7 +40,7 @@ export function BillingTopups({ state }: { state: BillingState }) {
         </p>
         {state.complimentary && (
           <Button asChild variant="secondary">
-            <a href="mailto:support@openship.io">{t.billing.portal.supportButton}</a>
+            <a href="mailto:support@serverdeck.io">{t.billing.portal.supportButton}</a>
           </Button>
         )}
       </section>

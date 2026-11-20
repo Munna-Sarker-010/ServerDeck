@@ -70,7 +70,7 @@ export function useSettingsTabs(): { tabs: SettingsTab[]; activeTab: SettingsTab
   const raw = (searchParams.get("tab") ?? "general") as SettingsTabId;
   // Keep DNS and Credentials bookmarks working under Connections.
   const allowedTabs: SettingsTabId[] = ["general", "security", "git", "tokens", "mcp", "assistant", "chat-apps", "team", "notifications", "email", "credentials", "connections",
-    "dns", "cloud", "infrastructure", "instance"];
+    "dns", "infrastructure", "instance"];
   const requested: SettingsTabId = allowedTabs.includes(raw) ? raw : "general";
   // Connections owns both provider tokens and organization OAuth grants.
   const activeTab: SettingsTabId = requested === "dns" || requested === "credentials"
@@ -105,7 +105,6 @@ export function useSettingsTabs(): { tabs: SettingsTab[]; activeTab: SettingsTab
       visible: selfHosted,
       requiresRole: "admin",
     },
-    { id: "cloud", label: t.settings.sidebar.tabs.cloud, icon: "cloud", visible: selfHosted },
     // The servers this install runs — edge/mail container versions + global scan
     // + untracked edge routes. Self-hosted/desktop only (the SaaS has no
     // operator-managed infra). See settings/page.tsx.

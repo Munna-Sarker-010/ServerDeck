@@ -47,8 +47,8 @@ export function ServerEmptyState({
           <a
             href={
               managed
-                ? "https://openship.io/docs/guides/cloud-workspaces"
-                : "https://openship.io/docs/guides/custom-servers"
+                ? "https://serverdeck.io/docs/guides/cloud-workspaces"
+                : "https://serverdeck.io/docs/guides/custom-servers"
             }
             target="_blank"
             rel="noopener noreferrer"

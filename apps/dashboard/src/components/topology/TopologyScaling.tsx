@@ -120,7 +120,7 @@ export function TopologyScaling({
             <span className="truncate">
               {project.serverName ||
                 (project.deployTarget === "cloud"
-                  ? "OpenShip Cloud"
+                  ? "ServerDeck Cloud"
                   : project.deployTarget === "local"
                     ? "Local machine"
                     : "Current server")}

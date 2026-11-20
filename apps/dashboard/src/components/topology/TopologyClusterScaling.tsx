@@ -507,7 +507,7 @@ function ClusterScaling({ project, disabled, resources, onDeploy, onClusterState
                       />
                     </label>
                     <p className="leading-relaxed text-muted-foreground">
-                      OpenShip builds your application once and publishes it here so every server
+                      ServerDeck builds your application once and publishes it here so every server
                       can run the same release. Private repositories use your saved registry
                       credentials.
                     </p>
@@ -581,7 +581,7 @@ function ClusterScaling({ project, disabled, resources, onDeploy, onClusterState
               <div className="mt-3 space-y-3 text-muted-foreground">
                 <p>
                   {selected?.scaling?.provider === "swarm" ? "Docker Swarm" : "Kubernetes (K3s)"}{" "}
-                  manages instance placement and recovery. OpenShip Edge currently sends incoming
+                  manages instance placement and recovery. ServerDeck Edge currently sends incoming
                   traffic through one cluster server.
                 </p>
                 {view.internalHost && (

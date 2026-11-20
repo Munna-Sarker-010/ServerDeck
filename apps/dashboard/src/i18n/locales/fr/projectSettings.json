@@ -25,7 +25,7 @@
     "installing": "Installation…",
     "advanced": "Options avancées de déploiement",
     "nameLabel": "Nom",
-    "nameHint": "Comment cette application apparaît dans OpenShip.",
+    "nameHint": "Comment cette application apparaît dans ServerDeck.",
     "domainTitle": "Où doit-elle être accessible ?",
     "domainFree": "Sous-domaine gratuit",
     "domainFreeHint": "Un sous-domaine gratuit sur {domain}",
@@ -73,8 +73,8 @@
     "routePortLabel": "Port uniquement (sans domaine)",
     "routePortDesc": "Accessible sur l'adresse et le port de l'hôte — aucun domaine ni Cloud nécessaire.",
     "routeFreeLabel": "Sous-domaine gratuit",
-    "routeFreeDesc": "Un sous-domaine gratuit sur {domain}, routé par OpenShip Cloud.",
-    "routeFreeNeedsCloud": "Connectez OpenShip Cloud pour utiliser un sous-domaine gratuit.",
+    "routeFreeDesc": "Un sous-domaine gratuit sur {domain}, routé par ServerDeck Cloud.",
+    "routeFreeNeedsCloud": "Connectez ServerDeck Cloud pour utiliser un sous-domaine gratuit.",
     "routeCustomLabel": "Votre propre domaine",
     "routeCustomDesc": "Pointez un domaine que vous possédez vers cette application.",
     "routeDomainLabel": "Domaine",
@@ -257,7 +257,7 @@
     },
     "statusActive": "Actif",
     "statusDisabled": "Désactivé",
-    "hostedCloud": "OpenShip Cloud",
+    "hostedCloud": "ServerDeck Cloud",
     "hostedServer": "Serveur",
     "hostedLocal": "Local",
     "projectStatus": {
@@ -334,7 +334,7 @@
       "anotherServer": "Un autre serveur",
       "targetLocal": "Machine locale",
       "targetServer": "Serveur auto-hébergé",
-      "targetCloud": "OpenShip Cloud"
+      "targetCloud": "ServerDeck Cloud"
     },
     "danger": {
       "title": "Zone de danger",
@@ -475,7 +475,7 @@
   "build": {
     "edit": "Modifier",
     "webmail": {
-      "title": "Géré par openship",
+      "title": "Géré par ServerDeck",
       "description": "Le webmail utilise un pipeline de build et de démarrage fixe — les commandes d'installation, de build et d'exécution ne sont pas configurables. Redéployez depuis l'aperçu du courrier pour intégrer les modifications en amont."
     },
     "services": {
@@ -627,13 +627,13 @@
     },
     "appBanner": {
       "title": "Application GitHub non installée",
-      "description": "Installez l'application GitHub OpenShip sur votre compte ou votre organisation pour activer le déploiement automatique et les déploiements déclenchés par webhook pour les projets cloud.",
+      "description": "Installez l'application GitHub ServerDeck sur votre compte ou votre organisation pour activer le déploiement automatique et les déploiements déclenchés par webhook pour les projets cloud.",
       "install": "Installer l'application GitHub"
     },
     "webhookBanner": {
       "summary": "Point d’accès public requis",
       "title": "Activer le déploiement automatique",
-      "description": "Le déploiement automatique nécessite un point de terminaison webhook direct. Exposez cette API OpenShip sur une URL publique ou configurez un domaine webhook vérifié pour une livraison directe."
+      "description": "Le déploiement automatique nécessite un point de terminaison webhook direct. Exposez cette API ServerDeck sur une URL publique ou configurez un domaine webhook vérifié pour une livraison directe."
     },
     "source": {
       "title": "Dépôt source",
@@ -674,7 +674,7 @@
       "active": "Actif",
       "inactive": "Inactif",
       "descDirect": "Les événements sont livrés directement via {domain}",
-      "descActive": "Les événements du dépôt atteignent OpenShip",
+      "descActive": "Les événements du dépôt atteignent ServerDeck",
       "descInactive": "Le webhook n'a pas été configuré ou ne répond pas"
     },
     "rollbackStrategy": {
@@ -883,10 +883,10 @@
     "linkedTitleOther": "{count} projets sont connectés à cette app",
     "linkedNote": "Ils continuent de tourner, données intactes — ils perdent seulement cette connexion. Redéployez-les pour l'appliquer.",
     "linkedNoteRecordOnly": "Ils continuent de tourner, mais le lien part avec l'enregistrement — un réimport ultérieur ne le rétablit pas.",
-    "recordOnlyLabel": "Supprimer d'OpenShip uniquement",
-    "recordOnlyDesc": "Conserve l'application et ses données en cours d'exécution sur votre serveur — seul l'enregistrement OpenShip est supprimé. Vous pourrez la réimporter plus tard.",
+    "recordOnlyLabel": "Supprimer d'ServerDeck uniquement",
+    "recordOnlyDesc": "Conserve l'application et ses données en cours d'exécution sur votre serveur — seul l'enregistrement ServerDeck est supprimé. Vous pourrez la réimporter plus tard.",
     "recordOnlyReversible": "Réversible — l'application reste sur votre serveur.",
-    "recordOnlyNote": "Rien sur le serveur n'est modifié — l'application continue de fonctionner avec ses données. Seul l'enregistrement dans OpenShip est supprimé, et il peut être réimporté plus tard.",
+    "recordOnlyNote": "Rien sur le serveur n'est modifié — l'application continue de fonctionner avec ses données. Seul l'enregistrement dans ServerDeck est supprimé, et il peut être réimporté plus tard.",
     "confirmRecordOnly": "Supprimer l'enregistrement"
   },
   "routing": {
@@ -971,7 +971,7 @@
       "servesPathHint": "Les requêtes vers ce domaine sont servies depuis ce chemin dans la sortie de compilation.",
       "servesPathRedeploy": "Les nouveaux chemins prennent effet au prochain déploiement.",
       "externalIngress": "Ingress et TLS externes",
-      "externalIngressDesc": "Le TLS se termine sur votre proxy inverse (Cloudflare Tunnel, Nginx Proxy Manager ou un équilibreur de charge). Le domaine n’a pas besoin de pointer vers ce serveur et OpenShip n’émettra pas de certificat.",
+      "externalIngressDesc": "Le TLS se termine sur votre proxy inverse (Cloudflare Tunnel, Nginx Proxy Manager ou un équilibreur de charge). Le domaine n’a pas besoin de pointer vers ce serveur et ServerDeck n’émettra pas de certificat.",
       "dnsChallenge": "Utiliser le défi DNS-01",
       "dnsChallengeDesc": "Vérifiez via un fournisseur DNS ou un enregistrement TXT temporaire. Utile lorsque le port 80 est inaccessible.",
       "dnsChallengeWildcardDesc": "Obligatoire pour HTTPS avec un domaine générique. Utilisez un fournisseur DNS connecté ou ajoutez un enregistrement TXT temporaire lors de la configuration HTTPS.",
@@ -1135,8 +1135,8 @@
         "deployment": "Cette route attend un déploiement. Déployez le projet pour l’appliquer.",
         "disabled": "Ce projet ou service est désactivé. Activez-le avant de vérifier la route.",
         "removing": "Ce domaine est en cours de suppression. Aucune vérification n’est planifiée.",
-        "manual_certificate": "Ce domaine utilise un certificat importé. Importez un certificat de remplacement valide, puis vérifiez-le. OpenShip ne le renouvelle pas automatiquement.",
-        "managed_certificate": "TLS est géré par votre proxy externe ou OpenShip Cloud. Vérifiez la configuration de ce fournisseur.",
+        "manual_certificate": "Ce domaine utilise un certificat importé. Importez un certificat de remplacement valide, puis vérifiez-le. ServerDeck ne le renouvelle pas automatiquement.",
+        "managed_certificate": "TLS est géré par votre proxy externe ou ServerDeck Cloud. Vérifiez la configuration de ce fournisseur.",
         "route_missing": "Cette route configurée n’a pas encore été appliquée. Réessayez le routage pour l’appliquer. Aucune nouvelle tentative automatique de routage n’est planifiée.",
         "manual_dns": "Ce certificat utilise la vérification TXT manuelle. Ouvrez la configuration HTTPS pour confirmer un nouvel enregistrement TXT, ou choisissez un fournisseur DNS connecté pour le renouvellement automatique.",
         "managed_owner": "Ce nom d’hôte et son certificat sont gérés par le service propriétaire. Vérifiez les paramètres de domaine de ce service."
@@ -1149,7 +1149,7 @@
       "automatic": "Fournisseur automatique",
       "manual": "TXT manuel",
       "automaticHint": "Connectez un fournisseur DNS dans Paramètres → Identifiants pour créer les validations du certificat et renouveler HTTPS automatiquement.",
-      "manualHint": "Ajoutez un enregistrement TXT temporaire chez votre fournisseur DNS. Chaque renouvellement nécessite un nouvel enregistrement TXT ; OpenShip indiquera quand renouveler.",
+      "manualHint": "Ajoutez un enregistrement TXT temporaire chez votre fournisseur DNS. Chaque renouvellement nécessite un nouvel enregistrement TXT ; ServerDeck indiquera quand renouveler.",
       "routing": "1. Pointez le domaine vers ce serveur",
       "certificate": "2. Activez HTTPS",
       "startAutomatic": "Activer HTTPS automatiquement",
@@ -1266,7 +1266,7 @@
     "updating": "Mise à jour…",
     "updateFailed": "Échec de la mise à jour",
     "toastTitle": "Source",
-    "cliManaged": "Il s'agit du plan de contrôle d'OpenShip — il se met à jour lui-même. Exécutez « openship update » sur l'hôte pour le mettre à niveau ; rien à modifier ici."
+    "cliManaged": "Il s'agit du plan de contrôle d'ServerDeck — il se met à jour lui-même. Exécutez « ServerDeck update » sur l'hôte pour le mettre à niveau ; rien à modifier ici."
   },
   "runtimeUpdates": {
     "options": "Options de redéploiement",
@@ -1357,7 +1357,7 @@
     "reviewResources": "Examiner les ressources concernées ({count})",
     "openRuns": "Ouvrir les exécutions du serveur",
     "lastRun": "Dernière vérification",
-    "appOpen": "Fonctionne tant qu’OpenShip est ouvert.",
+    "appOpen": "Fonctionne tant qu’ServerDeck est ouvert.",
     "scanStates": {
       "pending": "En attente",
       "running": "En cours",
@@ -1368,7 +1368,7 @@
     "reviewReboot": "Examiner le redémarrage",
     "applyReboot": "Planifier le redémarrage",
     "rebooting": "Redémarrage planifié ; vérification du noyau en attente",
-    "rebootInterruption": "Le serveur redémarrera dans une minute, interrompant toutes ses charges. OpenShip vérifiera le noyau actif lorsque l’hôte sera de nouveau connecté."
+    "rebootInterruption": "Le serveur redémarrera dans une minute, interrompant toutes ses charges. ServerDeck vérifiera le noyau actif lorsque l’hôte sera de nouveau connecté."
   },
   "sourceImageUpdate": {
     "github_access_required": "Accordez les droits de lecture et écriture sur le contenu et les pull requests de ce dépôt dans votre connexion GitHub. Un propriétaire devra peut-être approuver les nouveaux droits de l’application.",

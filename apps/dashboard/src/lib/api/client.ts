@@ -50,7 +50,7 @@ function reportReachability(sequence: number, reachable: boolean): void {
   reachabilitySequence = sequence;
   try {
     if (reachable) _networkRecoveryHandler?.();
-    else _networkErrorHandler?.("Cannot reach OpenShip. Check the connection and server availability.");
+    else _networkErrorHandler?.("Cannot reach ServerDeck. Check the connection and server availability.");
   } catch (error) {
     // A notice subscriber must not change the original request's outcome.
     observeCaughtError(error, "dashboard/lib/api/client");
@@ -149,8 +149,8 @@ export function getApiErrorMessage(
       const reason =
         err.status === 503
           ? "This service is temporarily unavailable."
-          : "OpenShip could not get a valid response from an upstream service.";
-      const raw = `${fallback.replace(/[.!?]$/, "")}. ${reason} Try again shortly, or contact OpenShip support if this continues. (HTTP ${err.status})`;
+          : "ServerDeck could not get a valid response from an upstream service.";
+      const raw = `${fallback.replace(/[.!?]$/, "")}. ${reason} Try again shortly, or contact ServerDeck support if this continues. (HTTP ${err.status})`;
       return msgs ? localizeDiagnosisMessage(raw, msgs) : raw;
     }
     const raw = err.message || fallback;

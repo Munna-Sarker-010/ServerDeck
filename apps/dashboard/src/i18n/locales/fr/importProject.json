@@ -61,7 +61,7 @@
       "title": "Contrôles de santé",
       "subtitle": "Désactivés — le déploiement se termine dès que l'app tourne",
       "subtitleOn": "Activés — le déploiement attend votre app avant la mise en ligne",
-      "description": "OpenShip n'attend pas votre app après son démarrage : un démarrage lent ne retarde donc jamais un déploiement et ne le fait pas échouer. Une fois en ligne, le port est vérifié malgré tout et signalé sans rien bloquer. N'activez ceci que si vous voulez que le déploiement lui-même refuse de passer au vert.",
+      "description": "ServerDeck n'attend pas votre app après son démarrage : un démarrage lent ne retarde donc jamais un déploiement et ne le fait pas échouer. Une fois en ligne, le port est vérifié malgré tout et signalé sans rien bloquer. N'activez ceci que si vous voulez que le déploiement lui-même refuse de passer au vert.",
       "probeLabel": "Attendre que l'app réponde",
       "probeDesc": "Après le démarrage du conteneur, contacter le port de l'app et attendre qu'elle accepte une connexion.",
       "pathLabel": "Chemin HTTP",
@@ -77,7 +77,7 @@
     },
     "runtimeVersionLabel": "Version du runtime",
     "runtimeVersionDefault": "Par défaut",
-    "runtimeVersionDesc": "Utilise des images de compilation et d’exécution adaptées à la version sélectionnée. Nécessite une compilation Docker générée par OpenShip.",
+    "runtimeVersionDesc": "Utilise des images de compilation et d’exécution adaptées à la version sélectionnée. Nécessite une compilation Docker générée par ServerDeck.",
     "buildImageLabel": "Image de compilation",
     "buildImageDesc": "Image de conteneur de compilation pour les builds cloud ou serveur. Remplacez-la lorsque l'image de base détectée est incorrecte.",
     "productionPathsLabel": "Chemins de production",
@@ -245,7 +245,7 @@
       "statefulWarnBold": "pas transférées d'une recompilation à l'autre",
       "statefulWarnPart2": ". Sauvegardez et restaurez explicitement les données avant de remplacer l’espace de travail.",
       "volumeHint": "Volume nommé ou chemin de l'hôte → chemin du conteneur.",
-      "volumeCloudNote": "OpenShip Cloud ne prend pas en charge les montages de volumes persistants. Choisissez un serveur pour les charges qui nécessitent des volumes.",
+      "volumeCloudNote": "ServerDeck Cloud ne prend pas en charge les montages de volumes persistants. Choisissez un serveur pour les charges qui nécessitent des volumes.",
       "sourcePlaceholder": "Source",
       "containerPathPlaceholder": "Chemin du conteneur",
       "readOnlyMount": "Montage en lecture seule",
@@ -366,11 +366,11 @@
       "accessHint": "Désactivez pour rendre cette application accessible uniquement dans le projet.",
       "app": "Application",
       "appLimit": "Ce projet contient déjà 50 applications. Créez un autre projet pour en ajouter.",
-      "folderMismatch": "Ce dossier renvoie vers une autre configuration de projet. Sélectionnez ce dossier ou modifiez son openship.json."
+      "folderMismatch": "Ce dossier renvoie vers une autre configuration de projet. Sélectionnez ce dossier ou modifiez son serverdeck.json."
     }
   },
   "deploymentProcessing": {
-    "targetOpenshipCloud": "OpenShip Cloud",
+    "targetOpenshipCloud": "ServerDeck Cloud",
     "targetServerNamed": "Serveur · {name}",
     "targetServer": "Serveur",
     "targetLocal": "Machine locale",
@@ -382,9 +382,9 @@
       "port": "Port",
       "process": "Processus",
       "unitDescription": "Description de l'unité",
-      "openshipDeployment": "Déploiement OpenShip",
+      "openshipDeployment": "Déploiement ServerDeck",
       "sites": {
-        "lead": "Le proxy existant dessert actuellement {count} site(s). La migration les importe dans OpenShip avant qu'il ne prenne le contrôle des ports 80/443 :",
+        "lead": "Le proxy existant dessert actuellement {count} site(s). La migration les importe dans ServerDeck avant qu'il ne prenne le contrôle des ports 80/443 :",
         "tlsBadge": "TLS",
         "staticLabel": "statique :",
         "warningsTitle": "N'ont pas pu être migrés automatiquement — à rajouter manuellement :"
@@ -533,8 +533,8 @@
   "configDiagnostics": {
     "title": "Certains paramètres de déploiement du dépôt n’ont pas été appliqués",
     "description": "Vérifiez les paramètres ignorés ci-dessous avant le déploiement.",
-    "titleWholeFile": "Le openship.json de ce dépôt a été ignoré",
-    "descriptionWholeFile": "Rien n'en a été appliqué. Le déploiement se poursuivra avec les réglages détectés par OpenShip.",
+    "titleWholeFile": "Le serverdeck.json de ce dépôt a été ignoré",
+    "descriptionWholeFile": "Rien n'en a été appliqué. Le déploiement se poursuivra avec les réglages détectés par ServerDeck.",
     "refused": "Refusé",
     "unrecognized": "Non reconnu",
     "hint": "Vérifiez les fichiers de configuration indiqués et mettez à jour les paramètres non pris en charge avant le prochain déploiement."

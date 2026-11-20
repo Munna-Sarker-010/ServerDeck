@@ -133,7 +133,7 @@ function FeedbackContent({ failure, plan, onClose, onRetry }: {
           )}
           {selfHosted ? (
             <Button asChild className="mt-5 w-full">
-              <a href={`mailto:support@openship.io?subject=${encodeURIComponent(request.subject)}&body=${encodeURIComponent(request.message)}`}>
+              <a href={`mailto:support@serverdeck.io?subject=${encodeURIComponent(request.subject)}&body=${encodeURIComponent(request.message)}`}>
                 {t.billing.checkout.support}
               </a>
             </Button>

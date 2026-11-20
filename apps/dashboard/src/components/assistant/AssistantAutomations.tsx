@@ -320,7 +320,7 @@ function AutomationContent() {
         </div>
       )}
       <a
-        href="https://openship.io/docs/dashboard/assistant#automations"
+        href="https://serverdeck.io/docs/dashboard/assistant#automations"
         className="mt-6 inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
       >
         How automations work <Icon name="arrow-up-right" className="size-3.5" />

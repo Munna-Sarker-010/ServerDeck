@@ -88,7 +88,7 @@ export function AddCustomAppModal({
         <p className="mt-0.5 text-xs text-muted-foreground">
           {m.description}{" "}
           <a
-            href="https://openship.io/docs/guides/add-an-app"
+            href="https://serverdeck.io/docs/guides/add-an-app"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"

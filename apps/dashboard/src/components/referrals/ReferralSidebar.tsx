@@ -76,7 +76,7 @@ export function ReferralSidebar({
             ))}
           </ol>
           <a
-            href="https://openship.io/docs/guides/referrals"
+            href="https://serverdeck.io/docs/guides/referrals"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-5 flex items-center gap-2 rounded-lg py-1 text-sm text-muted-foreground transition-colors hover:text-foreground"

@@ -42,7 +42,7 @@ export function ApiUnavailable() {
             icon: <UiIcon name="refresh" className="size-4" />,
           },
         ]}
-        docsHref="https://openship.io/docs/getting-started/installation"
+        docsHref="https://serverdeck.io/docs/getting-started/installation"
         docsLabel={c.apiDown.docs}
         githubLabel={c.errorLinks.github}
       />

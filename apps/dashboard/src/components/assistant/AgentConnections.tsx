@@ -368,7 +368,7 @@ function AgentConnection({
                   })
                 }
               >
-                Disconnect from OpenShip
+                Disconnect from ServerDeck
               </Button>
             </>
           ) : (

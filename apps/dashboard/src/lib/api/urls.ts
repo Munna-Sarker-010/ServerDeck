@@ -203,11 +203,11 @@ export function getCloudApiOrigin(rawUrl?: string) {
  * localhost:3001/3002 → localhost:3000. SSR falls back to production.
  */
 export function getMarketingOrigin() {
-  if (typeof window === "undefined") return "https://openship.io";
+  if (typeof window === "undefined") return "https://serverdeck.io";
   const { protocol, hostname, port } = window.location;
   if (hostname.startsWith("app.")) return `${protocol}//${hostname.slice(4)}`;
   if (port === String(DEFAULT_PORT.dashboard) || port === String(DEFAULT_PORT.saasDashboard)) {
     return `${protocol}//${hostname}:${DEFAULT_PORT.web}`;
   }
-  return "https://openship.io";
+  return "https://serverdeck.io";
 }

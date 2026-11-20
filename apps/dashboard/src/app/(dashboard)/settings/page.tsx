@@ -36,7 +36,6 @@ import { ProfileSetting } from "./_components/ProfileSetting";
 import { AppearanceEditor } from "@/components/appearance/AppearanceEditor";
 import { RoutePreferences } from "./_components/RoutePreferences";
 import { DeployDefaults } from "./_components/DeployDefaults";
-import { CloudConnection } from "./_components/CloudConnection";
 import { GitHubConnection } from "./_components/GitHubConnection";
 import { GitHubSources } from "./_components/GitHubSources";
 import { CloneCredentials } from "./_components/CloneCredentials";
@@ -114,7 +113,7 @@ function SettingsPageInner() {
     if (searchParams.get("cloud") === "connected") {
       refresh();
       showToast(t.settings.page.cloudConnectedToast, "success", t.settings.common.toast.cloud);
-      window.history.replaceState({}, "", "/settings?tab=cloud");
+      window.history.replaceState({}, "", "/settings");
     }
   }, [searchParams, showToast, refresh, t]);
 
@@ -210,8 +209,6 @@ function SettingsPageInner() {
           )}
 
           {activeTab === "connections" && <Connections />}
-
-          {activeTab === "cloud" && selfHosted && <CloudConnection />}
 
           {/* Infrastructure — the servers this install runs: edge/mail container
               versions across the fleet + scan + auto-update toggle, and the

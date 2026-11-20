@@ -6,7 +6,7 @@ import { FeatureIllustration } from "@repo/ui/illustrations";
 import { useI18n } from "@/components/i18n-provider";
 import { Button } from "@/components/ui/button";
 
-const DOCS_URL = "https://openship.io/docs";
+const DOCS_URL = "https://serverdeck.io/docs";
 
 export function JobsEmptyState({ onCreate }: { onCreate: () => void }) {
   const { t } = useI18n();

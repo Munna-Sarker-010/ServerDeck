@@ -4,7 +4,7 @@
   "version": "1.0.1",
   "private": true,
   "description": "ServerDeck Desktop - Electron wrapper for the deployment dashboard",
-  "author": "Oblien",
+  "author": "",
   "license": "Apache-2.0",
   "main": "dist/main/index.js",
   "scripts": {

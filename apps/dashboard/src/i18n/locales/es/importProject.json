@@ -61,7 +61,7 @@
       "title": "Comprobaciones de estado",
       "subtitle": "Desactivadas — el despliegue termina en cuanto la app está en marcha",
       "subtitleOn": "Activadas — el despliegue espera a tu app antes de publicarse",
-      "description": "OpenShip no espera a tu app después de arrancarla, así que un arranque lento nunca retrasa ni hace fallar un despliegue. Una vez publicado, el puerto se comprueba de todos modos y se informa sin bloquear nada. Actívalas solo si quieres que el propio despliegue se niegue a darse por bueno.",
+      "description": "ServerDeck no espera a tu app después de arrancarla, así que un arranque lento nunca retrasa ni hace fallar un despliegue. Una vez publicado, el puerto se comprueba de todos modos y se informa sin bloquear nada. Actívalas solo si quieres que el propio despliegue se niegue a darse por bueno.",
       "probeLabel": "Esperar a que la app responda",
       "probeDesc": "Tras arrancar el contenedor, contactar con el puerto de la app y esperar a que acepte una conexión.",
       "pathLabel": "Ruta HTTP",
@@ -77,7 +77,7 @@
     },
     "runtimeVersionLabel": "Versión del entorno de ejecución",
     "runtimeVersionDefault": "Predeterminada",
-    "runtimeVersionDesc": "Usa imágenes de compilación y ejecución compatibles con la versión seleccionada. Requiere una compilación Docker generada por OpenShip.",
+    "runtimeVersionDesc": "Usa imágenes de compilación y ejecución compatibles con la versión seleccionada. Requiere una compilación Docker generada por ServerDeck.",
     "buildImageLabel": "Imagen de compilación",
     "buildImageDesc": "Imagen del contenedor compilador para compilaciones en la nube o en el servidor. Sobrescríbela cuando la imagen base detectada sea incorrecta.",
     "productionPathsLabel": "Rutas de producción",
@@ -245,7 +245,7 @@
       "statefulWarnBold": "no se conservan entre recompilaciones",
       "statefulWarnPart2": ". Realiza una copia y restaura los datos explícitamente antes de reemplazar el espacio de trabajo.",
       "volumeHint": "Volumen con nombre o ruta del host → ruta del contenedor.",
-      "volumeCloudNote": "OpenShip Cloud no admite montajes de volúmenes persistentes. Elige un servidor para cargas que necesiten volúmenes.",
+      "volumeCloudNote": "ServerDeck Cloud no admite montajes de volúmenes persistentes. Elige un servidor para cargas que necesiten volúmenes.",
       "sourcePlaceholder": "Origen",
       "containerPathPlaceholder": "Ruta del contenedor",
       "readOnlyMount": "Montaje de solo lectura",
@@ -366,11 +366,11 @@
       "accessHint": "Desactívalo para que la app solo sea accesible dentro del proyecto.",
       "app": "App",
       "appLimit": "Este proyecto ya tiene 50 apps. Crea otro proyecto para añadir más.",
-      "folderMismatch": "Esta carpeta apunta a la configuración de otro proyecto. Selecciona esa carpeta o edita su openship.json."
+      "folderMismatch": "Esta carpeta apunta a la configuración de otro proyecto. Selecciona esa carpeta o edita su serverdeck.json."
     }
   },
   "deploymentProcessing": {
-    "targetOpenshipCloud": "OpenShip Cloud",
+    "targetOpenshipCloud": "ServerDeck Cloud",
     "targetServerNamed": "Servidor · {name}",
     "targetServer": "Servidor",
     "targetLocal": "Máquina local",
@@ -382,9 +382,9 @@
       "port": "Puerto",
       "process": "Proceso",
       "unitDescription": "Descripción de la unidad",
-      "openshipDeployment": "Despliegue de OpenShip",
+      "openshipDeployment": "Despliegue de ServerDeck",
       "sites": {
-        "lead": "El proxy existente sirve actualmente {count} sitio(s). Al migrar, se importan a OpenShip antes de tomar el control de los puertos 80/443:",
+        "lead": "El proxy existente sirve actualmente {count} sitio(s). Al migrar, se importan a ServerDeck antes de tomar el control de los puertos 80/443:",
         "tlsBadge": "TLS",
         "staticLabel": "estáticos:",
         "warningsTitle": "No se pudieron migrar automáticamente — vuelve a añadirlos manualmente:"
@@ -533,8 +533,8 @@
   "configDiagnostics": {
     "title": "No se aplicaron algunos ajustes de despliegue del repositorio",
     "description": "Revisa los ajustes omitidos antes de desplegar.",
-    "titleWholeFile": "Se ignoró el openship.json de este repositorio",
-    "descriptionWholeFile": "No se aplicó nada del archivo. El despliegue continuará con los ajustes que OpenShip detectó.",
+    "titleWholeFile": "Se ignoró el serverdeck.json de este repositorio",
+    "descriptionWholeFile": "No se aplicó nada del archivo. El despliegue continuará con los ajustes que ServerDeck detectó.",
     "refused": "Rechazado",
     "unrecognized": "No reconocido",
     "hint": "Revisa los archivos de configuración indicados y actualiza los ajustes no compatibles antes del próximo despliegue."

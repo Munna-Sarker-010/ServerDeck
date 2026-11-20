@@ -220,7 +220,7 @@ export function CloudDeployPlanModal({
               )}
               {recovery === "paused" && (
                 <a
-                  href="mailto:support@openship.io"
+                  href="mailto:support@serverdeck.io"
                   className="inline-flex text-sm font-medium text-primary hover:underline"
                 >
                   {t.billing.portal.supportButton}

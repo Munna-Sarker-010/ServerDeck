@@ -176,8 +176,7 @@ export function ErrorView({
         </p>
       )}
 
-      {/* Escape hatches. These screens are where a self-hoster is most stuck, so
-          docs + the issue tracker are one click away. */}
+      {/* Escape hatches. */}
       <div className="mt-6 flex items-center gap-5 text-xs text-muted-foreground/60">
         <a
           href={docsHref}
@@ -186,16 +185,6 @@ export function ErrorView({
           className="transition-colors hover:text-foreground"
         >
           {docsLabel}
-        </a>
-        <span aria-hidden className="size-1 rounded-full bg-muted-foreground/30" />
-        <a
-          href="https://github.com/oblien/openship/issues"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-        >
-          <UiIcon name="github" className="size-3.5" />
-          {githubLabel}
         </a>
       </div>
     </div>

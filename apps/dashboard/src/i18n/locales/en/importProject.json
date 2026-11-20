@@ -366,7 +366,7 @@
       "accessHint": "Turn off to keep this app reachable only inside the project.",
       "app": "App",
       "appLimit": "This project already has 50 apps. Create another project to add more.",
-      "folderMismatch": "This folder redirects to a different project configuration. Select that folder or edit its openship.json."
+      "folderMismatch": "This folder redirects to a different project configuration. Select that folder or edit its serverdeck.json."
     }
   },
   "deploymentProcessing": {
@@ -533,7 +533,7 @@
   "configDiagnostics": {
     "title": "Some repository deployment settings were not applied",
     "description": "Review the skipped settings below before deploying.",
-    "titleWholeFile": "This repo's openship.json was ignored",
+    "titleWholeFile": "This repo's serverdeck.json was ignored",
     "descriptionWholeFile": "None of it was applied. The deploy will still run, using the settings ServerDeck detected.",
     "refused": "Refused",
     "unrecognized": "Not recognized",

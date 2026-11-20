@@ -180,7 +180,7 @@ function SendTestMailContent({
       <p className="text-sm text-muted-foreground leading-relaxed -mt-1">
         {s.sendsFromBefore}
         <span className="font-mono text-[12.5px] text-foreground">
-          openship@{senderDomain || "…"}
+          serverdeck@{senderDomain || "…"}
         </span>
         {s.sendsFromAfter}
       </p>

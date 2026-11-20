@@ -184,6 +184,16 @@ export interface AdvisoryFeedState {
 }
 
 export async function getAdvisoryFeed(ctx?: ExecutionContext): Promise<AdvisoryFeedState> {
+  if (env.DEPLOY_MODE === "desktop") {
+    return {
+      release: { latest: null, manifest: null },
+      security: null,
+      stale: false,
+      checkedAt: null,
+      nextCheckAt: null,
+      error: null,
+    };
+  }
   // No credential is persisted in the public cache or returned to clients.
   const token = ctx
     ? await tokenFor(ctx, "local").catch((error) => {

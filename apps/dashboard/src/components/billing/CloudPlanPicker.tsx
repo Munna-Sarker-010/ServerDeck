@@ -189,7 +189,7 @@ function PlanPicker({
         : billingEnabled
           ? t.billing.plansRoute.changeViaSupport
           : t.billing.plansRoute.billingUnavailable}{" "}
-      <a href="mailto:support@openship.io" className="text-primary hover:underline">
+      <a href="mailto:support@serverdeck.io" className="text-primary hover:underline">
         {t.billing.portal.supportButton}
       </a>
     </p>

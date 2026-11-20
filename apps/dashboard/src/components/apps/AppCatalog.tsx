@@ -155,23 +155,6 @@ export function AppCatalog({ embedded = false }: { embedded?: boolean } = {}) {
           >
             <UiIcon name="plus" className="size-4" /> {ap.addCustom || "Add custom"}
           </button>
-          {/* The shared help menu, with this page's own guide link on top —
-              so Support / Report issue / Docs read identically everywhere. */}
-          <HelpMenu
-            extraActions={[
-              {
-                id: "guide",
-                label: ap.howToAddApp || "How to add an app",
-                icon: <UiIcon name="book" className="size-4" />,
-                onClick: () =>
-                  window.open(
-                    "https://github.com/oblien/openship/tree/main/packages/core/src/apps",
-                    "_blank",
-                    "noopener,noreferrer",
-                  ),
-              },
-            ]}
-          />
         </div>
       </div>
 
@@ -259,7 +242,7 @@ export function AppCatalog({ embedded = false }: { embedded?: boolean } = {}) {
                     </div>
                     <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">
                       {needsUpdate
-                        ? (ap.needsUpdateDesc || "Update your OpenShip instance to install this app.")
+                        ? (ap.needsUpdateDesc || "Update your ServerDeck instance to install this app.")
                         : (t.library as any)?.catalog?.apps?.[app.id] || app.description}
                     </p>
                   </div>

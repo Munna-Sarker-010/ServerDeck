@@ -24,14 +24,14 @@ export default function ConnectionCallback() {
       try {
         if (!state || !code || params.has("error"))
           throw new Error(
-            "Authorization was cancelled or incomplete. Connect again from OpenShip.",
+            "Authorization was cancelled or incomplete. Connect again from ServerDeck.",
           );
         await credentialsApi.completeAuthorization({ state, code });
-        setStatus("Connected. You can return to OpenShip.");
+        setStatus("Connected. You can return to ServerDeck.");
       } catch (failure) {
         error = getApiErrorMessage(
           failure,
-          "The connection could not be completed. Try again from OpenShip.",
+          "The connection could not be completed. Try again from ServerDeck.",
         );
         setStatus(error);
       }
