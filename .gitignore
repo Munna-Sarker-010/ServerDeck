@@ -69,3 +69,8 @@ next-env.d.ts
 
 # Local review screenshots and generated previews (not product assets)
 /artifacts/
+
+# Exclude release zip files from git
+*.zip
+apps/web/public/downloads/*.zip
+
