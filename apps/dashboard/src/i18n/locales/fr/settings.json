@@ -1456,7 +1456,7 @@
       "pickServer": "Choisir un serveur",
       "domain": "Domaine",
       "freeSubdomain": "Sous-domaine gratuit",
-      "freeSubdomainHint": "nom.opsh.io",
+      "freeSubdomainHint": "nom.example.com",
       "customDomain": "Domaine personnalisé",
       "customDomainHint": "DNS pointé vers le serveur",
       "freeSlugPlaceholder": "monequipe",

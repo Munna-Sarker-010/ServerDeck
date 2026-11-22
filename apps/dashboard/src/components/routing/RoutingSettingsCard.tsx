@@ -401,7 +401,7 @@ export function RoutingSettingsCard({
                     placeholder={projectName || "my-project"}
                     className="min-w-0 flex-1 bg-transparent pe-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                   />
-                  <span className="shrink-0 ps-2 pe-3.5 text-sm text-muted-foreground">.{baseDomain}</span>
+                  
                 </div>
                 {saveMode === "explicit" && draftDomain !== domain && (
                   <button

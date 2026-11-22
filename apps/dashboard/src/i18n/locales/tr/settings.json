@@ -1495,7 +1495,7 @@
       "pickServer": "Bir sunucu seçin",
       "domain": "Alan Adı",
       "freeSubdomain": "Ücretsiz alt alan adı",
-      "freeSubdomainHint": "adiniz.opsh.io",
+      "freeSubdomainHint": "adiniz.example.com",
       "customDomain": "Özel alan adı",
       "customDomainHint": "Sunucuya yönlendirilmiş DNS",
       "freeSlugPlaceholder": "ekibim",

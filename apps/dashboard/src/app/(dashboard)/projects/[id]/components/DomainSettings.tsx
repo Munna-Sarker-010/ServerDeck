@@ -2288,23 +2288,9 @@ export const DomainSettings = ({ applicationScope = false, serviceScope, onRoute
             <div className="space-y-4">
               {/* Route type — free (host-managed) vs custom (DNS-verified). */}
               <div className="flex items-center gap-2">
-                {(["free", "custom"] as const).map((type) => (
-                  <button
-                    key={type}
-                    type="button"
-                    onClick={async () => {
-                      if (type === "free" && !(await freeNeedsCloud())) return;
-                      setNewDomainType(type);
-                    }}
-                    className={`rounded-lg px-3 py-1.5 text-[12px] font-medium transition-colors ${
-                      newDomainType === type
-                        ? "bg-primary/10 text-primary ring-1 ring-primary/15"
-                        : "bg-muted/40 text-muted-foreground hover:bg-muted/60"
-                    }`}
-                  >
-                    {type === "free" ? t.projectSettings.domains.add.free : t.projectSettings.domains.add.custom}
-                  </button>
-                ))}
+                <span className="rounded-lg px-3 py-1.5 text-[12px] font-medium bg-primary/10 text-primary ring-1 ring-primary/15">
+                  {t.projectSettings.domains.add.custom}
+                </span>
               </div>
 
               <div className="space-y-2">
@@ -2318,9 +2304,7 @@ export const DomainSettings = ({ applicationScope = false, serviceScope, onRoute
                     onChange={(e) => setNewDomain(e.target.value)}
                     className="flex-1 bg-transparent px-4 py-3 text-sm text-foreground outline-none placeholder:text-muted-foreground/60"
                   />
-                  {newDomainType === "free" && (
-                    <span className="shrink-0 pe-4 text-sm text-muted-foreground">.{baseDomain}</span>
-                  )}
+                  {/* free domain removed */}
                 </div>
                 {newDomainHasWww && (
                   <p className="text-xs text-danger">{t.projectSettings.domains.add.noWww}</p>

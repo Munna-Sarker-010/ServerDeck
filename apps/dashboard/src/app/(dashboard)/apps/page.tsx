@@ -18,7 +18,7 @@ import ProjectCard from "../projects/components/ProjectCard";
 
 // Keep the original showcase order; availability and app details come from the catalog.
 const FEATURED_APP_IDS = [
-  "supabase", "convex", "mongodb", "neon", "mail",
+  "supabase", "convex", "mongodb", "neon",
   "ghost", "uptime-kuma", "vaultwarden", "metabase",
 ];
 function CatalogShortcut({ app }: { app: AppCatalogEntry }) {

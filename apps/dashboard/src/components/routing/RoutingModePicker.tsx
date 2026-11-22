@@ -70,7 +70,6 @@ export function RoutingModePicker({
   const w = t.widgets.routing.settingsCard;
 
   const tabs: Array<{ value: RoutingMode; label: string }> = [
-    { value: "free", label: w.free },
     { value: "custom", label: w.custom },
     { value: "none", label: labels.noneLabel },
   ];

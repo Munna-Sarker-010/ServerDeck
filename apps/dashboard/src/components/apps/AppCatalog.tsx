@@ -24,7 +24,7 @@ import { HelpMenu } from "@/components/HelpMenu";
 
 // Stable display order for the category tab bar; only categories actually
 // present in the catalog are shown.
-const CATEGORY_ORDER = ["backend", "database", "cms", "ai", "analytics", "automation", "mail", "other"] as const;
+const CATEGORY_ORDER = ["backend", "database", "cms", "ai", "analytics", "automation", "other"] as const;
 
 /** Not installable right now: coming-soon OR needs a newer OpenShip. */
 const isLocked = (a: AppCatalogEntry) => !!a.comingSoon || !!a.requiresUpdate;
@@ -45,7 +45,7 @@ export function AppCatalog({ embedded = false }: { embedded?: boolean } = {}) {
   const loadCatalog = () =>
     appsApi
       .catalog()
-      .then((r) => setCatalog(r.data ?? []))
+      .then((r) => setCatalog((r.data ?? []).filter((a: AppCatalogEntry) => a.id !== "mail" && a.id !== "webmail")))
       .catch((diagnosticFailure) => {
         observeCaughtError(diagnosticFailure, "dashboard/components/apps/AppCatalog");
       });

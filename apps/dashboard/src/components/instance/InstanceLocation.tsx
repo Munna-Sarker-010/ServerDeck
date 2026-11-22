@@ -655,12 +655,10 @@ export function InstanceMoveDialog({
                         aria-label="Instance address"
                         value={hostname}
                         onChange={(e) => setHostname(e.target.value)}
-                        placeholder={kind === "custom" ? "openship.example.com" : "my-openship"}
+                        placeholder={kind === "custom" ? "serverdeck.example.com" : "my-serverdeck"}
                         variant="filled"
                       />
-                      {kind === "free" && (
-                        <span className="text-sm text-muted-foreground">.opsh.io</span>
-                      )}
+                      {/* removed .opsh.io */}
                     </div>
                     <p className="text-xs text-muted-foreground">
                       {kind === "custom"

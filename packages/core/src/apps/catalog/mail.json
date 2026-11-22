@@ -1,9 +1,9 @@
 {
-  "available": true,
-  "verified": true,
+  "available": false,
+  "verified": false,
   "id": "mail",
   "name": "Openship Mail",
-  "description": "Your own mail on your own domain — SMTP/IMAP, mailboxes and webmail on one server. Or keep the mailboxes you already have and just run the webmail.",
+  "description": "Your own mail on your own domain \u2014 SMTP/IMAP, mailboxes and webmail on one server. Or keep the mailboxes you already have and just run the webmail.",
   "kind": "flow",
   "logo": "mail",
   "category": "mail",
@@ -34,5 +34,6 @@
       }
     ],
     "articleFile": "articles/mail.md"
-  }
+  },
+  "unlisted": true
 }

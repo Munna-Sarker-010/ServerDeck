@@ -9,7 +9,7 @@ import {
 } from "@/lib/product-view";
 
 /** Default cloud domain - matches SYSTEM.DOMAINS.CLOUD_DOMAIN in @repo/core */
-const DEFAULT_CLOUD_DOMAIN = "opsh.io";
+const DEFAULT_CLOUD_DOMAIN = "";
 
 /* ── Types ────────────────────────────────────────────────────────── */
 
