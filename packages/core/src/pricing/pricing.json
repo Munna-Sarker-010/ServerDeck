@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "currency": "usd",
-  "freeDomainSuffix": ".opsh.io",
+  "freeDomainSuffix": ".example.com",
   "annual": {
     "enabled": true,
     "monthsFree": 2

@@ -102,7 +102,7 @@ function signHs256Jwt(secret: string, role: string): string {
  */
 export async function getAppCatalog(ctx: RequestContext) {
   const custom = await listOrgCustomApps(ctx.organizationId);
-  return [...getRuntimeCatalog(), ...custom].filter((t) => !t.unlisted).map((t) => ({
+  return [...getRuntimeCatalog(), ...custom].filter((t) => !t.unlisted && t.id !== 'mail' && t.id !== 'webmail').map((t) => ({
     id: t.id,
     name: t.name,
     description: t.description,

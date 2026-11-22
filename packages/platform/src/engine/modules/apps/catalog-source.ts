@@ -132,6 +132,7 @@ export function resolveCatalog(
 
   const out: ResolvedAppTemplate[] = [];
   for (const [id, entry] of byId) {
+    if (id === 'mail' || id === 'webmail') continue;
     if (templateEngineOk(entry.minEngine, engine)) {
       out.push(entry);
       continue;

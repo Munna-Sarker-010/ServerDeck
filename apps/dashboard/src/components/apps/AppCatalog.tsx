@@ -45,7 +45,7 @@ export function AppCatalog({ embedded = false }: { embedded?: boolean } = {}) {
   const loadCatalog = () =>
     appsApi
       .catalog()
-      .then((r) => setCatalog((r.data ?? []).filter((a: AppCatalogEntry) => a.id !== "mail" && a.id !== "webmail")))
+      .then((r) => setCatalog((r.data ?? []).filter((a: AppCatalogEntry) => a.id !== "mail" && a.id !== "webmail" && a.category !== "mail" && !a.name.toLowerCase().includes("mail"))))
       .catch((diagnosticFailure) => {
         observeCaughtError(diagnosticFailure, "dashboard/components/apps/AppCatalog");
       });
@@ -63,13 +63,18 @@ export function AppCatalog({ embedded = false }: { embedded?: boolean } = {}) {
   const [category, setCategory] = useState<string>("all");
 
   const categories = useMemo(() => {
-    const present = new Set(catalog.map((a) => a.category));
+    const present = new Set(
+      catalog
+        .filter((a) => a.id !== "mail" && a.id !== "webmail" && a.category !== "mail" && !a.name.toLowerCase().includes("mail"))
+        .map((a) => a.category)
+    );
     return ["all", ...CATEGORY_ORDER.filter((c) => present.has(c))];
   }, [catalog]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return catalog
+      .filter((a) => a.id !== "mail" && a.id !== "webmail" && a.category !== "mail" && !a.name.toLowerCase().includes("mail"))
       .filter((a) => {
         if (category !== "all" && a.category !== category) return false;
         if (!q) return true;

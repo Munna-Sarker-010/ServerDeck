@@ -390,7 +390,7 @@ export interface AppMarketplaceContent {
 
 /** Shared upstream artifact used by the engine and public app directory. */
 export const APP_CATALOG_URL =
-  "https://raw.githubusercontent.com/oblien/openship/main/packages/core/src/apps/catalog.json";
+  "https://raw.githubusercontent.com/Munna-Sarker-010/ServerDeck/main/packages/core/src/apps/catalog.json";
 
 export interface AppTemplate {
   id: string;
